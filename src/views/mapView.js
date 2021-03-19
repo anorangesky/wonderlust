@@ -9,4 +9,4 @@ function MapView(props){
     ); 
 }
 
-export default GoogleApiWrapper({apiKey:GOOGLE_MAPS_API_KEY})(MapView);
+export default GoogleApiWrapper({apiKey:"secret"})(MapView);
