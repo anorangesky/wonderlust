@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import MapView from './views/mapView';
+import TitleView from './views/titelView';
 
+require('dotenv').config();
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <TitleView/>
+    <MapView/>
   </React.StrictMode>,
   document.getElementById('root')
 );
