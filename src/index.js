@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './style.css';
 import reportWebVitals from './reportWebVitals';
+import DetailsView from './views/detailsView';
 import MapView from './views/mapView';
 import TitleView from './views/titelView';
 
@@ -9,6 +10,7 @@ require('dotenv').config();
 ReactDOM.render(
   <React.StrictMode>
     <TitleView/>
+    <DetailsView/>
     <MapView/>
   </React.StrictMode>,
   document.getElementById('root')

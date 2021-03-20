@@ -4,45 +4,146 @@ mapView{
     height: '100%'
 }
 
-/**
- * Limit the container in
- * width for big screens
- */
- .container {
-	width: 960px;
+.header-title, h1,h5{
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    align-items: center;
+}
+
+.header-title, h1{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.header-title, h5{
+    margin-top: 0;
+    padding-top:0;
+}
+
+ .title-container {
+    display: flex;
+    flex-direction: row;
 	max-width: 100%;
 	padding: 20px;
 	margin: 0 auto;
 }
-/**
- * Images a now responsive
- */
- img {
-	max-width: 15%;
+ .title-container, img {
 	height: auto;
+    align-self:;
 }
-header .container {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	flex-wrap: wrap;
-}
-.header-title{
+.title-container, .header-title{
     margin-right: auto;
-    text-align: center;
-    margin-left: 10px;
+    align-items: center;
+
 }
 
- h1, h5{
-    font-family: 'Roboto', sans-serif;
-    font-weight:lighter;
+/* details container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* The actual popup */
+.details-container {
+    display: flex;
+    flex-direction: column;
+	align-items: center;
+	flex-wrap: wrap;
+    width: 300px;
+    visibility: hidden;
+    background-color: white;
+    color: black;
+    
+    position: fixed;
+    top: 25%;
+    left: 10%;
+    z-index: 1;
+    justify-content: space-evenly;
+
+    border-radius: 15px;
+  }
+  .details-header-item{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: grey;
+    border-radius: 15px 15px 0 0;
+
+  }
+    .details-body-item, .title-container{
+        align-self: center;
+    }
+    .detais-header-item, img{
+        width:15%;      
+        align-self: center;
+    }
+
+    .detais-header-item, button{
+        align-self: center;
+        margin-right: 10px;
+    }
+
+  .details-body-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+    .card.body.left, .card.body.right{
+        justify-content: center;
+    }
+
+
+  .details-footer-item{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+  }
+
+  /* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+
+  
+  /* This applies from 600px onwards 
+        (Desktop specifics) */
+@media (min-width: 600px) {
+    .title-container img {
+        width: 5%;
+    }
+    .detais-header-item, img{
+        width:10%;
+    }
+    
+    .details-container {
+        width: 600px;
+        position: fixed;
+        top: 25%;
+        left: 25%;
+
+    }
+
+
 }
 
-h1{
-    margin-bottom: 0;
-    padding-bottom: 0;
+  /* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
 }
-h5{
-    margin-top: 0;
-    padding-top:0;
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }
+

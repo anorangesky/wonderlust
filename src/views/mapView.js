@@ -1,5 +1,4 @@
 import {Map, GoogleApiWrapper} from "google-maps-react";
-import '../style.css';
 
 function MapView(props){
     return(
