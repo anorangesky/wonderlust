@@ -6,16 +6,16 @@ import logo2 from '../images/wonderlust2.png';
 function DetailsView(props){
     return(
         <div>
-            <button class="popup" onClick={openPopup}>Details Card
+            <button class="popup" onClick={openDetails}>Details Card
                 <div class="details-container" id="detailsCard">
                     
                     <div class="details-header-item">
-                        <img src={logo2}/>
+                        <img src={logo2} alt="Location tag"/>
                         <div class="header-title">
                             <h1>Attraction Title</h1>
                             <h5>Attraction SubTitle </h5>
                         </div>
-                        <button label="Close">X</button>
+                        <button label="Close" onPress={closeDetails}>X</button>
                     </div>
 
                     <div class="details-body-item">
@@ -24,7 +24,7 @@ function DetailsView(props){
                             <a href="https://sv.wikipedia.org/">Read more</a>
                         </div>
                         <div class="card-body-right">
-                            <img id="details-image" src={logo}/>
+                            <img id="details-image" src={logo} alt="Image of the attraction"/>
                             <div class="star-rating">
                                 <fieldset>
                                     <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding">5 stars</label>
@@ -38,15 +38,15 @@ function DetailsView(props){
                                     <li>Wow, i love this place. I reccomend a visit!</li>
                                     <li>Probably the two most common comments were "timid" and "boring".</li>
                                 </ul>
-                                <input id="details-comment" type="text" placeholder="Leave a comment"/>
+                                <input id="details-comment" type="text" placeholder="Leave a comment" onChange={e => props.onChange()}/>
                         </div>
                     </div>
 
                     <div class="details-footer-item">
-                        <button>How to get there</button>
+                        <button onPress={e => props.onPress()}>How to get there</button>
                         <span>
-                            <button disabled={true}>Save</button>
-                            <button disabled={true}>Share</button>
+                            <button disabled={true} onPress={e => props.onPress()}>Save</button>
+                            <button disabled={true} onPress={e => props.onPress()}>Share</button>
                         </span>
                     </div>
                 </div>
@@ -54,9 +54,17 @@ function DetailsView(props){
         </div>
     );
 }
-function openPopup(){
+
+//TODO: should these functions be in this file?
+
+function openDetails(){
     var popup = document.getElementById("detailsCard");
     popup.classList.toggle("show");
+
 } 
+//TODO: this function is not working rn. Clicking anywhere on the card will close the details view. 
+function closeDetails(){
+    document.getElementById("detailsCard").style.display = "none";
+}
 
 export default DetailsView;
