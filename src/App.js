@@ -1,24 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import MapView from './views/mapView';
+import TitleView from './views/titelView';
+import SearchView from './views/searchView';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <TitleView/>
+      <SearchView/>
+      <MapView/>
+    </React.Fragment>
   );
 }
 
