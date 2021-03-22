@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './style.css';
 import reportWebVitals from './reportWebVitals';
 import DetailsView from './views/detailsView';
 import MapView from './views/mapView';
