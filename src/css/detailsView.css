@@ -8,24 +8,26 @@
     -ms-user-select: none;
     user-select: none;
   }
+   /* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
 
   /* The actual popup */
 .details-container {
     display: flex;
     flex-direction: column;
-	align-items: center;
-	flex-wrap: wrap;
+	  align-items: center;
+	  flex-wrap: wrap;
     width: 300px;
     visibility: hidden;
     background-color: white;
     color: black;
-    
     position: fixed;
-    top: 25%;
-    left: 10%;
     z-index: 1;
     justify-content: space-evenly;
-
     border-radius: 15px;
   }
   .details-header-item{
@@ -47,65 +49,153 @@
     .detais-header-item, button{
         align-self: center;
         margin-right: 10px;
+        border: 1px solid gray;
+        border-radius: 4px;
     }
 
   .details-body-item{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    height: 400px;
+
   }
-    .card.body.left, .card.body.right{
-        justify-content: center;
+  .card.body.left, .card.body.right{
+    justify-content: center;
+  }
+  #details-about{
+    overflow: scroll;    
+    height: 80%;
     }
-
-
-  .details-footer-item{
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        margin-top: 10px;
-        margin-bottom: 1;
-
-  }
-
-  /* Toggle this class - hide and show the popup */
-.popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-  }
-
   
+  #details-image{
+    padding: 10px;
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    background-position: center;
+  }
+
+
+/* start rating. inspo: https://codepen.io/orchard/pen/Jnwvb?editors=0100 */
+fieldset{
+  width: 150px;
+}
+.star-rating {
+  font-family: 'FontAwesome';
+}
+.star-rating > fieldset {
+  border: none;
+  display: inline-block;
+}
+.star-rating > fieldset:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+.star-rating > fieldset:not(:checked) > label {
+  float: right;
+  width: 1em;
+  padding: 0 0.05em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  color: gray;
+}
+.star-rating > fieldset:not(:checked) > label:before {
+  content: '\f006  ';
+}
+.star-rating > fieldset:not(:checked) > label:hover,
+.star-rating > fieldset:not(:checked) > label:hover ~ label {
+  color: gray;
+}
+.star-rating > fieldset:not(:checked) > label:hover:before,
+.star-rating > fieldset:not(:checked) > label:hover ~ label:before {
+  content: '\f005  ';
+}
+.star-rating > fieldset > input:checked ~ label:before {
+  content: '\f005  ';
+}
+.star-rating > fieldset > label:active {
+  position: relative;
+  top: 2px;
+}
+
+.card-body-right li{
+  font-size: smaller;
+  margin-right: 10px;
+  max-height: 20px;
+  overflow: auto;
+  background-color: lightgray;
+  padding-left: 0;
+  margin-left: 0;
+}
+#details-comment{
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  width: 100px;
+}
+
+.details-footer-item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+ 
   /* This applies from 600px onwards 
         (Desktop specifics) */
-@media (min-width: 600px) {
-    .title-container img {
-        width: 5%;
-    }
-    .detais-header-item, img{
-        width:10%;
-    }
-    
-    .details-container {
-        width: 600px;
-        position: fixed;
-        top: 25%;
-        left: 25%;
+        @media (min-width: 600px) {
+          .title-container img {
+              width: 5%;
+          }
+          .detais-header-item, img{
+              width:10%;
+          }
+          
+          .details-container {
+              width: 600px;
+              position: fixed;
+              left: 25%;
+      
+          }
+          .details-body-item{
+            height: auto;
 
-    }
-
-
-}
-
-  /* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {opacity: 0;} 
-  to {opacity: 1;}
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
-}
-
+          }
+          #details-about{
+            width: auto;
+            padding: 10px;
+          }
+            #details-image{
+              width:200px;
+              height:200px;
+              object-fit: cover;
+              padding: 10px;
+            }
+            #details-comment{
+              margin-left: 10px;
+              margin-right: 10px;
+              border: 1px solid gray;
+              border-radius: 4px;
+              width: 200px;
+            }
+      
+      }
+      
+        /* Add animation (fade in the popup) */
+      @-webkit-keyframes fadeIn {
+        from {opacity: 0;} 
+        to {opacity: 1;}
+      }
+      
+      @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity:1 ;}
+      }
