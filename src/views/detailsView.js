@@ -34,7 +34,7 @@ function DetailsView(props){
                                     <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Very Poor">1 star</label>
                                 </fieldset>
                             </div>
-                                <ul id="details-comment-list">
+                                <ul>
                                     <li>Wow, i love this place. I reccomend a visit!</li>
                                     <li>Probably the two most common comments were "timid" and "boring".</li>
                                 </ul>
