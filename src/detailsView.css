@@ -1,39 +1,3 @@
-mapView{
-    position: 'relative';
-    width: '100%';
-    height: '100%'
-}
-
-.title-container {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-}
-.title-container, img {
-height: auto;
-  align-self:
-}
-.title-container, .header-title{
-  margin-right: auto;
-  align-items: center;
-
-}
-
-.header-title, h1,h5{
-    font-family: 'Roboto', sans-serif;
-    font-weight: lighter;
-    align-items: center;
-}
-
-.header-title, h1{
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-.header-title, h5{
-    margin-top: 0;
-    padding-top:0;
-}
-
 /* details container - can be anything you want */
 .popup {
     position: relative;
