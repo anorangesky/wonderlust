@@ -4,11 +4,13 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import MapView from './views/mapView';
 import TitleView from './views/titelView';
+import SearchView from './views/searchView';
 
 require('dotenv').config();
 ReactDOM.render(
   <React.StrictMode>
     <TitleView/>
+    <SearchView/>
     <MapView/>
   </React.StrictMode>,
   document.getElementById('root')
