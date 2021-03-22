@@ -1,0 +1,35 @@
+.title-container {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+.title-container img {
+    height: auto;
+    width: 10%;    
+}
+.title-container, .header-title{
+    margin-right: auto;
+    align-items: center;
+} 
+.header-title, h1,h5{
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    align-items: center;
+}
+.header-title, h1{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.header-title, h5{
+    margin-top: 0;
+    padding-top:0;
+}
+ 
+    /* This applies from 600px onwards 
+          (Desktop specifics) */
+@media (min-width: 600px) {
+    .title-container img {
+        width: 5%;
+    }
+}
+    

@@ -1,4 +1,4 @@
-import '../style.css';
+import '../css/searchView.css';
 import icon from '../images/location.png'
 
 function SearchView(props) {
