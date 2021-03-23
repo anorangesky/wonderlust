@@ -1,6 +1,31 @@
 import {Map, GoogleApiWrapper} from "google-maps-react";
 import '../css/mapView.css';
 
+const mapStyle = [
+  {
+    featureType: 'poi',
+    stylers: [
+      {
+        visibility: 'off',
+      }
+    ]
+  },
+  {
+    featureType: 'poi.park',
+    stylers: [
+      {
+        visibility: 'on',
+      }
+    ]
+  },
+]
+
+function _mapLoaded(mapProps, map) {
+   map.setOptions({
+      styles: mapStyle
+   })
+}
+
 function MapView(props){
     return(
         <div class='mapView'>
@@ -9,6 +34,7 @@ function MapView(props){
                   zoomControl={false}
                   fullscreenControl={false}
                   streetViewControl={false}
+                  onReady={(mapProps, map) => _mapLoaded(mapProps, map)}
              />
         </div>
     );
