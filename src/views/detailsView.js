@@ -1,21 +1,33 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+
 import '../css/detailsView.css';
 import logo from '../images/wonderlust.png';
 import logo1 from '../images/wonderlust1.png';
 import logo2 from '../images/wonderlust2.png';
 
 function DetailsView(props){
-    return(
-        <div>
-            <button class="popup" onClick={openDetails}>Details Card
-                <div class="details-container" id="detailsCard">
-                    
+    const [open, setOpen] = React.useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const body = (
+    <div>
+       <div class="details-container" id="detailsCard">
                     <div class="details-header-item">
                         <img src={logo2} alt="Location tag"/>
                         <div class="header-title">
                             <h1>Attraction Title</h1>
                             <h5>Attraction SubTitle </h5>
                         </div>
-                        <button label="Close" onPress={closeDetails}>X</button>
+                        <button label="Close" type="button" onClick={handleClose}>X</button>
                     </div>
 
                     <div class="details-body-item">
@@ -50,21 +62,22 @@ function DetailsView(props){
                         </span>
                     </div>
                 </div>
-            </button>
+    </div>
+  );
+
+    return(
+        <div>
+            <button type="button" onClick={handleOpen}> Open Details </button>
+            <Modal 
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                >
+               {body}
+            </Modal>
         </div>
     );
-}
-
-//TODO: should these functions be in this file?
-
-function openDetails(){
-    var popup = document.getElementById("detailsCard");
-    popup.classList.toggle("show");
-
-} 
-//TODO: this function is not working rn. Clicking anywhere on the card will close the details view. 
-function closeDetails(){
-    document.getElementById("detailsCard").style.display = "none";
 }
 
 export default DetailsView;
