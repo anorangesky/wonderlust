@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
 import '../css/detailsView.css';
@@ -68,7 +67,7 @@ function DetailsView(props){
     return(
         <div>
             <button type="button" onClick={handleOpen}> Open Details </button>
-            <Modal 
+            <Modal
                     open={open}
                     onClose={handleClose}
                     aria-labelledby="simple-modal-title"
