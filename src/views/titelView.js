@@ -3,7 +3,6 @@ import logo from '../images/wonderlust.png';
 import logo1 from '../images/wonderlust1.png';
 import logo2 from '../images/wonderlust2.png';
 
-
 function TitleView(){
     return(
         <div>
