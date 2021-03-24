@@ -28,7 +28,7 @@ function _mapLoaded(mapProps, map) {
 
 function MapView(props){
     return(
-        <div class='mapView'>
+        <div className='mapView'>
             <Map google={props.google}
                   initialCenter={{lat: 59.3294, lng: 18.063240}}
                   zoomControl={false}
