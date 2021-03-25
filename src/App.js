@@ -11,7 +11,6 @@ function App() {
       <TitleView/>
       <SearchView/>
       <DetailsView/>
-
       <MapView/>
     </React.Fragment>
   );
