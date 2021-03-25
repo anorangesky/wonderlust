@@ -1,5 +1,6 @@
 import {Map, GoogleApiWrapper} from "google-maps-react";
 import '../css/mapView.css';
+import store from '../redux/store'
 
 const mapStyle = [
   {
@@ -26,11 +27,13 @@ function _mapLoaded(mapProps, map) {
    })
 }
 
+const initialCoordinates = store.getState().currentLocation;
+
 function MapView(props){
     return(
-        <div class='mapView'>
+        <div className='mapView'>
             <Map google={props.google}
-                  initialCenter={{lat: 59.3294, lng: 18.063240}}
+                  initialCenter={initialCoordinates}
                   zoomControl={false}
                   fullscreenControl={false}
                   streetViewControl={false}

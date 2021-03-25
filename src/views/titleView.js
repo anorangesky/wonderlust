@@ -6,9 +6,9 @@ import logo2 from '../images/wonderlust2.png';
 function TitleView(){
     return(
         <div>
-            <div class="title-container">
-                <img src={logo2}/>
-                <div class="header-title">
+            <div className="title-container">
+                <img src={logo2} alt="wonderlust logo"/>
+                <div className="header-title">
                     <h1>Wonderlust</h1>
                     <h5>Explore the unexpected</h5>
                 </div>

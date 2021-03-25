@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import MapView from './views/mapView';
-import TitleView from './views/titelView';
+import TitleView from './views/titleView';
 import SearchView from './views/searchView';
 import DetailsView from './views/detailsView';
 
@@ -11,7 +11,6 @@ function App() {
       <TitleView/>
       <SearchView/>
       <DetailsView/>
-      
       <MapView/>
     </React.Fragment>
   );

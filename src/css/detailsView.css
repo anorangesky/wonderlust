@@ -1,3 +1,5 @@
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
 .details-container {
     display: flex;
     position: fixed;
@@ -68,12 +70,12 @@
 
 /* start rating. inspo: https://codepen.io/orchard/pen/Jnwvb?editors=0100 */
 fieldset{
-  width: 120px;
-  height: 20px;
-  padding: 0;
+  display: flex;
+  padding: 0px;
 }
 .star-rating {
   font-family: 'FontAwesome';
+  font-size: 150%;
 }
 .star-rating > fieldset {
   border: none;
@@ -90,7 +92,6 @@ fieldset{
   overflow: hidden;
   white-space: nowrap;
   cursor: pointer;
-  font-size: 200%;
   color: gray;
 }
 .star-rating > fieldset:not(:checked) > label:before {
