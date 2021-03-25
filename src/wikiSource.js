@@ -19,6 +19,7 @@ export function getArticlesFromLocation(lat, lng, radius) {
     list: 'geosearch',
     gscoord: lat.toString() + '|' + lng.toString(),
     gsradius: radius.toString(),
+    gslimit: '1000',
     format: 'json',
   };
   return apiCall(new URLSearchParams(params))

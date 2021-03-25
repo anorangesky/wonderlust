@@ -9,8 +9,18 @@ function currentLocation(state = null, action) {
   }
 }
 
+function attractionList(state = [], action) {
+  switch (action.type) {
+    case 'attractionList/setAttractions':
+      return action.attractions;
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   currentLocation,
+  attractionList,
 })
 
 export default rootReducer;
