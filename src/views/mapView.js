@@ -1,6 +1,5 @@
-import {Map, GoogleApiWrapper} from "google-maps-react";
+import {Map, Marker, GoogleApiWrapper} from "google-maps-react";
 import '../css/mapView.css';
-import store from '../redux/store'
 
 const mapStyle = [
   {
@@ -27,18 +26,28 @@ function _mapLoaded(mapProps, map) {
    })
 }
 
-const initialCoordinates = store.getState().currentLocation;
-
 function MapView(props){
     return(
         <div className='mapView'>
             <Map google={props.google}
-                  initialCenter={initialCoordinates}
+                  initialCenter={props.currentLocation}
                   zoomControl={false}
                   fullscreenControl={false}
                   streetViewControl={false}
                   onReady={(mapProps, map) => _mapLoaded(mapProps, map)}
-             />
+             >
+             {props.attractions.map((attraction) =>
+               <Marker
+                title={attraction.title}
+                name={attraction.title}
+                position={{
+                  lat: attraction.lat,
+                  lng: attraction.lon,
+               }}
+               key={attraction.pageid}
+               />
+             )}
+             </Map>
         </div>
     );
 }
