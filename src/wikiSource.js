@@ -19,7 +19,7 @@ export function getArticlesFromLocation(lat, lng, radius) {
     list: 'geosearch',
     gscoord: lat.toString() + '|' + lng.toString(),
     gsradius: radius.toString(),
-    gslimit: '1000',
+    gslimit: '5000',
     format: 'json',
   };
   return apiCall(new URLSearchParams(params))
@@ -31,7 +31,7 @@ export function getArticleContent(id) {
   var params = {
     action: 'query',
     format: 'json',
-    prop: 'extracts' + '|' + 'pageimages',
+    prop: 'extracts|pageimages',
     pageids: id.toString(),
     formatversion: '2',
     exlimit: '1',

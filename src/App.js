@@ -10,7 +10,7 @@ import store from './redux/store'
 import { getArticlesFromLocation } from './wikiSource'
 import { mapAttractionListToProps } from './redux/stateToProps';
 
-// Just for testing
+// Just for testing, should be initialized with the users current position
 getArticlesFromLocation(59.3294, 18.063240, 10000)
                       .then(data => store.dispatch({type: 'attractionList/setAttractions', attractions: data}));
 
