@@ -1,10 +1,13 @@
-import './App.css';
 import React from 'react';
 import { connect } from 'react-redux'
+import './App.css';
 import MapView from './views/mapView';
 import TitleView from './views/titleView';
 import SearchView from './views/searchView';
 import DetailsView from './views/detailsView';
+
+import LoginView from './views/authViews/LoginView.js';
+import LogoutView from './views/authViews/LogoutView.js';
 
 import store from './redux/store'
 import { getArticlesFromLocation } from './wikiSource'
@@ -20,9 +23,11 @@ function App() {
   return (
     <React.Fragment>
       <TitleView/>
-      <SearchView/>
-      <DetailsView/>
-      <MapPresenter/>
+      <LoginView/>
+      <LogoutView/>
+        <SearchView/>
+        <DetailsView/>
+        <MapPresenter/>
     </React.Fragment>
   );
 }
