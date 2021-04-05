@@ -25,7 +25,9 @@ function DetailsView(props){
                               <a href="https://sv.wikipedia.org/">Read more</a>
                           </div>
                           <div className="card-body-right">
-                              <img id="details-image" src={logo} alt="Image of the attraction"/>
+                              <img id="details-image"
+                                  src={props.article.thumbnail ? props.article.thumbnail.source : logo}
+                                  alt={props.article.pageimage ? props.article.pageimage : "Image of the attraction"}/>
                               <div className="star-rating">
                                   <fieldset>
                                       <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding">5 stars</label>

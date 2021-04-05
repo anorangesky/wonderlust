@@ -51,7 +51,8 @@ export function getArticleContent(id) {
     exlimit: '1',
     exintro: '1',
     explaintext: '1',
-    piprop: 'original',
+    piprop: 'thumbnail|name',
+    pithumbsize: '220',
   }
   return apiCall(new URLSearchParams(params))
           .then(data => data.query.pages);
