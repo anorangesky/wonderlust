@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { connect } from 'react-redux'
 import './App.css';
 import MapView from './views/mapView';
@@ -8,6 +9,7 @@ import DetailsView from './views/detailsView';
 
 import LoginView from './views/authViews/LoginView.js';
 import LogoutView from './views/authViews/LogoutView.js';
+import UserProvider from "./providers/UserProvider";
 
 import store from './redux/store'
 import { getArticlesFromLocation } from './wikiSource'
@@ -22,12 +24,26 @@ const MapPresenter = connect(mapAttractionListToProps)(MapView);
 function App() {
   return (
     <React.Fragment>
-      <TitleView/>
-      <LoginView/>
-      <LogoutView/>
+
+    <UserProvider>
+      <Router>
+        <TitleView/>
+          <div>
+            <Switch>
+              <Route exact path="src/views/authViews/LoginView.js/">
+                <LoginView/>
+              </Route>
+              <Route path="src/views/authViews/LogoutView.js">
+                <LogoutView/>
+              </Route>
+            </Switch>
+          </div>
         <SearchView/>
         <DetailsView/>
         <MapPresenter/>
+
+      </Router>
+    </UserProvider>
     </React.Fragment>
   );
 }

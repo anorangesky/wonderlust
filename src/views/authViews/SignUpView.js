@@ -3,7 +3,6 @@ import Modal from '@material-ui/core/Modal';
 import LoginGoogle from './LoginGoogle.js';
 import signUpWithEmail from "../../services/firebase";
 
-
 function SignUpView(){
     //Modal code
     const [open, setOpen] = React.useState(false);

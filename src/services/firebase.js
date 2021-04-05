@@ -18,8 +18,8 @@ firebase.initializeApp({
 });
 
 export const auth = firebase.auth();
-const googleProvider = new firebase.auth.GoogleAuthProvider()
 
+const googleProvider = new firebase.auth.GoogleAuthProvider()
 /** LOG IN function for GOOGLE that uses 'signInWithPopup()' method **/
 export const signInWithGoogle = async() => {
   await auth.signInWithPopup(googleProvider).then((res) => {
@@ -29,6 +29,17 @@ export const signInWithGoogle = async() => {
   })
 }
 
+const  facebookProvider = new firebase.auth.FacebookAuthProvider();
+/** LOG IN function for FB */
+export const signInWithFB = async() =>{
+  await auth.signInWithPopup(facebookProvider).then((res) => {
+    console.log(res.user)
+  }).catch((error) => {
+    console.log(error.message)
+  })
+}
+
+
 /** SIGN UP  function with email **/
 export const signUpWithEmail = async() => {
   e.preventDefault();
@@ -36,8 +47,8 @@ export const signUpWithEmail = async() => {
       res.user.updateProfile({
         displayName: user.nickname,
       });
-      // URL of website.
-      const myURL = { url: 'http://localhost:3000/' };
+      // URL of website. 
+      const myURL = { url: 'http://localhost:3000/' }; //TODO: update this when we are hosing it 
       // Send Email Verification and redirect to my website.
       result.user.sendEmailVerification(myURL).then(() => {
           setUser({
