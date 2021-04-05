@@ -1,5 +1,8 @@
+import React from 'react';
 import {Map, Marker, GoogleApiWrapper} from "google-maps-react";
+import Modal from '@material-ui/core/Modal';
 import '../css/mapView.css';
+import DetailsView from './detailsView'
 
 const mapStyle = [
   {
@@ -27,6 +30,17 @@ function _mapLoaded(mapProps, map) {
 }
 
 function MapView(props){
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+      setOpen(true);
+  };
+
+  const handleClose = () => {
+      setOpen(false);
+  };
+// props.showDetails(attraction.pageid);
+
     return(
         <div className='mapView'>
             <Map google={props.google}
@@ -38,16 +52,30 @@ function MapView(props){
              >
              {props.attractions.map((attraction) =>
                <Marker
+                key={attraction.pageid}
                 title={attraction.title}
                 name={attraction.title}
                 position={{
                   lat: attraction.lat,
                   lng: attraction.lon,
-               }}
-               key={attraction.pageid}
+                }}
+                onClick={() => {props.getArticle(attraction.pageid); handleOpen()}}
                />
              )}
              </Map>
+             <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+              >
+                <div>
+                  {
+                    props.attractionData &&
+                    <DetailsView handleClose={() => handleClose()} article={props.attractionData}/>
+                  }
+                </div>
+             </Modal>
         </div>
     );
 }

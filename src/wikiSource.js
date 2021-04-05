@@ -19,6 +19,20 @@ export function getArticlesFromLocation(lat, lng, radius) {
     list: 'geosearch',
     gscoord: lat.toString() + '|' + lng.toString(),
     gsradius: radius.toString(),
+    gslimit: '500',
+    format: 'json',
+  };
+  return apiCall(new URLSearchParams(params))
+          .then(data => data.query.geosearch);
+}
+
+// Returns a promise with an array of articles with the properties: {dist, lat, lon, ns, pageid, primary, title}
+export function getArticlesFromBbox(lat1, lng1, lat2, lng2) {
+  var params = {
+    action: 'query',
+    list: 'geosearch',
+    gsbbox: lat1.toString() + '|' + lng1.toString()  + '|' +
+            lat2.toString() + '|' + lng2.toString(),
     gslimit: '5000',
     format: 'json',
   };
