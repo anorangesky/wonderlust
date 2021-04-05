@@ -1,13 +1,7 @@
-import React, { useContext } from 'react';
-import { signInWithGoogle } from "src/services/firebase.js";
-import { UserContext } from 'src/providers/UserProvider.js';
-//import 'src/css/loginView.css';
+import { signInWithGoogle } from "../../services/firebase";
 
 function LoginGoogle() {
-  //remove
-  const user = useContext(UserContext)
-  const [redirect, setredirect] = useState(null)
-  //
+
   return (
       <div className="login-buttons">
         <button className="login-provider-button" onClick={signInWithGoogle}>

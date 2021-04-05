@@ -1,26 +1,32 @@
-.login-buttons {
-	display: flex;
-	flex-direction: column;
+.login-container {
+    display: flex;
+    position: fixed;
+	min-width: 100%;
+	min-height: 100%;
+
+    background-color: white;
+    flex-direction: column;
+	  align-items: center;
+	  flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+
+  }
+
+  /* This applies from 600px onwards 
+        (Desktop specifics) */
+@media (min-width: 600px) {
+	.login-container {
+		left: 10%;
+    	top: 10%;
+		min-width: 500px;
+		min-height: 300px;
+		border-radius: 15px;
+
+	}
 }
-.login-provider-button{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 20em;
-	height: 3em;
-	border: 1px solid #995b5b;
-	border-radius: 5px;
-	margin-bottom: 1em;
-	background-color: #ffffff;
-	color: #222222;
-	cursor: pointer;
-	transition: transform 0.5s ease-in-out;
-}
-.login-provider-button:hover{
-	transform: scale(1.05);
-}
-.login-provider-button img{
-	width: 1.6em;
-	height: 1.6em;
-	margin-right: 0.5em;
-}
+

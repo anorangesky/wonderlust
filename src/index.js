@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import reportWebVitals from './reportWebVitals';
+import { FirebaseAppProvider } from 'reactfire';
+import firebaseConfig from './services/firebase';
+
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+  <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+      <Suspense fallback={<h3>Loading...</h3>}>
+        <App/>
+      </Suspense>
+    </FirebaseAppProvider>
   </Provider>,
   document.getElementById('root')
 );

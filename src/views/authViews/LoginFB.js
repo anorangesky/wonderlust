@@ -1,14 +1,6 @@
-import React, { useContext } from 'react';
 import { signInWithFB } from "../../services/firebase";
-import { UserContext } from './providers/UserProvider';
-import 'src/css/loginView.css';
 
 function LoginFB() {
-  //remove
-  const user = useContext(UserContext)
-  const [redirect, setredirect] = useState(null)
-  //
-
   return (
       <div className="login-buttons">
         <button className="login-provider-button" onClick={signInWithFB}>

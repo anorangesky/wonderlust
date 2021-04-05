@@ -1,37 +1,16 @@
-import React, { useContext } from 'react';
-import Modal from '@material-ui/core/Modal';
-import { UserContext } from 'src/providers/UserProvider.js';
-
+import React, { useState } from 'react';
 import LoginGoogle from './LoginGoogle.js';
+import LoginFB from "./LoginFB.js";
 import SignUpView from './SignUpView.js';
-import logInWithEmail from "src/services/firebase.js";
+
+import "firebase/auth";
+import firebase from "firebase/app";
+import "../../css/loginView.css";
 
 
 function LoginView() {
-    //Modal code
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    //The user value s available to the components via the useContext hook.
-    const user = useContext(UserContext);
-    // check the user value and redirect them if they are already logged in
-    const [redirect, setredirect] = useState(null)
-    useEffect(() => {
-        if (user) {
-            setredirect('src/views/authViews/LogoutView.js')
-        }
-    }, [user])
-    if (redirect) {
-        <Redirect to={redirect} />
-    }
-
     // User State used for email log-in
-    const [userMail, setUser] = useState({
+    const [user, setUser] = useState({
         email: '',
         password: '',
         error: '',
@@ -39,39 +18,45 @@ function LoginView() {
     // onChange function
     const handleChange = e => {
         setUser({
-            ...userMail,
+            ...user,
             [e.target.name]: e.target.value,
             error: '',
         })
     };
 
-    const body = (
-        <div>
+  const logInWithEmail = async() => {
+        await firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((res) =>{
+          //if user is not yet signed up:
+          if(!res.user.emailVerified){
+            setUser({
+              ...user,
+              error: "Please verify your email to continue",
+            })
+            firebase.auth().signOut();
+          }
+        }).catch(error => {
+          //update error
+          setUser({
+            ...user,
+            error: error.message,
+          })
+        })
+      }
+    return (
+        <div className="login-container">
             <h1>Log in</h1>
             <form onSubmit={logInWithEmail}>
-                <input type="text" placeholder="Nickname" name="nickname" onChange={handleChange} /><br />
                 <input type="text" placeholder="Email" name="email" onChange={handleChange} /><br />
                 <input type="password" placeholder="Password" name="password" onChange={handleChange} /><br />
                 <button type="submit">Log in</button>
             </form>
-            {userMail.error && <h4>{userMail.error}</h4>}
-            <LoginGoogle />
+            {user.error && <h4>{user.error}</h4>}
+            <div className="alt-login-buttons">
+                <LoginFB/>
+                <LoginGoogle/>
+            </div>
             <SignUpView />
-        </div>
-    );
-
-    return (
-        <div>
-            <button type="button" onClick={handleOpen}> Open Log in card </button>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-            >
-                {body}
-            </Modal>
-        </div>
+        </div>   
     );
 }
 export default LoginView;

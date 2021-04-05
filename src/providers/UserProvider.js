@@ -1,5 +1,6 @@
+/*
 import React, {useState, useEffect,  createContext} from "react";
-import { auth } from "../services/firebase"
+import { auth } from "src/services/firebase.js"
 
 //store user value as context and pass the init value (null) to it
 export const UserContext = createContext({user: null})
@@ -24,3 +25,4 @@ export default (props) => {
     <UserContext.Provider value={user}>{props.children}</UserContext.Provider>
   );
 };
+*/

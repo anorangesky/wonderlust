@@ -17,6 +17,20 @@ firebase.initializeApp({
   measurementId: process.env.REACT_APP_MEASUREMENT_ID
 });
 
+//This should not be here i assume but it's a workaround for now..
+const firebaseConfig ={
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId:  process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
+};
+export default firebaseConfig;
+
+
 export const auth = firebase.auth();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider()
@@ -41,8 +55,8 @@ export const signInWithFB = async() =>{
 
 
 /** SIGN UP  function with email **/
+/*
 export const signUpWithEmail = async() => {
-  e.preventDefault();
   await auth.createUserWithEmailAndPassword(user.email, user.password).then((res) =>{
       res.user.updateProfile({
         displayName: user.nickname,
@@ -64,11 +78,11 @@ export const signUpWithEmail = async() => {
     })
   })
 }
-
+*/
 /** LOG IN function with email **/
-export const logInWithEmail = async() => {
-  e.preventDefault();
-  await auth.signInWithEmailAndPassword(user.email, user.password).then((res) => {
+/*
+export function logInWithEmail([user, setUser]){
+  auth.signInWithEmailAndPassword(user.email, user.password).then((res) => {
     //if user is not yet signed up:
     if(!res.user.emailVerified){
       setUser({
@@ -85,6 +99,8 @@ export const logInWithEmail = async() => {
     })
   })
 }
+*/
+
 
 
 /** signout function **/
