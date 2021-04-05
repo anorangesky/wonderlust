@@ -2,8 +2,8 @@ import React, { useEffect, useContext, useState } from "react";
 import Modal from '@material-ui/core/Modal';
 
 import { Redirect } from "react-router-dom";
-import { logOut } from "./services/firebase";
-import { UserContext } from "./providers/UserProvider";
+import { logOut } from "src/services/firebase.js";
+import { UserContext } from "src/providers/UserProvider.js";
 
 function LogoutView() {
   //Modal code:

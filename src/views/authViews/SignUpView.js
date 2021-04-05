@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import LoginGoogle from './LoginGoogle.js';
-import signUpWithEmail from "../../services/firebase";
+import signUpWithEmail from "src/services/firebase.js";
 
 function SignUpView(){
     //Modal code

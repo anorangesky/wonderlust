@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { signInWithGoogle } from "../../services/firebase";
-import { UserContext } from './providers/UserProvider';
-import 'src/css/loginView.css';
+import { signInWithGoogle } from "src/services/firebase.js";
+import { UserContext } from 'src/providers/UserProvider.js';
+//import 'src/css/loginView.css';
 
 function LoginGoogle() {
   //remove
@@ -17,4 +17,5 @@ function LoginGoogle() {
       </div>
   );
 }
+
 export default LoginGoogle;

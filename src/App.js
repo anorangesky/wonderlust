@@ -24,26 +24,7 @@ const MapPresenter = connect(mapAttractionListToProps)(MapView);
 function App() {
   return (
     <React.Fragment>
-
-    <UserProvider>
-      <Router>
-        <TitleView/>
-          <div>
-            <Switch>
-              <Route exact path="src/views/authViews/LoginView.js/">
-                <LoginView/>
-              </Route>
-              <Route path="src/views/authViews/LogoutView.js">
-                <LogoutView/>
-              </Route>
-            </Switch>
-          </div>
-        <SearchView/>
-        <DetailsView/>
-        <MapPresenter/>
-
-      </Router>
-    </UserProvider>
+   <TitleView/>
     </React.Fragment>
   );
 }

@@ -29,7 +29,7 @@ export const signInWithGoogle = async() => {
   })
 }
 
-const  facebookProvider = new firebase.auth.FacebookAuthProvider();
+const facebookProvider = new firebase.auth.FacebookAuthProvider();
 /** LOG IN function for FB */
 export const signInWithFB = async() =>{
   await auth.signInWithPopup(facebookProvider).then((res) => {

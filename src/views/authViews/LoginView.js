@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import Modal from '@material-ui/core/Modal';
-import { UserContext } from './providers/UserProvider';
+import { UserContext } from 'src/providers/UserProvider.js';
 
 import LoginGoogle from './LoginGoogle.js';
 import SignUpView from './SignUpView.js';
-import logInWithEmail from "../../services/firebase";
+import logInWithEmail from "src/services/firebase.js";
 
 
 function LoginView() {
