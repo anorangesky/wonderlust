@@ -1,4 +1,5 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 import rootReducer from './reducer'
 
 let preloadState = {
@@ -8,10 +9,16 @@ let preloadState = {
   }
 }
 
+function composeTools(middleWare){
+    return  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+          window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(middleWare) :
+          middleWare;
+}
+
 const store = createStore(
     rootReducer,
     preloadState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeTools(applyMiddleware(thunk)),
   );
 
 export default store;
