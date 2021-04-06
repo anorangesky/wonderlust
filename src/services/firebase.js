@@ -53,9 +53,10 @@ Facebook App. In addition, sign-in will only be allowed with Facebook test accou
 
 To turn it on Before switching to live mode, you must provide both a valid Privacy Policy URL and 
 data deletion information. https://developers.facebook.com/apps/1633620866825312/settings/basic/ 
-*/
+
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
-/** LOG IN function for FB */
+*/
+/* LOG IN function for FB */
 export const signInWithFB = async() =>{
   await firebase.auth().signInWithPopup(facebookProvider).then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
