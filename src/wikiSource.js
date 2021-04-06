@@ -45,7 +45,7 @@ export function getArticleContent(id) {
   var params = {
     action: 'query',
     format: 'json',
-    prop: 'extracts|pageimages',
+    prop: 'extracts|pageimages|info',
     pageids: id.toString(),
     formatversion: '2',
     exlimit: '1',
@@ -53,6 +53,7 @@ export function getArticleContent(id) {
     explaintext: '1',
     piprop: 'thumbnail|name',
     pithumbsize: '220',
+    inprop: 'url'
   }
   return apiCall(new URLSearchParams(params))
           .then(data => data.query.pages);

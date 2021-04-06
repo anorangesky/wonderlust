@@ -14,7 +14,6 @@ function DetailsView(props){
                           <img src={logo2} alt="Location tag"/>
                           <div className="header-title">
                               <h1>{props.article.title}</h1>
-                              <h5>Attraction SubTitle </h5>
                           </div>
                           <button label="Close" type="button" onClick={props.handleClose}>X</button>
                       </div>
@@ -22,12 +21,12 @@ function DetailsView(props){
                       <div className="details-body-item">
                           <div className="card-body-left">
                               <p id="details-about"> {props.article.extract} </p>
-                              <a href="https://sv.wikipedia.org/">Read more</a>
+                              <a href={props.article.fullurl} target="_blank" rel="noopener noreferrer">Read more</a>
                           </div>
                           <div className="card-body-right">
                               <img id="details-image"
                                   src={props.article.thumbnail ? props.article.thumbnail.source : logo}
-                                  alt={props.article.pageimage ? props.article.pageimage : "Image of the attraction"}/>
+                                  alt={props.article.pageimage ? props.article.pageimage : "Wonderlust logo"}/>
                               <div className="star-rating">
                                   <fieldset>
                                       <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding">5 stars</label>
