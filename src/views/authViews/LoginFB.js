@@ -1,4 +1,5 @@
 import { signInWithFB } from "../../services/firebase";
+import "../../css/loginView.css";
 
 function LoginFB() {
   return (

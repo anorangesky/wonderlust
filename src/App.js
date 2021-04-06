@@ -5,15 +5,14 @@ import MapView from './views/mapView';
 import TitleView from './views/titleView';
 import SearchView from './views/searchView';
 import DetailsView from './views/detailsView';
+import AuthView from './views/authViews/AuthView';
 import store from './redux/store'
 import { getArticlesFromLocation } from './wikiSource'
 import { mapAttractionListToProps } from './redux/stateToProps';
 
-import ProfileView from './views/authViews/profileView';
-//import UserProvider from "./providers/UserProvider";
 //import {useUser} from 'reactfire';
-  // 'useUser' returns the currently signed-in user
-  //const { data: user } = useUser();
+//'useUser' returns the currently signed-in user 
+//const { data: user } = useUser();
 
 // Just for testing, should be initialized with the users current position
 getArticlesFromLocation(59.3294, 18.063240, 10000)
@@ -25,7 +24,9 @@ function App() {
   return (
     <React.Fragment>
         <TitleView/>
-        <ProfileView/>
+        <SearchView/>
+        <AuthView/>
+        <DetailsView/>
     </React.Fragment>
   );
 }

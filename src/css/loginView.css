@@ -16,6 +16,11 @@
     color: black;
 
   }
+  .profile-img {
+    border-radius: 50%;
+    width: 30%;
+    height: auto;
+  }
 
   /* This applies from 600px onwards 
         (Desktop specifics) */

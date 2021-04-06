@@ -1,7 +1,7 @@
 import { signInWithGoogle } from "../../services/firebase";
+import "../../css/loginView.css";
 
 function LoginGoogle() {
-
   return (
       <div className="login-buttons">
         <button className="login-provider-button" onClick={signInWithGoogle}>
