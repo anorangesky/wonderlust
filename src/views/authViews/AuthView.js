@@ -10,7 +10,7 @@
     import SignUpView from './SignUpEmail.js';
     import "../../css/loginView.css";
     import logo from '../../images/wonderlust.png';
-    
+
   function AuthView() {
       //Modal code:
     const [open, setOpen] = React.useState(false);
@@ -25,16 +25,16 @@
     // Get the current user -  is "null" if logged out
     var user = firebase.auth().currentUser;
 
-    //  TODO: <LoginFB/> check src/services/firebase.js 65:70 for instruction in how to 
+    //  TODO: <LoginFB/> check src/services/firebase.js 65:70 for instruction in how to
     //  TODO: close the modal after a successful event of 'log in' or 'log out'
     //Show different body if the user is logged in or not
     let body = (
         <div className="login-container">
             <button label="Close" type="button" onClick={handleClose}>X</button>
             <h1> Log in </h1>
-            <LoginEmail/>
+            <LoginEmail close={handleClose}/>
             <div className="login-items">
-                <LoginGoogle/>
+                <LoginGoogle close={handleClose}/>
             </div>
             <SignUpView/>
         </div>
@@ -45,7 +45,7 @@
                 <button label="Close" type="button" onClick={handleClose}>X</button>
                 <h1>Hello {user.displayName? user.displayName: user.email}</h1>
                 <img className="profile-img" src={user.photoURL? user.photoURL: logo} alt="profile picture"/>
-                <button className="logout-button" onClick={logOut}>
+                <button className="logout-button" onClick={() => {logOut(); handleClose()}}>
                 <span> logout</span>
                 </button>
             </div>
@@ -67,4 +67,3 @@
   );
 }
 export default AuthView;
-

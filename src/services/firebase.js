@@ -45,14 +45,14 @@ export const signInWithGoogle = async() => {
   })
 }
 
-/* 
+/*
 TODO:
-Facebook enforces HTTPS and does not allow login with insecure hosts. When using Facebook in development 
-mode with an http://localhost origin, you need to ensure that development mode is turned on for this 
+Facebook enforces HTTPS and does not allow login with insecure hosts. When using Facebook in development
+mode with an http://localhost origin, you need to ensure that development mode is turned on for this
 Facebook App. In addition, sign-in will only be allowed with Facebook test accounts.
 
-To turn it on Before switching to live mode, you must provide both a valid Privacy Policy URL and 
-data deletion information. https://developers.facebook.com/apps/1633620866825312/settings/basic/ 
+To turn it on Before switching to live mode, you must provide both a valid Privacy Policy URL and
+data deletion information. https://developers.facebook.com/apps/1633620866825312/settings/basic/
 
 */
 /* LOG IN function for FB */

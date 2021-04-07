@@ -1,10 +1,10 @@
 import { signInWithGoogle } from "../../services/firebase";
 import "../../css/loginView.css";
 
-function LoginGoogle() {
+function LoginGoogle(props) {
   return (
       <div className="login-buttons">
-        <button className="login-provider-button" onClick={signInWithGoogle}>
+        <button className="login-provider-button" onClick={() => {signInWithGoogle(); props.close()}}>
         <img src="https://img.icons8.com/plasticine/100/000000/google-logo.png" alt="google icon"/>
         <span> Log in with Google</span>
        </button>
