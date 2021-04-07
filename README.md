@@ -19,12 +19,12 @@ Find interesting unexpected attractions in your local area. We fetch articles fr
  
 ## Backlog (what we still plan to do)
 - Logged in user functionalities
-- - Save attractions
-- - share attractions
-- - add friends (or explorer buddies)
-- - notification view
-- - settings (change user name, password, added attraction, etc.)
-- - your saved attractions (show them in a list and a map)
+  - Save attractions
+  - share attractions
+  - add friends (or explorer buddies)
+  - notification view
+  - settings (change user name, password, added attraction, etc.)
+  - your saved attractions (show them in a list and a map)
 - Update Google markers when the user moves around the map
 - Add clustering of markers 
 - Add search functionality to the map
