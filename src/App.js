@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import './App.css';
 import MapView from './views/mapView';
 import TitleView from './views/titleView';
 import SearchView from './views/searchView';
