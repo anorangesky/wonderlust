@@ -74,9 +74,9 @@ Find interesting unexpected attractions in your local area. We fetch articles fr
      - titleView.js - Component showing the website logo and title
      - yourListView.js - Displays a list of saved or created attractions
      - yourMapView.js - Display saved or createdattractions on a map
-- App.js - Main component where the views are put together
-- Index.js - Renders the App
-- setupTests.js - For our jest-tests 
+  - App.js - Main component where the views are put together
+  - Index.js - Renders the App
+  - setupTests.js - For our jest-tests 
 - (.env) - Not in the repository, but keeps environment variables locally
 
 ## Created by 
