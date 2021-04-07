@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { getArticleContent } from '../wikiSource'
+import { getArticleContent } from '../services/wikiSource'
 
 function currentLocation(state = null, action) {
   switch (action.type) {

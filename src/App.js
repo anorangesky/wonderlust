@@ -6,7 +6,7 @@ import SearchView from './views/searchView';
 import AuthView from './views/authViews/AuthView';
 
 import store from './redux/store'
-import { getArticlesFromLocation } from './wikiSource'
+import { getArticlesFromLocation } from './services/wikiSource'
 import { mapAttractionListToProps, mapDispatchToMapView } from './redux/stateToProps';
 
 // Just for testing, should be initialized with the users current position
