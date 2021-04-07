@@ -52,9 +52,9 @@ Find interesting unexpected attractions in your local area. We fetch articles fr
      -  Reducer.js - Reducers and action creators
      -  stateToProps.js - Functions for connecting redux to props
      -  Store.js - Redux store
- - services/ contains Firebase and Wikimedia specific code
-   - Firebase.js - Code for app configuration and init, user authentication including providers
-   - wikiSource.js - Code for API calls and fetching article data 
+   - services/ contains Firebase and Wikimedia specific code
+     - Firebase.js - Code for app configuration and init, user authentication including providers
+     - wikiSource.js - Code for API calls and fetching article data 
    - views/ contains the different views of Wonderlust
      - authViews/ contains components relevant for authorization
        - AuthView.js - Shows the login and signup forms
