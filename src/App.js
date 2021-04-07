@@ -1,9 +1,10 @@
-import './App.css';
 import React from 'react';
 import { connect } from 'react-redux'
+import './App.css';
 import MapView from './views/mapView';
 import TitleView from './views/titleView';
 import SearchView from './views/searchView';
+import AuthView from './views/authViews/AuthView';
 
 import store from './redux/store'
 import { getArticlesFromLocation } from './wikiSource'
@@ -23,6 +24,7 @@ function App() {
     <React.Fragment>
       <TitleView/>
       <SearchView/>
+      <AuthView/>
       <MapPresenter/>
     </React.Fragment>
   );

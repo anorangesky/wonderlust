@@ -1,0 +1,37 @@
+.login-container {
+    display: flex;
+    position: fixed;
+	min-width: 100%;
+	min-height: 100%;
+
+    background-color: white;
+    flex-direction: column;
+	  align-items: center;
+	  flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+
+  }
+  .profile-img {
+    border-radius: 50%;
+    width: 30%;
+    height: auto;
+  }
+
+  /* This applies from 600px onwards 
+        (Desktop specifics) */
+@media (min-width: 600px) {
+	.login-container {
+		left: 10%;
+    	top: 10%;
+		min-width: 500px;
+		min-height: 300px;
+		border-radius: 15px;
+
+	}
+}
+
