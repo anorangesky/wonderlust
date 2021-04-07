@@ -62,18 +62,18 @@ Find interesting unexpected attractions in your local area. We fetch articles fr
        - LoginFB.js - Component for logging in using FB
        - LoginGoogle.js - Component for logging in using Google
        - SignUpEmail.js - Sign-up form for email account
-   - addAttractionView.js - View for adding attractions (locations) to the map
-   - detailsView.js - Component showing info about an attraction
-   - friendListView.js - Displays a list of the users friends
-   - mapView.js - Component displaying a map with markers 
-   - navigationView.js - Menu bar or navigation component when logged in
-   - notifcationView.js - Summary of notifications from the users friends
-   - searchView.js - Component for searching for places
-   - settingsView.js - User account settings
-   - shareView.js - View for sharing locations with friends
-   - titleView.js - Component showing the website logo and title
-   - yourListView.js - Displays a list of saved or created attractions
-   - yourMapView.js - Display saved or createdattractions on a map
+     - addAttractionView.js - View for adding attractions (locations) to the map
+     - detailsView.js - Component showing info about an attraction
+     - friendListView.js - Displays a list of the users friends
+     - mapView.js - Component displaying a map with markers 
+     - navigationView.js - Menu bar or navigation component when logged in
+     - notifcationView.js - Summary of notifications from the users friends
+     - searchView.js - Component for searching for places
+     - settingsView.js - User account settings
+     - shareView.js - View for sharing locations with friends
+     - titleView.js - Component showing the website logo and title
+     - yourListView.js - Displays a list of saved or created attractions
+     - yourMapView.js - Display saved or createdattractions on a map
 - App.js - Main component where the views are put together
 - Index.js - Renders the App
 - setupTests.js - For our jest-tests 
