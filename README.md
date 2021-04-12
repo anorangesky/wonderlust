@@ -2,6 +2,7 @@
 ![alt text](https://github.com/anorangesky/wonderlust/blob/master/src/images/wonderlust2.png?raw=true)
 
 "We show you places Google Maps won't" 
+
 Deployed at: https://wonderlust-cdeb9.web.app
 
 ## Project description
