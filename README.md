@@ -2,6 +2,7 @@
 ![alt text](https://github.com/anorangesky/wonderlust/blob/master/src/images/wonderlust2.png?raw=true)
 
 "We show you places Google Maps won't" 
+Deployed at: https://wonderlust-cdeb9.web.app
 
 ## Project description
 Find interesting unexpected attractions in your local area. We fetch articles from Wikipedia that are related to a location (long, lat) and display them on a map using Google Map API. The users will be able to explore attractions on the map either by drag-drop or searching for a location in the search bar. As a logged-in user, you will also be able to share, save, and add new attractions to the map (stored in Firebase).  
