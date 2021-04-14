@@ -88,8 +88,6 @@ export function currentAttractionAction(attractionId) {
   }
 }
 
-
-
 const rootReducer = combineReducers({
   currentPosition,
   attractionList,

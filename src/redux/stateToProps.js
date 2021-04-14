@@ -1,4 +1,5 @@
 import { currentAttractionAction } from './reducer'
+import { getUserPosition } from './slices/currentPositionSlice';
 
 export function mapAttractionListToProps(state) {
   return {
@@ -12,5 +13,11 @@ export function mapAttractionListToProps(state) {
 export function mapDispatchToMapView(dispatch) {
   return {
     getArticle: (id) => dispatch(currentAttractionAction(id)),
+  }
+}
+
+export function mapDispatchToSearchView(dispatch) {
+  return {
+    getUserPosition: () => dispatch(getUserPosition()),
   }
 }
