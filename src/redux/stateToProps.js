@@ -3,7 +3,7 @@ import { currentAttractionAction } from './reducer'
 export function mapAttractionListToProps(state) {
   return {
     attractions: state.attractionList,
-    currentLocation: state.currentLocation,
+    currentPosition: state.currentPosition,
     attractionData: state.currentAttraction.data,
     attractionError: state.currentAttraction.error,
   }

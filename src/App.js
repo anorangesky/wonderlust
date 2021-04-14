@@ -8,12 +8,39 @@ import AuthView from './views/authViews/AuthView';
 import store from './redux/store'
 import { getArticlesFromLocation } from './services/wikiSource'
 import { mapAttractionListToProps, mapDispatchToMapView } from './redux/stateToProps';
+import { setAttractions } from './redux/reducer';
+import { setCurrentPosition } from './redux/slices/currentPositionSlice'
 
+var currentPosition = {
+      lat: 59.3294,
+      lng: 18.063240,
+};
+
+function getPosition(position) {
+  currentPosition = {
+    lat: position.coords.latitude,
+    lng: position.coords.longitude,
+  };
+  // console.log("lat: " + position.coords.latitude + " lng: " + position.coords.longitude);
+  store.dispatch(setCurrentPosition(currentPosition));
+  // Just for testing, should be initialized with the users current position
+  getArticlesFromLocation(currentPosition.lat, currentPosition.lng, 10000)
+  .then(data =>
+    store.dispatch(setAttractions(data))
+  );
+}
+
+if(navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(getPosition);
+  // console.log("lat: " + currentPosition.lat + " lng: " + currentPosition.lng);
+} else {
+  console.log("Unable to access your location");
+}
 // Just for testing, should be initialized with the users current position
-getArticlesFromLocation(59.3294, 18.063240, 10000)
-                      .then(data =>
-                        store.dispatch({type: 'attractionList/setAttractions', attractions: data})
-                      );
+getArticlesFromLocation(currentPosition.lat, currentPosition.lng, 10000)
+.then(data =>
+  store.dispatch(setAttractions(data))
+);
 
 const MapPresenter = connect(mapAttractionListToProps,
                               mapDispatchToMapView)(MapView);

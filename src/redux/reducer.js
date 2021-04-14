@@ -1,19 +1,18 @@
 import { combineReducers } from 'redux';
 import { getArticleContent } from '../services/wikiSource'
+import currentPosition from './slices/currentPositionSlice'
 
-function currentLocation(state = null, action) {
-  switch (action.type) {
-    case 'currentLocation/setLocation':
-      return action.location;
-    default:
-      return state;
+export const setAttractions = attractions => {
+  return {
+    type: 'attractionList/setAttractions',
+    payload: attractions,
   }
 }
 
 function attractionList(state = [], action) {
   switch (action.type) {
     case 'attractionList/setAttractions':
-      return action.attractions;
+      return action.payload;
     default:
       return state;
   }
@@ -92,7 +91,7 @@ export function currentAttractionAction(attractionId) {
 
 
 const rootReducer = combineReducers({
-  currentLocation,
+  currentPosition,
   attractionList,
   currentAttraction,
 })

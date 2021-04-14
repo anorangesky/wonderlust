@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducer'
 
 let preloadState = {
-  currentLocation: {
+  currentPosition: {
     lat: 59.3294,
     lng: 18.063240,
   }
