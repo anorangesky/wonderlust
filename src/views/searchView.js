@@ -11,7 +11,7 @@ function SearchView(props) {
               onChange={e => props.onChange()}
         />
       </div>
-        <button className="currentlocation-btn" onClick={e => props.onPress()}>
+        <button className="currentlocation-btn" onClick={() => props.getUserPosition()}>
           <img src={icon} alt="go to your location"/>
         </button>
     </div>

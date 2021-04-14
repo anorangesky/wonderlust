@@ -44,7 +44,8 @@ function MapView(props){
     return(
         <div className='mapView'>
             <Map google={props.google}
-                  initialCenter={props.currentLocation}
+                  initialCenter={props.currentPosition}
+                  center={props.currentPosition}
                   zoomControl={false}
                   fullscreenControl={false}
                   streetViewControl={false}
