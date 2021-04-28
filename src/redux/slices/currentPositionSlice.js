@@ -1,8 +1,12 @@
 import { getArticlesFromLocation } from '../../services/wikiSource'
+import { getPlaceCoordinates } from "../../services/geocoding";
 import { setAttractions } from '../reducer';
 
 const initialCurrentPosition = {
-  position: null,
+  position: {
+    lat: 59.266944,
+    lng: 15.196389  ,
+  },
   error: null,
 }
 
@@ -22,7 +26,7 @@ export const setCurrentPositionError = error => {
 
 
 export function getUserPosition() {
-  return function(dispatch, state) {
+  return function(dispatch, getState) {
     function success(position) {
       let userPosition = {
         lat: position.coords.latitude,
@@ -64,12 +68,44 @@ export function getUserPosition() {
   }
 }
 
+export function getSearchPosition(query) {
+  return function(dispatch, getState) {
+    if(!query) { // Ensure we don't send unecessary empty queries to the API
+      return
+    }
+    dispatch(setCurrentPositionError(null));
+    // Request coordinates for the given place from the OpenCage API
+    getPlaceCoordinates(query)
+      .then(data => {
+          console.log(data[0]);
+          let position = {
+            lat: data[0].geometry.lat,
+            lng: data[0].geometry.lng,
+          }
+          dispatch(setCurrentPosition(position));
+          // Get the articles for the returned coordinates
+          getArticlesFromLocation(position.lat, position.lng, 10000)
+          .then(data =>
+            dispatch(setAttractions(data))
+          );
+        }
+      )
+      .catch(error => dispatch(setCurrentPositionError(error)));
+  }
+}
+
 export default function currentPosition(state = initialCurrentPosition, action) {
   switch (action.type) {
     case 'currentPosition/setPosition':
-      return action.payload;
+      return {
+        ...state,
+        position: action.payload,
+      }
     case 'currentPosition/setError':
-      return action.payload;
+      return {
+        ...state,
+        error: action.payload,
+      }
     default:
       return state;
   }
