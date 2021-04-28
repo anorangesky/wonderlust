@@ -23,10 +23,16 @@ const mapStyle = [
   },
 ]
 
-function _mapLoaded(mapProps, map) {
+function mapLoaded(mapProps, map) {
    map.setOptions({
       styles: mapStyle
    })
+   // If Google's Places API should be used it should probably be instantiated here
+   // Alt. see "Manually loading the Google API" on https://www.npmjs.com/package/google-maps-react
+}
+
+function centerChanged(mapProps, map) {
+  map.setZoom(13);
 }
 
 function MapView(props){
@@ -44,12 +50,13 @@ function MapView(props){
     return(
         <div className='mapView'>
             <Map google={props.google}
-                  initialCenter={props.currentPosition}
-                  center={props.currentPosition}
+                  initialCenter={props.currentPosition.position}
+                  center={props.currentPosition.position}
                   zoomControl={false}
                   fullscreenControl={false}
                   streetViewControl={false}
-                  onReady={(mapProps, map) => _mapLoaded(mapProps, map)}
+                  onReady={(mapProps, map) => mapLoaded(mapProps, map)}
+                  onRecenter={(mapProps, map) => centerChanged(mapProps, map)}
              >
              {props.attractions.map((attraction) =>
                <Marker

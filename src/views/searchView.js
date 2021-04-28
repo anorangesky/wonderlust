@@ -1,14 +1,17 @@
+import debounce from '../utilities/debounce';
 import '../css/searchView.css';
-import icon from '../images/location.png'
+import icon from '../images/location.png';
 
 function SearchView(props) {
+  const debouncedOnChange = debounce(text => props.onTextInput(text), 750);
+
   return(
     <div className="searchview">
       <div className="searchbar">
         <input type="search"
               id="locationSearch"
               placeholder="Find a place"
-              onChange={e => props.onChange()}
+              onChange={e => debouncedOnChange(e.target.value)}
         />
       </div>
         <button className="currentlocation-btn" onClick={() => props.getUserPosition()}>
@@ -18,4 +21,4 @@ function SearchView(props) {
   );
 }
 
-export default SearchView;
+export default  SearchView;
