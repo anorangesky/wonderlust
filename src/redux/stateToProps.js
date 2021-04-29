@@ -1,5 +1,5 @@
 import { currentAttractionAction } from './reducer'
-import { getUserPosition } from './slices/currentPositionSlice';
+import { getUserPosition, getSearchPosition } from './slices/currentPositionSlice';
 
 export function mapAttractionListToProps(state) {
   return {
@@ -19,5 +19,6 @@ export function mapDispatchToMapView(dispatch) {
 export function mapDispatchToSearchView(dispatch) {
   return {
     getUserPosition: () => dispatch(getUserPosition()),
+    onTextInput: (query) => dispatch(getSearchPosition(query))
   }
 }

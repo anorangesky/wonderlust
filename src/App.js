@@ -26,8 +26,8 @@ import { getUserPosition } from './redux/slices/currentPositionSlice';
 store.dispatch(getUserPosition());
 
 // Just for testing, should be initialized with the users current position
-getArticlesFromLocation(store.getState().currentPosition.lat,
-                        store.getState().currentPosition.lng,
+getArticlesFromLocation(store.getState().currentPosition.position.lat,
+                        store.getState().currentPosition.position.lng,
                         10000)
 .then(data =>
   store.dispatch(setAttractions(data))
