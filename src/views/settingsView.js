@@ -34,7 +34,7 @@ function SettingsView(){
         <button className="logout-button" onClick={() => {logOut(); handleClose()}}>
             <span> logout</span>
         </button>
-        </div>
+    </div>
     </Modal>
     </>
  )
