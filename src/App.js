@@ -4,7 +4,7 @@ import MapView from './views/mapView';
 import TitleView from './views/titleView';
 import SearchView from './views/searchView';
 import SettingsView from './views/settingsView';
-import Navbar from './components/Navbar';
+import Navbar from './views/navigationView';
 import NotificationView from './views/notificationView';
 import YourAttractionsView from './views/yourAttractionsView';
 import AddAttractionView from './views/addAttractionView'
@@ -40,22 +40,32 @@ const SearchViewPresenter = connect(null, mapDispatchToSearchView)(SearchView);
 var user = firebase.auth().currentUser;
 
 function App() {
-  return (
-    <React.Fragment>
-      <TitleView/>
-      <SearchViewPresenter/>
-      User status: {user ? "true": "false"}
-      <Router>
-        <Navbar />
-        <Switch>
+  let navigation = (
+    <Switch>
+          <Route path='/' exact component={MapPresenter}/>
+          <Route path='/login' component={LogInView}/>
+
+          
+    </Switch>
+  )
+  if(user){
+    navigation =(
+      <Switch>
           <Route path='/' exact component={MapPresenter}/>
           <Route path='/addAttraction' component={AddAttractionView}/>
           <Route path='/yourAttractions' component={YourAttractionsView}/>
-          <Route path='/Notifications' component={NotificationView}/>
+          <Route path='/notifications' component={NotificationView}/>
           <Route path='/settings' component={SettingsView}/>
-          <Route path='/login' component={LogInView}/>
         </Switch>
-     </Router>    
+    )
+  }
+  return (
+    <React.Fragment>
+       <Router>
+        <Navbar/>
+        <SearchViewPresenter/>
+        {navigation}
+      </Router>         
     </React.Fragment>
   );
 }

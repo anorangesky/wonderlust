@@ -22,7 +22,7 @@
 
   return(
   <div>
-      <button onClick={handleOpen}>Log in</button>
+      <button className ="opnModalBtn"onClick={handleOpen}>Log in</button>
       <Modal
             open={open}
             onClose={handleClose}

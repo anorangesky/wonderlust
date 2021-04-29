@@ -22,3 +22,60 @@ Navbar - Footer on Mobile - Header on desktop
         - Notifications 
 */
 
+
+import React from 'react';
+import {
+  Nav,
+  NavLink,
+  Bars,
+  NavMenu,
+  NavBtn,
+  NavBtnLink,
+} from '../components/NavbarElements';
+import firebase from "firebase/app";
+import "firebase/auth";
+import LogInView from './authViews/LogInView';
+import TitleView from './titleView';
+import { Suspense } from 'react';
+import SettingsView from './settingsView';
+
+const Navbar = () => {
+
+    var user = firebase.auth().currentUser;
+    let navbar = (
+        <LogInView/>
+    );
+    if (user) {
+        navbar = (
+            <NavMenu>
+            <NavLink to='/' activeStyle>
+              Map
+            </NavLink>
+            <NavLink to='/addAttraction' activeStyle>
+              Add attraction
+            </NavLink>
+            <NavLink to='/yourAttractions' activeStyle>
+              Your Attractions
+            </NavLink>
+            <NavLink to='/Notifications' activeStyle>
+              Notifications
+            </NavLink>
+            <NavLink to='/settings' activeStyle>
+              <SettingsView/>
+            </NavLink>
+          </NavMenu>
+        )
+    }
+
+  return (
+    <>
+      <Nav>
+        <Bars/>
+        <NavLink to='/' activeStyle><TitleView/></NavLink>
+        {navbar}      
+      </Nav>
+    </>
+  );
+};
+  
+export default Navbar;

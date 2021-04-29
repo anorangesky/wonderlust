@@ -37,6 +37,7 @@ function RegisterWithEmail(){
                         setForm({...form, password: e.target.value})}/>
                 <br/>
                 <button type="submit">Sign up</button>
+                
             </form>
         </div>
     );

@@ -1,14 +1,14 @@
 .login-container {
     display: flex;
     position: fixed;
-	min-width: 100%;
-	min-height: 100%;
+	  min-width: 100%;
+	  min-height: 100%;
 
     background-color: white;
     flex-direction: column;
 	  align-items: center;
 	  flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -21,6 +21,25 @@
     width: 30%;
     height: auto;
   }
+
+  .opnModalBtn{
+    border-radius: 4px;
+    background: #F7B088;
+    padding: 10px 22px;
+    color: #000000;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+  button:hover{
+      transition: all 0.2s ease-in-out;
+      background: #fff;
+      color: #F7B088;
+  }
+
 
   /* This applies from 600px onwards 
         (Desktop specifics) */
