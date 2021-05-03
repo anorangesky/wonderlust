@@ -47,9 +47,16 @@ function MapView(props){
   };
 // props.showDetails(attraction.pageid);
 
+  const containerStyle = {
+    // position: 'relative',
+    width: '99%',
+    height: '80%',
+  }
+
     return(
         <div className='mapView'>
             <Map google={props.google}
+                  containerStyle={containerStyle }
                   initialCenter={props.currentPosition.position}
                   center={props.currentPosition.position}
                   zoomControl={false}
