@@ -24,9 +24,9 @@ function SettingsView(){
         <img src={user.photoURL? user.photoURL: logo} alt="profile picture"/>
         <h3>Hello {user.displayName? user.displayName: user.email}</h3>
         
-        <button disabled> Setting 1 </button>
-        <button disabled> Setting 2 </button>
-        <button disabled> Setting 3 </button>
+        <button disabled> Edit Profile </button>
+        <button disabled> Friends </button>
+        <button disabled> About WL </button>
 
         
         <button className = "logOutBtn" onClick={() => {logOut(); routeChange()}}>
