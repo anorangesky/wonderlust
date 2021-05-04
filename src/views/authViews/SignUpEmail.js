@@ -22,10 +22,13 @@ function RegisterWithEmail(){
     const handleSubmit = async(e)=>{
         e.preventDefault();
         await registerWithEmail(form);
+        
     }
 
-    const body = (
+    let body = (
         <div className="login-container">
+            <button label="Close" type="button" onClick={handleClose}>X</button>
+
             <h1> Sign up</h1>
             <form onSubmit={handleSubmit} >
                 <input type="text" placeholder="email" id="mail" 
@@ -44,7 +47,7 @@ function RegisterWithEmail(){
 
     return(
         <div>
-            <p onClick={handleOpen}> Don't have an account? Click here to sign up </p>
+            <button onClick={handleOpen}>Don't have an account? Click here to sign up </button>
             <Modal
                     open={open}
                     onClose={handleClose}

@@ -1,42 +1,38 @@
 
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { logOut } from "../services/firebase.js";
 import logo from '../images/wonderlust.png';
 import Modal from '@material-ui/core/Modal';
-import "../css/loginView.css";
+import "../css/settingsView.css";
 
 function SettingsView(){
-    //Modal code:
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
     var user = firebase.auth().currentUser;
 
+    const history = useHistory();
+
+    const routeChange = () =>{ 
+        let path = '/map'; 
+        history.push(path);
+    }
+
   return(
-     <>
-    <p onClick={handleOpen}>Settings</p>
-    <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-    >
-    <div className="login-container">
+    <div className="settings-container">
         <h1> Settings </h1>
-        <h2>Hello {user.displayName? user.displayName: user.email}</h2>
-        <img className="profile-img" src={user.photoURL? user.photoURL: logo} alt="profile picture"/>
-        <button className="logout-button" onClick={() => {logOut(); handleClose()}}>
-            <span> logout</span>
+        <img src={user.photoURL? user.photoURL: logo} alt="profile picture"/>
+        <h3>Hello {user.displayName? user.displayName: user.email}</h3>
+        
+        <button disabled> Setting 1 </button>
+        <button disabled> Setting 2 </button>
+        <button disabled> Setting 3 </button>
+
+        
+        <button className = "logOutBtn" onClick={() => {logOut(); routeChange()}}>
+            <span> Log Out</span>
         </button>
     </div>
-    </Modal>
-    </>
  )
 }
 export default SettingsView;

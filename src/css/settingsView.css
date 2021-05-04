@@ -1,0 +1,38 @@
+.settings-container{
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+	align-items: center;
+	flex-wrap: wrap;
+    justify-content:space-evenly;
+
+}
+.logOutBtn{
+    margin: 10px;
+    background: #F7B088;
+
+}
+.settings-container button:disabled{
+    background:#fff;
+    color: gray;
+    margin: 10px;
+    border: 2px solid gray; 
+
+}
+
+
+.settings-container button:hover{
+    transition: all 0.2s ease-in-out;
+    color: #fff;
+    background: lightgray;
+}
+
+.settings-container img{
+    border-radius: 50%;
+}
+
+.settings-container h1,h3{
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    font-weight: lighter;
+}

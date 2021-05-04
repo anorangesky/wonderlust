@@ -19,7 +19,7 @@ function LoginEmail(props) {
                 onChange={(e)=>setForm({...form, email: e.target.value})}
             />
             <br/>
-            <input type="password"  placeholder="Password"
+            <input type="password"  placeholder="password"
                   onChange={(e) => setForm({...form, password: e.target.value})}
             />
             <br/>

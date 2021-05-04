@@ -1,5 +1,16 @@
 .mapView {
   position: absolute;
-  width:99%;
-  height:75%
+  width:100%;
+  height:100%
+}
+
+
+  /* This applies from 600px onwards 
+        (Desktop specifics) */
+@media (min-width: 600px) {
+  .mapView{
+    position: absolute;
+    width:99%;
+    height:75%
+  }
 }

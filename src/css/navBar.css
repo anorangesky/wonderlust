@@ -1,0 +1,83 @@
+.nav-container{
+    height: 85px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Nav bar as a footer on mobile */
+.nav-menu{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 10000;
+    height: 10%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.nav-link{
+    color: #F7B088;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    cursor: pointer;
+    justify-content:space-around
+}
+
+.nav-link img{
+    width: 100%;
+}
+.nav-link-title{
+    text-decoration: none;
+
+}
+.nav-link .active {
+    color: #000000;
+}
+
+.nav-button{
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+    justify-content: flex-end;
+    width: 100vw;
+}
+
+.nav-button-link{
+    border-radius: 4px;
+  background: #F7B088;
+  padding: 10px 22px;
+  color: #000000;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  /* Second Nav */
+  margin-left: 24px;
+}
+.nav-button-link:hover{
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    color: #F7B088;
+}
+
+ /* This applies from 600px onwards 
+        (Desktop specifics) */
+@media (min-width: 600px) {
+    /* nav bar as header for desktop */
+    .nav-menu{
+        display: flex;
+        align-items:baseline;
+        position: relative;
+        width: 100%;
+        right: 0px;
+        justify-content: flex-end;
+
+    }
+
+}

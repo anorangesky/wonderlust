@@ -10,11 +10,14 @@
 .title-container, .header-title{
     margin-right: auto;
     align-items: center;
+    text-decoration: none;
+    color: black;
 } 
 .header-title, h1,h5{
     font-family: 'Roboto', sans-serif;
-    font-weight: lighter;
     align-items: center;
+    font-weight: lighter;
+
 }
 .header-title, h1{
     margin-bottom: 0;

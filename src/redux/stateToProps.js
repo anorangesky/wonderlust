@@ -22,3 +22,9 @@ export function mapDispatchToSearchView(dispatch) {
     onTextInput: (query) => dispatch(getSearchPosition(query))
   }
 }
+
+export function mapUserStateToProps(state){
+  return{
+    isUserLoggedIn: state.userState.isUserLoggedIn
+  }
+}
