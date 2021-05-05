@@ -38,6 +38,16 @@
         margin-right: 10px;
         border: 1px solid gray;
         border-radius: 4px;
+
+        border-radius: 4px;
+        background: #F7B088;
+        padding: 10px 22px;
+        color: #000000;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        text-decoration: none;
     }
 
   .details-body-item{

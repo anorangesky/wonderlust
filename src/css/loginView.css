@@ -1,14 +1,15 @@
 .login-container {
     display: flex;
-    position: fixed;
-	min-width: 100%;
-	min-height: 100%;
+    position: relative;
+	  min-width: 100%;
+	  min-height: 100%;
+    margin: 0 auto;
 
     background-color: white;
     flex-direction: column;
 	  align-items: center;
 	  flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content:space-evenly;
 
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -22,15 +23,73 @@
     height: auto;
   }
 
+  .opnModalBtn{
+    border-radius: 4px;
+    background: #F7B088;
+    padding: 10px 22px;
+    color: #000000;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+
+  .opnModalBtn:hover{
+    transition: all 0.2s ease-in-out;
+      background: #fff;
+      color: #F7B088;
+
+  }
+
+  .login-container button{
+    background:#fff;
+    margin: 10px;
+  }
+
+  form button, input{
+    border: 2px solid #F7B088; 
+  }
+
+   form button{
+    margin: 10px;
+    position: relative;
+    left: 45%;
+    -ms-transform: translate( -50%);
+    transform: translate(-50%);
+  }
+
+  button:hover{
+      transition: all 0.2s ease-in-out;
+      color: #fff;
+      background: #F7B088;
+
+  }
+
+  input{
+    background-color: white ;
+    transition: width 0.4s ease-in-out;
+    padding: 5px;
+    margin: 5px;
+
+  }
+  input:focus{
+    width: 100%;
+  }
+
   /* This applies from 600px onwards 
         (Desktop specifics) */
 @media (min-width: 600px) {
 	.login-container {
-		left: 10%;
-    	top: 10%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 		min-width: 500px;
 		min-height: 300px;
 		border-radius: 15px;
+    margin: 0 auto;
 
 	}
 }

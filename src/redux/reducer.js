@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { getArticleContent } from '../services/wikiSource'
 import currentPosition from './slices/currentPositionSlice'
+import userState from './slices/userState';
 
 export const setAttractions = attractions => {
   return {
@@ -92,6 +93,7 @@ const rootReducer = combineReducers({
   currentPosition,
   attractionList,
   currentAttraction,
+  userState,
 })
 
 export default rootReducer;
