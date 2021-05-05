@@ -66,7 +66,7 @@
     color: #F7B088;
 }
 
- /* This applies from 600px onwards 
+ /* This applies from 600px onwards
         (Desktop specifics) */
 @media (min-width: 600px) {
     /* nav bar as header for desktop */
@@ -77,7 +77,7 @@
         width: 100%;
         right: 0px;
         justify-content: flex-end;
-
+        z-index: auto;
     }
 
 }
