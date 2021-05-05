@@ -2,7 +2,7 @@
 //import firebase authentication
 import firebase from "firebase/app";
 import "firebase/auth";
-import {setIsUserLoggedIn} from "../redux/slices/userState";
+import {setIsUserLoggedIn, setUserId} from "../redux/slices/userState";
 import store from "../redux/store";
 //import and configure dotenv
 import dotenv from 'dotenv'
@@ -38,7 +38,7 @@ export const signInWithGoogle = async() => {
     var user = result.user;
     console.log(user);
     store.dispatch(setIsUserLoggedIn(true));
-
+    store.dispatch(setUserId(user));
   }).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
@@ -74,6 +74,7 @@ export const signInWithFB = async() =>{
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     var accessToken = credential.accessToken;
     store.dispatch(setIsUserLoggedIn(true));
+    store.dispatch(setUserId(user));
   }).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
@@ -91,14 +92,16 @@ export const registerWithEmail = async({email, password})=>{
   const resp = await firebase.auth()
     .createUserWithEmailAndPassword(email, password);
     store.dispatch(setIsUserLoggedIn(true));
+    store.dispatch(setUserId(resp.user));
   return resp.user;
 }
 /** LOGIN function with email **/
 export const signInWithEmail = async({email, password})=>{
-  const res = await firebase.auth()
+  const resp = await firebase.auth()
     .signInWithEmailAndPassword(email, password);
     store.dispatch(setIsUserLoggedIn(true));
-  return res.user;
+    store.dispatch(setUserId(resp.user));
+  return resp.user;
 }
 
 /** signout function **/
@@ -106,6 +109,7 @@ export const logOut = () => {
   firebase.auth().signOut().then(()=> {
     console.log('logged out')
     store.dispatch(setIsUserLoggedIn(false));
+    store.dispatch(setUserId(null));
   }).catch((error) => {
     console.log(error.message)
   })
