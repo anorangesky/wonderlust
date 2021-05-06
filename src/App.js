@@ -41,13 +41,9 @@ const NavigationPresenter = connect(mapUserStateToProps,
                                     null)(Navbar);
 
 function App() {
-  /* TODO: 
-      check if user is online so they can't hack themself in 
-      Current impl. is not working (hence "true")
-      */
-  var user = firebase.auth().currentUser;
-  let navigation = (<MapPresenter/>);
-  if (true) {
+
+  let navigation;
+  if (store.getState().userState.isUserLoggedIn) {
       navigation = (
         <Switch>
             <Route path='/' exact component={MapPresenter}/>
@@ -58,6 +54,8 @@ function App() {
             <Route path='/settings' component={SettingsView}/>
           </Switch>
       )
+  }else{
+    navigation = (<MapPresenter/>);
   }
 
   return (
