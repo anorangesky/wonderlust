@@ -41,7 +41,9 @@ const NavigationPresenter = connect(mapUserStateToProps,
                                     null)(Navbar);
 
 function App() {
-
+  /* 
+      check if user is online so they can't hack themself in     
+  */
   let navigation;
   if (store.getState().userState.isUserLoggedIn) {
       navigation = (
