@@ -40,24 +40,23 @@ const SearchViewPresenter = connect(null, mapDispatchToSearchView)(SearchView);
 const NavigationPresenter = connect(mapUserStateToProps,
                                     null)(Navbar);
 
-function App() {
+function App(props) {
   /* 
       check if user is online so they can't hack themself in     
   */
   let navigation;
-  if (store.getState().userState.isUserLoggedIn) {
-      navigation = (
+  if (props.isUserLoggedIn){
+    navigation = (
         <Switch>
             <Route path='/' exact component={MapPresenter}/>
             <Route path='/map' component={MapPresenter}/>
-            <Route path='/addAttraction' component={AddAttractionView}/>
-            <Route path='/yourAttractions' component={YourAttractionsView}/>
-            <Route path='/notifications' component={NotificationView}/>
-            <Route path='/settings' component={SettingsView}/>
-          </Switch>
-      )
-  }else{
-    navigation = (<MapPresenter/>);
+              <Route path='/addAttraction' component={AddAttractionView}/> 
+              <Route path='/yourAttractions' component={YourAttractionsView}/> 
+              <Route path='/notifications' component={NotificationView}/>
+              <Route path='/settings' component={SettingsView}/>            
+        </Switch>
+    )}else{
+      navigation = (<MapPresenter/>)
   }
 
   return (
@@ -71,4 +70,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(mapUserStateToProps, null)(App);
