@@ -34,7 +34,7 @@ function mapLoaded(mapProps, map) {
 }
 
 function centerChanged(mapProps, map) {
-  map.setZoom(13);
+  // map.setZoom(13);
 }
 
 function dragEnd(mapProps, map) {
