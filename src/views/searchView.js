@@ -1,9 +1,14 @@
+import store from '../redux/store';
+import { setCurrentPositionZoom } from '../redux/slices/currentPositionSlice'
 import debounce from '../utilities/debounce';
 import '../css/searchView.css';
 import icon from '../images/location.png';
 
 function SearchView(props) {
-  const debouncedOnChange = debounce(text => props.onTextInput(text), 750);
+  const debouncedOnChange = debounce(text => {
+      props.onTextInput(text);
+      store.dispatch(setCurrentPositionZoom(13));
+    }, 750);
 
   return(
     <div className="searchview">

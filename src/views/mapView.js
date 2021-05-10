@@ -1,5 +1,7 @@
 import React from 'react';
-import {Map, Marker, GoogleApiWrapper} from "google-maps-react";
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
+import store from '../redux/store';
+import { setCurrentPosition, setCurrentPositionZoom } from '../redux/slices/currentPositionSlice'
 import Modal from '@material-ui/core/Modal';
 import '../css/mapView.css';
 import DetailsView from './detailsView'
@@ -32,7 +34,17 @@ function mapLoaded(mapProps, map) {
 }
 
 function centerChanged(mapProps, map) {
-  map.setZoom(13);
+  // map.setZoom(13);
+}
+
+function dragEnd(mapProps, map) {
+  let center = map.getCenter();
+  store.dispatch(setCurrentPosition({lat: center.lat(), lng: center.lng()}));
+  store.dispatch(setCurrentPositionZoom(map.getZoom()));
+}
+
+function zoomChanged(mapProps, map) {
+  store.dispatch(setCurrentPositionZoom(map.getZoom()));
 }
 
 function MapView(props){
@@ -52,11 +64,14 @@ function MapView(props){
             <Map google={props.google}
                   initialCenter={props.currentPosition.position}
                   center={props.currentPosition.position}
+                  zoom={props.currentPosition.zoom}
                   zoomControl={false}
                   fullscreenControl={false}
                   streetViewControl={false}
                   onReady={(mapProps, map) => mapLoaded(mapProps, map)}
                   onRecenter={(mapProps, map) => centerChanged(mapProps, map)}
+                  onDragend={(mapProps, map) => dragEnd(mapProps, map)}
+                  onZoomChanged={(mapProps, map) => zoomChanged(mapProps, map)}
              >
              {props.attractions.map((attraction) =>
                <Marker
