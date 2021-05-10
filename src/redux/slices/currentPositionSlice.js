@@ -8,6 +8,7 @@ const initialCurrentPosition = {
     lng: 15.196389  ,
   },
   error: null,
+  zoom: 13,
 }
 
 export const setCurrentPosition = location => {
@@ -21,6 +22,13 @@ export const setCurrentPositionError = error => {
   return {
     type: 'currentPosition/setError',
     payload: error,
+  }
+}
+
+export const setCurrentPositionZoom = zoom => {
+  return {
+    type: 'currentPosition/setZoom',
+    payload: zoom,
   }
 }
 
@@ -105,6 +113,11 @@ export default function currentPosition(state = initialCurrentPosition, action) 
       return {
         ...state,
         error: action.payload,
+      }
+    case 'currentPosition/setZoom':
+      return {
+        ...state,
+        zoom: action.payload,
       }
     default:
       return state;
