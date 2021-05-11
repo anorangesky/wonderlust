@@ -10,11 +10,10 @@ function LoginEmail(props) {
   const handleSubmit = async(e)=>{
     e.preventDefault();
     await signInWithEmail(form);
-    props.close();
   }
     return (
         <>
-          <form onSubmit={handleSubmit} >
+          <form onSubmit={(e) => { handleSubmit(e); props.close(); }} >
             <input type="text" placeholder="email" id="mail"
                 onChange={(e)=>setForm({...form, email: e.target.value})}
             />

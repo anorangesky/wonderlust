@@ -2,6 +2,7 @@
 //import firebase authentication
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/database"
 import {setIsUserLoggedIn, setUserId} from "../redux/slices/userState";
 import store from "../redux/store";
 //import and configure dotenv
@@ -24,6 +25,7 @@ const firebaseConfig ={
 firebase.initializeApp(firebaseConfig);
 export default firebaseConfig;
 export const auth = firebase.auth();
+// var database = firebase.database();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 /** LOG IN function for GOOGLE that uses 'signInWithPopup()' method **/
@@ -36,9 +38,8 @@ export const signInWithGoogle = async() => {
     var token = credential.accessToken;
     // The signed-in user info.
     var user = result.user;
-    console.log(user);
-    store.dispatch(setIsUserLoggedIn(true));
-    store.dispatch(setUserId(user));
+    // console.log(user);
+    onLoginSuccess(user)
   }).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
@@ -73,8 +74,7 @@ export const signInWithFB = async() =>{
     console.log(user);
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     var accessToken = credential.accessToken;
-    store.dispatch(setIsUserLoggedIn(true));
-    store.dispatch(setUserId(user));
+    onLoginSuccess(user)
   }).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
@@ -91,8 +91,8 @@ export const signInWithFB = async() =>{
 export const registerWithEmail = async({email, password})=>{
   const resp = await firebase.auth()
     .createUserWithEmailAndPassword(email, password);
-    store.dispatch(setIsUserLoggedIn(true));
-    store.dispatch(setUserId(resp.user));
+    console.log(resp.user)
+    onLoginSuccess(resp.user)
   return resp.user;
 }
 /** LOGIN function with email **/
@@ -113,4 +113,30 @@ export const logOut = () => {
   }).catch((error) => {
     console.log(error.message)
   })
+}
+
+function onLoginSuccess(user) {
+  store.dispatch(setIsUserLoggedIn(true));
+  store.dispatch(setUserId(user));
+  firebase.database().ref("/users/" + user.uid).once('value').then((snapshot) => {
+    // Check if user exists in database, otherwise add them
+    if(!snapshot.key) {
+      writeNewUser(user.uid, user.displayName ? user.displayName: user.email);
+    }
+  }).catch((error) => {
+    console.log(error);
+  });
+}
+
+export const writeUserAttraction = (uid, attraction) => {
+  firebase.database().ref('users/' + uid).set({attraction});
+}
+
+export const writeNewUser = (uid, name) => {
+  firebase.database().ref('/users/').update(
+    {
+      [uid]: {
+        username: name,
+      }
+    });
 }
