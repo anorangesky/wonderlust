@@ -3,7 +3,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database"
-import {setIsUserLoggedIn, setUserId} from "../redux/slices/userState";
+import {setIsUserLoggedIn, setUserId, setSavedAttraction} from "../redux/slices/userState";
 import store from "../redux/store";
 //import and configure dotenv
 import dotenv from 'dotenv'
@@ -91,7 +91,6 @@ export const signInWithFB = async() =>{
 export const registerWithEmail = async({email, password})=>{
   const resp = await firebase.auth()
     .createUserWithEmailAndPassword(email, password);
-    console.log(resp.user)
     onLoginSuccess(resp.user)
   return resp.user;
 }
@@ -99,13 +98,18 @@ export const registerWithEmail = async({email, password})=>{
 export const signInWithEmail = async({email, password})=>{
   const resp = await firebase.auth()
     .signInWithEmailAndPassword(email, password);
-    store.dispatch(setIsUserLoggedIn(true));
-    store.dispatch(setUserId(resp.user));
+    onLoginSuccess(resp.user)
   return resp.user;
 }
 
+// References needed for the the saved attraction database listener
+var savedAttractionRef;
+var savedAttractionChanged;
+
 /** signout function **/
 export const logOut = () => {
+  // Turn off listening for changed to the saved attraction list
+  savedAttractionRef.off('value', savedAttractionChanged)
   firebase.auth().signOut().then(()=> {
     console.log('logged out')
     store.dispatch(setIsUserLoggedIn(false));
@@ -115,21 +119,45 @@ export const logOut = () => {
   })
 }
 
+// Read user data from database after logged in and set user data in store
 function onLoginSuccess(user) {
   store.dispatch(setIsUserLoggedIn(true));
   store.dispatch(setUserId(user));
   firebase.database().ref("/users/" + user.uid).once('value').then((snapshot) => {
     // Check if user exists in database, otherwise add them
-    if(!snapshot.key) {
+    if(!snapshot.val()) {
       writeNewUser(user.uid, user.displayName ? user.displayName: user.email);
     }
   }).catch((error) => {
     console.log(error);
   });
+  // Turn on listening to the saved attraction list and save references to the listener
+  let {ref, onChanged} = onSavedAttractionChange(user.uid);
+  savedAttractionRef = ref;
+  savedAttractionChanged = onChanged;
 }
 
-export const writeUserAttraction = (uid, attraction) => {
-  firebase.database().ref('users/' + uid).set({attraction});
+function onSavedAttractionChange(uid) {
+  var savedAttractionRef = firebase.database().ref('users/' + uid + '/savedAttractions/');
+  var savedAttractionChanged = savedAttractionRef.on('value', (snapshot) => {
+    const data = snapshot.val();
+    console.log(data);
+    if(data) {
+      store.dispatch(setSavedAttraction(data));
+    }
+  });
+  return {savedAttractionRef, savedAttractionChanged};
+}
+
+export const writeSavedAttraction = (attraction) => {
+  var uid = store.getState().userState.user.uid;
+  var savedAttractionRef = firebase.database().ref('users/' + uid + '/savedAttractions/');
+  savedAttractionRef.update(
+  {
+    [attraction.pageid]: {
+      title: attraction.title,
+    }
+  });
 }
 
 export const writeNewUser = (uid, name) => {
