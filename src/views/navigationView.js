@@ -26,13 +26,13 @@ const Navbar = (props) => {
                 <img src={map}/>
             </Link>
             <Link className="nav-link"to='/addAttraction' activeStyle>
-                <img src={addAttractions}/>
+                <img src={addAttractions} id="not-implemented"/>
             </Link>
             <Link className="nav-link" to='/yourAttractions' activeStyle>
                 <img src={yourAttr}/>
             </Link>
             <Link className="nav-link" to='/notifications' activeStyle>
-              <img src={notifications}/>
+              <img src={notifications} id="not-implemented"/>
             </Link>
             <Link className="nav-link" to='/settings' activeStyle>
               <img src={settings}/>

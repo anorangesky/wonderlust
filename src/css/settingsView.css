@@ -36,3 +36,7 @@
     align-items: center;
     font-weight: lighter;
 }
+
+#not-implemented{
+    cursor: not-allowed;
+}

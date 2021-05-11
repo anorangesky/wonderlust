@@ -5,7 +5,6 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { logOut } from "../services/firebase.js";
 import logo from '../images/wonderlust.png';
-import Modal from '@material-ui/core/Modal';
 import "../css/settingsView.css";
 
 function SettingsView(){
@@ -24,9 +23,9 @@ function SettingsView(){
         <img src={user.photoURL? user.photoURL: logo} alt="profile picture"/>
         <h3>Hello {user.displayName? user.displayName: user.email}</h3>
         
-        <button disabled> Edit Profile </button>
-        <button disabled> Friends </button>
-        <button disabled> About WL </button>
+        <button disabled id="not-implemented"> Edit Profile </button>
+        <button disabled id="not-implemented"> Friends </button>
+        <button disabled id="not-implemented"> About WL </button>
 
         
         <button className = "logOutBtn" onClick={() => {logOut(); routeChange()}}>
