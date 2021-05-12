@@ -33,22 +33,23 @@ export const signInWithGoogle = async() => {
   await firebase.auth().signInWithPopup(googleProvider)
   .then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
-    var credential = result.credential;
+    // var credential = result.credential;
     // This gives you a Google Access Token. You can use it to access the Google API.
-    var token = credential.accessToken;
+    // var token = credential.accessToken;
     // The signed-in user info.
     var user = result.user;
     // console.log(user);
     onLoginSuccess(user)
   }).catch((error) => {
     // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
+    // var errorCode = error.code;
+    // var errorMessage = error.message;
     // The email of the user's account used.
-    var email = error.email;
+    // var email = error.email;
     // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
+    // var credential = error.credential;
     // ...
+    console.log(error)
   })
 }
 
@@ -68,21 +69,22 @@ const facebookProvider = new firebase.auth.FacebookAuthProvider();
 export const signInWithFB = async() =>{
   await firebase.auth().signInWithPopup(facebookProvider).then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
-    var credential = result.credential;
+    // var credential = result.credential;
     // The signed-in user info.
     var user = result.user;
     console.log(user);
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    var accessToken = credential.accessToken;
+    // var accessToken = credential.accessToken;
     onLoginSuccess(user)
   }).catch((error) => {
     // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
+    // var errorCode = error.code;
+    // var errorMessage = error.message;
     // The email of the user's account used.
-    var email = error.email;
+    // var email = error.email;
     // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
+    // var credential = error.credential;
+    console.log(error)
   })
 }
 
@@ -135,7 +137,7 @@ function onLoginSuccess(user) {
 
 function onSavedAttractionChange(uid) {
   var savedAttractionRef = firebase.database().ref('users/' + uid + '/savedAttractions/');
-  var savedAttractionChanged = savedAttractionRef.on('value', (snapshot) => {
+  savedAttractionRef.on('value', (snapshot) => {
     const data = snapshot.val();
     if(data) {
       store.dispatch(setSavedAttraction(data));
@@ -153,6 +155,8 @@ export const writeSavedAttraction = (attraction) => {
       {
         [attraction.pageid]: {
           title: attraction.title,
+          thumbnail: attraction.thumbnail,
+          pageimage: attraction.pageimage,
         }
     });
   }

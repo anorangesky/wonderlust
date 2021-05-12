@@ -26,7 +26,7 @@ function YourAttractionsView(props){
           {props.savedAttractions.map(attraction =>
             <li className="list-item" key={attraction.pageid} >
                   <img id="list-image"
-                      src={attraction.thumbnail ? attraction.thumbnail : logo}
+                      src={attraction.thumbnail ? attraction.thumbnail.source : logo}
                       alt={attraction.pageimage ? attraction.pageimage : "Wonderlust logo"}
                   />
                   <div id="openDetails"onClick={e => {props.getArticle(attraction.pageid); handleOpen()}}>
@@ -35,6 +35,7 @@ function YourAttractionsView(props){
                   <div id="list-buttons">
                     <button disabled id="list-share"> Share </button>
                     <img id="list-trash"src={remove} onClick={e => removeSavedAttraction(attraction.pageid)}/>
+
                   </div>
             </li>
             )}

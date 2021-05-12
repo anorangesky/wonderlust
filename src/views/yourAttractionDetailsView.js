@@ -1,8 +1,8 @@
 import React from 'react';
-import { writeSavedAttraction } from '../services/firebase'
+// import { writeSavedAttraction } from '../services/firebase'
 import '../css/detailsView.css';
 import logo from '../images/wonderlust.png';
-import logo1 from '../images/wonderlust1.png';
+// import logo1 from '../images/wonderlust1.png';
 import logo2 from '../images/wonderlust2.png';
 
 // rewrite this to only return the body

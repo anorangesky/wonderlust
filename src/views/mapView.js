@@ -26,27 +26,6 @@ const mapStyle = [
   },
 ]
 
-function mapLoaded(mapProps, map) {
-   map.setOptions({
-      styles: mapStyle
-   })
-   // If Google's Places API should be used it should probably be instantiated here
-   // Alt. see "Manually loading the Google API" on https://www.npmjs.com/package/google-maps-react
-}
-
-function centerChanged(mapProps, map) {
-  // map.setZoom(13);
-}
-
-function dragEnd(mapProps, map) {
-  let center = map.getCenter();
-  store.dispatch(setCurrentPosition({lat: center.lat(), lng: center.lng()}));
-  store.dispatch(setCurrentPositionZoom(map.getZoom()));
-}
-
-function zoomChanged(mapProps, map) {
-  store.dispatch(setCurrentPositionZoom(map.getZoom()));
-}
 
 function MapView(props){
   const [open, setOpen] = React.useState(false);
@@ -58,6 +37,29 @@ function MapView(props){
   const handleClose = () => {
       setOpen(false);
   };
+
+  function mapLoaded(mapProps, map) {
+    map.setOptions({
+      styles: mapStyle
+    })
+    // If Google's Places API should be used it should probably be instantiated here
+    // Alt. see "Manually loading the Google API" on https://www.npmjs.com/package/google-maps-react
+  }
+
+  function centerChanged(mapProps, map) {
+    // map.setZoom(13);
+  }
+
+  function dragEnd(mapProps, map) {
+    let center = map.getCenter();
+    store.dispatch(setCurrentPosition({lat: center.lat(), lng: center.lng()}));
+    store.dispatch(setCurrentPositionZoom(map.getZoom()));
+    props.getArticles({lat: center.lat(), lng: center.lng()})
+  }
+
+  function zoomChanged(mapProps, map) {
+    store.dispatch(setCurrentPositionZoom(map.getZoom()));
+  }
 // props.showDetails(attraction.pageid);
 
     return(
