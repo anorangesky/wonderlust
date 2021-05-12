@@ -39,6 +39,8 @@ const SearchViewPresenter = connect(null, mapDispatchToSearchView)(SearchView);
 
 const NavigationPresenter = connect(mapUserStateToProps,
                                     null)(Navbar);
+const YourAttractionsPresenter = connect(mapUserStateToProps, 
+                                            mapDispatchToMapView)(YourAttractionsView);
 
 function App(props) {
   /* 
@@ -51,7 +53,7 @@ function App(props) {
             <Route path='/' exact component={MapPresenter}/>
             <Route path='/map' component={MapPresenter}/>
               <Route path='/addAttraction' component={AddAttractionView}/> 
-              <Route path='/yourAttractions' component={YourAttractionsView}/> 
+              <Route path='/yourAttractions' component={YourAttractionsPresenter}/> 
               <Route path='/notifications' component={NotificationView}/>
               <Route path='/settings' component={SettingsView}/>            
         </Switch>

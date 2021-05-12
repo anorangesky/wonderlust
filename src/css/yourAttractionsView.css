@@ -14,9 +14,7 @@
     list-style-type: none;
     max-width: 300px;
     overflow: hidden;
-    
 }
-
 
 .list-item{
     display: flex;
@@ -38,7 +36,10 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
-#list-title:hover{
+#openDetails{
+    width: 100%;
+}
+#openDetails:hover{
     cursor: pointer;
 }
 
@@ -48,8 +49,6 @@
 }
 #list-share{
     cursor: not-allowed;
-
-
 }
 #list-trash{
     display: block;

@@ -1,14 +1,12 @@
 import React from 'react';
 import { writeSavedAttraction } from '../services/firebase'
-import {removeSavedAttraction} from "../services/firebase";
-
 import '../css/detailsView.css';
 import logo from '../images/wonderlust.png';
 import logo1 from '../images/wonderlust1.png';
 import logo2 from '../images/wonderlust2.png';
 
 // rewrite this to only return the body
-function DetailsView(props){
+function YourAttractionsDetailsView(props){
     return(
       <div>
          <div className="details-container" id="detailsCard">
@@ -46,19 +44,9 @@ function DetailsView(props){
                           </div>
                       </div>
 
-                      <div className="details-footer-item">
-                          <button disabled={true} onClick={e => props.onPress()}>How to get there</button>
-                          <span>
-                              {props.isAttractionSaved? 
-                                <button onClick={() => removeSavedAttraction(props.article.pageid)}>Remove</button>:
-                                <button disabled={!props.isUserLoggedIn} onClick={() => props.onSave(props.article)}>Save</button>
-                                }
-                              <button disabled={true} onClick={e => props.onPress()}>Share</button>
-                          </span>
-                      </div>
                   </div>
       </div>
     );
 }
 
-export default DetailsView;
+export default YourAttractionsDetailsView;

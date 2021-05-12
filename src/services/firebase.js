@@ -166,3 +166,11 @@ export const writeNewUser = (uid, name) => {
       }
     });
 }
+
+export const removeSavedAttraction = (pageid) => {
+  if(store.getState().userState.isUserLoggedIn) {
+    var uid = store.getState().userState.user.uid;
+    var savedAttractionRef = firebase.database().ref('users/' + uid + '/savedAttractions/' + pageid );
+    savedAttractionRef.remove();
+  }
+}

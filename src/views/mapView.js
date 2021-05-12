@@ -100,6 +100,7 @@ function MapView(props){
                                 onSave={writeSavedAttraction}
                                 article={props.attractionData}
                                 isUserLoggedIn={props.isUserLoggedIn}
+                                isAttractionSaved={!!props.savedAttractions.find(e => e.pageid == props.attractionData.pageid)}
                     />
                   }
                 </div>

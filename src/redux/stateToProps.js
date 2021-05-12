@@ -8,6 +8,7 @@ export function mapAttractionListToProps(state) {
     attractionData: state.currentAttraction.data,
     attractionError: state.currentAttraction.error,
     isUserLoggedIn: state.userState.isUserLoggedIn,
+    savedAttractions: state.userState.savedAttractions
   }
 }
 
@@ -26,6 +27,9 @@ export function mapDispatchToSearchView(dispatch) {
 
 export function mapUserStateToProps(state){
   return{
-    isUserLoggedIn: state.userState.isUserLoggedIn
+    isUserLoggedIn: state.userState.isUserLoggedIn,
+    savedAttractions: state.userState.savedAttractions,
+    attractionData: state.currentAttraction.data,
+
   }
 }
