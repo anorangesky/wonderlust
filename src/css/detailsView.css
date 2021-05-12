@@ -62,11 +62,15 @@
   }
   .card.body.left, .card.body.right{
     justify-content: center;
+    display: flex;
+    flex-direction: column;
   }
   #details-about{
     overflow: auto;
     height: 80%;
     margin: 10px;
+    text-align: center;
+
     }
 
   #details-image{
@@ -211,6 +215,14 @@ button:disabled{
             width: auto;
             overflow-wrap: break-word;
             overflow-x: hidden;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: normal;
+            padding-top: 7%;
+           
+
           }
             #details-image{
               width:200px;
