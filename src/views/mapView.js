@@ -2,6 +2,7 @@ import React from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 import store from '../redux/store';
 import { setCurrentPosition, setCurrentPositionZoom } from '../redux/slices/currentPositionSlice'
+import { writeSavedAttraction } from '../services/firebase'
 import Modal from '@material-ui/core/Modal';
 import '../css/mapView.css';
 import DetailsView from './detailsView'
@@ -95,7 +96,11 @@ function MapView(props){
                 <div>
                   {
                     props.attractionData &&
-                    <DetailsView handleClose={() => handleClose()} article={props.attractionData}/>
+                    <DetailsView handleClose={() => handleClose()}
+                                onSave={writeSavedAttraction}
+                                article={props.attractionData}
+                                isUserLoggedIn={props.isUserLoggedIn}
+                    />
                   }
                 </div>
              </Modal>

@@ -2,7 +2,8 @@
 //import firebase authentication
 import firebase from "firebase/app";
 import "firebase/auth";
-import {setIsUserLoggedIn, setUserId} from "../redux/slices/userState";
+import "firebase/database"
+import {setIsUserLoggedIn, setUserId, setSavedAttraction} from "../redux/slices/userState";
 import store from "../redux/store";
 //import and configure dotenv
 import dotenv from 'dotenv'
@@ -24,6 +25,7 @@ const firebaseConfig ={
 firebase.initializeApp(firebaseConfig);
 export default firebaseConfig;
 export const auth = firebase.auth();
+// var database = firebase.database();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 /** LOG IN function for GOOGLE that uses 'signInWithPopup()' method **/
@@ -36,9 +38,8 @@ export const signInWithGoogle = async() => {
     var token = credential.accessToken;
     // The signed-in user info.
     var user = result.user;
-    console.log(user);
-    store.dispatch(setIsUserLoggedIn(true));
-    store.dispatch(setUserId(user));
+    // console.log(user);
+    onLoginSuccess(user)
   }).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
@@ -73,8 +74,7 @@ export const signInWithFB = async() =>{
     console.log(user);
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     var accessToken = credential.accessToken;
-    store.dispatch(setIsUserLoggedIn(true));
-    store.dispatch(setUserId(user));
+    onLoginSuccess(user)
   }).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
@@ -91,26 +91,78 @@ export const signInWithFB = async() =>{
 export const registerWithEmail = async({email, password})=>{
   const resp = await firebase.auth()
     .createUserWithEmailAndPassword(email, password);
-    store.dispatch(setIsUserLoggedIn(true));
-    store.dispatch(setUserId(resp.user));
+    onLoginSuccess(resp.user)
   return resp.user;
 }
 /** LOGIN function with email **/
 export const signInWithEmail = async({email, password})=>{
   const resp = await firebase.auth()
     .signInWithEmailAndPassword(email, password);
-    store.dispatch(setIsUserLoggedIn(true));
-    store.dispatch(setUserId(resp.user));
+    onLoginSuccess(resp.user)
   return resp.user;
 }
 
 /** signout function **/
 export const logOut = () => {
+  // Turn off listening for changes to the saved attraction list
+  var savedAttractionRef = firebase.database().ref('users/' + store.getState().userState.user.uid + '/savedAttractions/');
+  savedAttractionRef.off('value', undefined)
   firebase.auth().signOut().then(()=> {
     console.log('logged out')
     store.dispatch(setIsUserLoggedIn(false));
     store.dispatch(setUserId(null));
+    store.dispatch(setSavedAttraction({}));
   }).catch((error) => {
     console.log(error.message)
   })
+}
+
+// Read user data from database after logged in and set user data in store
+function onLoginSuccess(user) {
+  store.dispatch(setIsUserLoggedIn(true));
+  store.dispatch(setUserId(user));
+  firebase.database().ref("/users/" + user.uid).once('value').then((snapshot) => {
+    // Check if user exists in database, otherwise add them
+    if(!snapshot.val()) {
+      writeNewUser(user.uid, user.displayName ? user.displayName: user.email);
+    }
+  }).catch((error) => {
+    console.log(error);
+  });
+  // Turn on listening to the saved attraction list and save references to the listener
+  onSavedAttractionChange(user.uid);
+}
+
+function onSavedAttractionChange(uid) {
+  var savedAttractionRef = firebase.database().ref('users/' + uid + '/savedAttractions/');
+  var savedAttractionChanged = savedAttractionRef.on('value', (snapshot) => {
+    const data = snapshot.val();
+    if(data) {
+      store.dispatch(setSavedAttraction(data));
+    } else {
+      store.dispatch(setSavedAttraction({}));
+    }
+  });
+}
+
+export const writeSavedAttraction = (attraction) => {
+  if(store.getState().userState.isUserLoggedIn) {
+    var uid = store.getState().userState.user.uid;
+    var savedAttractionRef = firebase.database().ref('users/' + uid + '/savedAttractions/');
+    savedAttractionRef.update(
+      {
+        [attraction.pageid]: {
+          title: attraction.title,
+        }
+    });
+  }
+}
+
+export const writeNewUser = (uid, name) => {
+  firebase.database().ref('/users/').update(
+    {
+      [uid]: {
+        username: name,
+      }
+    });
 }

@@ -7,6 +7,7 @@ export function mapAttractionListToProps(state) {
     currentPosition: state.currentPosition,
     attractionData: state.currentAttraction.data,
     attractionError: state.currentAttraction.error,
+    isUserLoggedIn: state.userState.isUserLoggedIn,
   }
 }
 
