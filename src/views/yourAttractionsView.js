@@ -43,23 +43,22 @@ function YourAttractionsView(props){
           <h4>UNDER DEVELOPMENT</h4>
           <p>Your saved attractions will be displayed here on a map </p>
         </div>
-        </div>
-        <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-              >
-                <div>
-                  {
-                    props.attractionData &&
-                    <YourAttractionsDetailsView handleClose={() => handleClose()}
-                                  article={props.attractionData}
-                    />
-                  }
-                </div>
-             </Modal>
       </div>
+        <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            >
+          <div>
+            {props.attractionData &&
+              <YourAttractionsDetailsView handleClose={() => handleClose()}
+                                        article={props.attractionData}
+              />
+            }
+          </div>
+        </Modal>
+    </div>
   )
 }
 

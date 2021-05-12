@@ -12,7 +12,6 @@
     position: relative;
     margin-left: -5%;
     list-style-type: none;
-    max-width: 300px;
     overflow: hidden;
 }
 
@@ -35,6 +34,7 @@
     text-align: center;
     text-overflow: ellipsis;
     overflow: hidden;
+    margin-right: 2px;
 }
 #openDetails{
     width: 100%;
@@ -60,7 +60,7 @@
     cursor: pointer;
 }
 .yourMapView{
-    display: none;
+    display:none;
 }
 
 /* This applies from 600px onwards
@@ -69,21 +69,24 @@
     .list-container{
         display: flex;
         flex-direction: column-reverse;
-        min-width: 30%;
-        max-width: 50%;
         list-style-type: none;
+        width: 50%;
         margin: 0;
         padding: 10px;
         
     }
     .yourMapView{
-        flex:1;
-        border: 1px solid lightslategrey;
+        display: flex;
+        flex-direction: column;
+        align-self: left;
+        align-self: baseline;
+        flex: 1;
+        max-width: 50%;
+        border: 1px  lightslategrey;
         color: lightslategrey;
         text-align: center;
         margin: 10px;
-        cursor: not-allowed;
-    
+        cursor: not-allowed;    
     }
 
 
