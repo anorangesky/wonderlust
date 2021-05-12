@@ -82,6 +82,8 @@
 fieldset{
   display: flex;
   padding: 0px;
+  cursor: not-allowed;
+
 }
 .star-rating {
   font-family: 'FontAwesome';
