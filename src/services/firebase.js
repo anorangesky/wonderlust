@@ -102,18 +102,16 @@ export const signInWithEmail = async({email, password})=>{
   return resp.user;
 }
 
-// References needed for the the saved attraction database listener
-var savedAttractionRef;
-var savedAttractionChanged;
-
 /** signout function **/
 export const logOut = () => {
-  // Turn off listening for changed to the saved attraction list
-  savedAttractionRef.off('value', savedAttractionChanged)
+  // Turn off listening for changes to the saved attraction list
+  var savedAttractionRef = firebase.database().ref('users/' + store.getState().userState.user.uid + '/savedAttractions/');
+  savedAttractionRef.off('value', undefined)
   firebase.auth().signOut().then(()=> {
     console.log('logged out')
     store.dispatch(setIsUserLoggedIn(false));
     store.dispatch(setUserId(null));
+    store.dispatch(setSavedAttraction({}));
   }).catch((error) => {
     console.log(error.message)
   })
@@ -132,32 +130,32 @@ function onLoginSuccess(user) {
     console.log(error);
   });
   // Turn on listening to the saved attraction list and save references to the listener
-  let {ref, onChanged} = onSavedAttractionChange(user.uid);
-  savedAttractionRef = ref;
-  savedAttractionChanged = onChanged;
+  onSavedAttractionChange(user.uid);
 }
 
 function onSavedAttractionChange(uid) {
   var savedAttractionRef = firebase.database().ref('users/' + uid + '/savedAttractions/');
   var savedAttractionChanged = savedAttractionRef.on('value', (snapshot) => {
     const data = snapshot.val();
-    console.log(data);
     if(data) {
       store.dispatch(setSavedAttraction(data));
+    } else {
+      store.dispatch(setSavedAttraction({}));
     }
   });
-  return {savedAttractionRef, savedAttractionChanged};
 }
 
 export const writeSavedAttraction = (attraction) => {
-  var uid = store.getState().userState.user.uid;
-  var savedAttractionRef = firebase.database().ref('users/' + uid + '/savedAttractions/');
-  savedAttractionRef.update(
-  {
-    [attraction.pageid]: {
-      title: attraction.title,
-    }
-  });
+  if(store.getState().userState.isUserLoggedIn) {
+    var uid = store.getState().userState.user.uid;
+    var savedAttractionRef = firebase.database().ref('users/' + uid + '/savedAttractions/');
+    savedAttractionRef.update(
+      {
+        [attraction.pageid]: {
+          title: attraction.title,
+        }
+    });
+  }
 }
 
 export const writeNewUser = (uid, name) => {

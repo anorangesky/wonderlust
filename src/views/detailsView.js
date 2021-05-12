@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { writeSavedAttraction } from '../services/firebase'
 import '../css/detailsView.css';
 import logo from '../images/wonderlust.png';
 import logo1 from '../images/wonderlust1.png';
@@ -45,10 +45,10 @@ function DetailsView(props){
                       </div>
 
                       <div className="details-footer-item">
-                          <button disabled={props.isUserLoggedIn} onClick={e => props.onPress()}>How to get there</button>
+                          <button disabled={!props.isUserLoggedIn} onClick={e => props.onPress()}>How to get there</button>
                           <span>
-                              <button disabled={props.isUserLoggedIn} onClick={props.onSave(props.article)}>Save</button>
-                              <button disabled={props.isUserLoggedIn} onClick={e => props.onPress()}>Share</button>
+                              <button disabled={!props.isUserLoggedIn} onClick={() => props.onSave(props.article)}>Save</button>
+                              <button disabled={!props.isUserLoggedIn} onClick={e => props.onPress()}>Share</button>
                           </span>
                       </div>
                   </div>

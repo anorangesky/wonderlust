@@ -2,7 +2,7 @@
 const initialUserState = {
     isUserLoggedIn: false,
     user: null,
-    savedAttractions: null,
+    savedAttractions: [],
 }
 
 export const setIsUserLoggedIn = userLoggedIn => {
@@ -27,7 +27,6 @@ export const setSavedAttraction = attraction => {
 }
 
 export default function userState (state = initialUserState, action){
-
     switch(action.type){
         case 'userState/setIsUserLoggedIn':
             return{
