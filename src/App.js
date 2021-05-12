@@ -7,8 +7,8 @@ import Navbar from './views/navigationView';
 import NotificationView from './views/notificationView';
 import YourAttractionsView from './views/yourAttractionsView';
 import AddAttractionView from './views/addAttractionView'
-import LogInView from './views/authViews/LogInView';
-import firebase from "firebase/app";
+// import LogInView from './views/authViews/LogInView';
+// import firebase from "firebase/app";
 import "firebase/auth";
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -22,7 +22,7 @@ import { mapAttractionListToProps,
 import { setAttractions } from './redux/reducer';
 import { getUserPosition } from './redux/slices/currentPositionSlice';
 
-import userState from "./redux/slices/userState"
+// import userState from "./redux/slices/userState"
 
 store.dispatch(getUserPosition());
 // Just for testing, should be initialized with the users current position
@@ -39,12 +39,12 @@ const SearchViewPresenter = connect(null, mapDispatchToSearchView)(SearchView);
 
 const NavigationPresenter = connect(mapUserStateToProps,
                                     null)(Navbar);
-const YourAttractionsPresenter = connect(mapUserStateToProps, 
+const YourAttractionsPresenter = connect(mapUserStateToProps,
                                             mapDispatchToMapView)(YourAttractionsView);
 
 function App(props) {
-  /* 
-      check if user is online so they can't hack themself in     
+  /*
+      check if user is online so they can't hack themself in
   */
   let navigation;
   if (props.isUserLoggedIn){
@@ -52,10 +52,10 @@ function App(props) {
         <Switch>
             <Route path='/' exact component={MapPresenter}/>
             <Route path='/map' component={MapPresenter}/>
-              <Route path='/addAttraction' component={AddAttractionView}/> 
-              <Route path='/yourAttractions' component={YourAttractionsPresenter}/> 
+              <Route path='/addAttraction' component={AddAttractionView}/>
+              <Route path='/yourAttractions' component={YourAttractionsPresenter}/>
               <Route path='/notifications' component={NotificationView}/>
-              <Route path='/settings' component={SettingsView}/>            
+              <Route path='/settings' component={SettingsView}/>
         </Switch>
     )}else{
       navigation = (<MapPresenter/>)
@@ -67,7 +67,7 @@ function App(props) {
         <NavigationPresenter/>
         <SearchViewPresenter/>
         {navigation}
-      </Router>         
+      </Router>
     </React.Fragment>
   );
 }

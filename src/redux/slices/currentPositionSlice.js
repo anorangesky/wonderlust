@@ -93,12 +93,21 @@ export function getSearchPosition(query) {
           dispatch(setCurrentPosition(position));
           // Get the articles for the returned coordinates
           getArticlesFromLocation(position.lat, position.lng, 10000)
-          .then(data =>
+          .then((data) => {
             dispatch(setAttractions(data))
-          );
+          });
         }
       )
       .catch(error => dispatch(setCurrentPositionError(error)));
+  }
+}
+
+export function getArticles(position) {
+  return function(dispatch, getState) {
+    getArticlesFromLocation(position.lat, position.lng, 10000)
+      .then((data) => {
+        dispatch(setAttractions(data))
+     });
   }
 }
 
