@@ -153,6 +153,8 @@ export const writeSavedAttraction = (attraction) => {
       {
         [attraction.pageid]: {
           title: attraction.title,
+          thumbnail: attraction.thumbnail,
+          pageimage: attraction.pageimage,
         }
     });
   }
