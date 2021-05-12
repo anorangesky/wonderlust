@@ -37,16 +37,16 @@ function DetailsView(props){
                                       <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Very Poor">1 star</label>
                                   </fieldset>
                               </div>
-                                  <ul>
-                                      <li>Wow, i love this place. I reccomend a visit!</li>
-                                      <li>Probably the two most common comments were "timid" and "boring".</li>
+                                  <ul className="userComments">
+                                      <li>MOCKDATA: Wow, i love this place. I reccomend a visit!</li>
+                                      <li>MOCKDATA: Probably the two most common comments were "timid" and "boring".</li>
                                   </ul>
                                   <input id="details-comment" type="text" placeholder="Leave a comment" onChange={e => props.onChange()}/>
                           </div>
                       </div>
 
                       <div className="details-footer-item">
-                          <button disabled={true} onClick={e => props.onPress()}>How to get there</button>
+                          <button disabled onClick={e => props.onPress()}>How to get there</button>
                           <span>
                               {props.isAttractionSaved?
                                 <button onClick={() => removeSavedAttraction(props.article.pageid)}>Remove</button>:

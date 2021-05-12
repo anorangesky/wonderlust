@@ -62,11 +62,15 @@
   }
   .card.body.left, .card.body.right{
     justify-content: center;
+    display: flex;
+    flex-direction: column;
   }
   #details-about{
     overflow: auto;
     height: 80%;
     margin: 10px;
+    text-align: center;
+
     }
 
   #details-image{
@@ -82,57 +86,67 @@
 fieldset{
   display: flex;
   padding: 0px;
+  cursor: not-allowed;
+
 }
 .star-rating {
   font-family: 'FontAwesome';
   font-size: 150%;
+  cursor: not-allowed;
+
 }
 .star-rating > fieldset {
+  cursor: not-allowed;
   border: none;
   display: inline-block;
 }
 .star-rating > fieldset:not(:checked) > input {
+  cursor: not-allowed;
   position: absolute;
   top: -9999px;
   clip: rect(0, 0, 0, 0);
 }
 .star-rating > fieldset:not(:checked) > label {
+  cursor: not-allowed;
+
   float: right;
   width: 1em;
   overflow: hidden;
   white-space: nowrap;
   cursor: pointer;
-  color: gray;
+  color: #F7B088;;
 }
 .star-rating > fieldset:not(:checked) > label:before {
+  cursor: not-allowed;
+
   content: '\f006  ';
 }
 .star-rating > fieldset:not(:checked) > label:hover,
 .star-rating > fieldset:not(:checked) > label:hover ~ label {
-  color: gray;
+  cursor: not-allowed;
+
+  color:#F7B088;;
 }
 .star-rating > fieldset:not(:checked) > label:hover:before,
 .star-rating > fieldset:not(:checked) > label:hover ~ label:before {
+  cursor: not-allowed;
+
   content: '\f005  ';
 }
 .star-rating > fieldset > input:checked ~ label:before {
+  cursor: not-allowed;
+
   content: '\f005  ';
 }
 .star-rating > fieldset > label:active {
+  cursor: not-allowed;
+
   position: relative;
   top: 2px;
 }
 
 .card-body-right ul{
   padding: 0;
-}
-.card-body-right li{
-  font-size: smaller;
-  font-style: italic;
-  max-height: 15px;
-  overflow: auto;
-  background-color: lightgray;
-  margin: 2px 10px 2px 0px;
 }
 #details-comment{
   cursor: not-allowed;
@@ -150,6 +164,32 @@ fieldset{
   justify-content: center;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+button:disabled:hover {
+  cursor: not-allowed;
+  background: lightgray;
+  color: gray;
+}
+button:disabled{
+  cursor: not-allowed;
+  background: lightgray;
+  color: gray;
+}
+
+
+
+.userComment, ul{
+  cursor: not-allowed;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: smaller;
+  font-style: italic;
+  margin: 2px 10px 2px 0px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -175,6 +215,14 @@ fieldset{
             width: auto;
             overflow-wrap: break-word;
             overflow-x: hidden;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: normal;
+            padding-top: 7%;
+           
+
           }
             #details-image{
               width:200px;

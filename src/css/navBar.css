@@ -65,6 +65,16 @@
     background: #fff;
     color: #F7B088;
 }
+button:disabled:hover {
+    cursor: not-allowed;
+    background: lightgray;
+    color: gray;
+  }
+  button:disabled{
+    cursor: not-allowed;
+    background: lightgray;
+    color: gray;
+  }
 
 #not-implemented{
     cursor: not-allowed;

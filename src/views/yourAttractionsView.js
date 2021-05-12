@@ -33,33 +33,33 @@ function YourAttractionsView(props){
                     <p id="list-title"> {attraction.title} </p>
                   </div>
                   <div id="list-buttons">
-                    <button id="list-share"> Share </button>
-                    <img id="list-trash"src={remove} onClick={e => removeSavedAttraction(attraction.pageid)} alt=""/>
+                    <button disabled id="list-share"> Share </button>
+                    <img id="list-trash"src={remove} onClick={e => removeSavedAttraction(attraction.pageid)}/>
+
                   </div>
             </li>
             )}
         </ul>
-        <div className="yourMapView">
+        <div disabled className="yourMapView">
           <h4>UNDER DEVELOPMENT</h4>
-          <p>Your saved attractions will be displayed here on a map </p>
+          <p>Your saved attractions on a map will soon be displayed here! </p>
         </div>
-        </div>
-        <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-              >
-                <div>
-                  {
-                    props.attractionData &&
-                    <YourAttractionsDetailsView handleClose={() => handleClose()}
-                                  article={props.attractionData}
-                    />
-                  }
-                </div>
-             </Modal>
       </div>
+        <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            >
+          <div>
+            {props.attractionData &&
+              <YourAttractionsDetailsView handleClose={() => handleClose()}
+                                        article={props.attractionData}
+              />
+            }
+          </div>
+        </Modal>
+    </div>
   )
 }
 

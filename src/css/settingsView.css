@@ -21,12 +21,6 @@
 }
 
 
-.settings-container button:hover{
-    transition: all 0.2s ease-in-out;
-    color: #fff;
-    background: lightgray;
-}
-
 .settings-container img{
     border-radius: 50%;
 }
