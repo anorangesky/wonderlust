@@ -1,4 +1,14 @@
-.container{
+button:disabled:hover {
+    cursor: not-allowed;
+    background: lightgray;
+    color: gray;
+  }
+  button:disabled{
+    cursor: not-allowed;
+    background: lightgray;
+    color: gray;
+  }
+  .container{
     display: flex;
     font-family: 'Roboto', sans-serif;
     font-weight: lighter;
