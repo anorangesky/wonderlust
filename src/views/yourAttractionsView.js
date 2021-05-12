@@ -34,7 +34,7 @@ function YourAttractionsView(props){
                   </div>
                   <div id="list-buttons">
                     <button id="list-share"> Share </button>
-                    <img id="list-trash"src={remove} onClick={e => removeSavedAttraction(attraction.pageid)}/>
+                    <img id="list-trash"src={remove} onClick={e => removeSavedAttraction(attraction.pageid)} alt=""/>
                   </div>
             </li>
             )}
