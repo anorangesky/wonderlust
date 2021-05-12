@@ -8,9 +8,10 @@ import "../css/yourAttractionsView.css";
 
 function YourAttractionsView(props){
   //mockdata:
-  const attractions = [ {pageid: 1, thumbnail: logo1, title: "test1", pageimage: "logo1"},
-                        {pageid: 3, title: "Test 3: Taumatawhakatangihangakoauauotamateaturi pukakapikimaungahoronuku pokaiwhenuakitanatahu"}, 
-                        {pageid: 2, thumbnail: logo2, title: "test2", pageimage: "logo2"}]
+  const attractions = [ {pageid: 1, thumbnail: logo1, title: "1. Thailand: Krung Thep Maha Nakhon Amon Rattanakosin Mahinthara Ayutthaya Mahadilok Phop Noppharat Ratchathani Burirom Udom Ratchaniwet Mahasathan Amon Phiman Awatan Sathit Sakkathattiya Witsanu Kamprasit", pageimage: "logo1"},
+                        {pageid: 2, thumbnail: logo2, title: "2. Wales:Llanfairpwllgwyngyll", pageimage: "logo2"},
+                        {pageid: 3, title: "3. New Zeeland: Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu"}
+                      ]
 
   return(
       <div>

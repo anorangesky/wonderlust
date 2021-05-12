@@ -5,23 +5,23 @@
 
 
 }
-
 .list-container{
     display: flex;
     flex-direction: column-reverse;
-    min-width: 30%;
-    max-width: 50%;
-    list-style-type: none;
     margin: 0;
-    padding: 10px;
+    position: relative;
+    margin-left: -5%;
+    list-style-type: none;
+    max-width: 300px;
+    overflow: hidden;
     
 }
+
 
 .list-item{
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
     justify-content: space-between;
     margin: 5px;
     padding: 2px;
@@ -35,8 +35,8 @@
 }
 #list-title{
     text-align: center;
-
-
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 #list-title:hover{
     cursor: pointer;
@@ -61,12 +61,31 @@
     cursor: pointer;
 }
 .yourMapView{
-    flex:1;
-    border: 1px solid lightslategrey;
-    color: lightslategrey;
-    text-align: center;
-    margin: 10px;
-    cursor: not-allowed;
+    display: none;
+}
+
+/* This applies from 600px onwards
+    (Desktop specifics) */
+@media (min-width: 600px) {
+    .list-container{
+        display: flex;
+        flex-direction: column-reverse;
+        min-width: 30%;
+        max-width: 50%;
+        list-style-type: none;
+        margin: 0;
+        padding: 10px;
+        
+    }
+    .yourMapView{
+        flex:1;
+        border: 1px solid lightslategrey;
+        color: lightslategrey;
+        text-align: center;
+        margin: 10px;
+        cursor: not-allowed;
+    
+    }
+
 
 }
-    
