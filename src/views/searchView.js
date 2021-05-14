@@ -15,7 +15,7 @@ function SearchView(props) {
       <div className="searchbar">
         <input type="search"
               id="locationSearch"
-              placeholder="Find a place"
+              placeholder="Find a location"
               onChange={e => debouncedOnChange(e.target.value)}
         />
       </div>
