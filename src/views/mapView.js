@@ -71,6 +71,7 @@ function MapView(props){
                   zoomControl={false}
                   fullscreenControl={false}
                   streetViewControl={false}
+                  mapTypeControl={false}
                   onReady={(mapProps, map) => mapLoaded(mapProps, map)}
                   onRecenter={(mapProps, map) => centerChanged(mapProps, map)}
                   onDragend={(mapProps, map) => dragEnd(mapProps, map)}

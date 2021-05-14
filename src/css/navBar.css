@@ -18,6 +18,15 @@
     padding-bottom: 2%;
 }
 
+.nav-menu-circle {
+  width: 71px;
+  height: 71px;
+  border-radius: 50px;
+  position: fixed;
+  z-index: 1;
+  background-color: #F7B088;
+}
+
 .nav-link{
     color: #F7B088;
     display: flex;
@@ -30,6 +39,7 @@
 
 .nav-link img{
     width: 100%;
+    z-index: 2;
 }
 .nav-link-title{
     text-decoration: none;
