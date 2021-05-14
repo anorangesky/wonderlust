@@ -24,7 +24,7 @@ const Navbar = (props) => {
            <div className="nav-menu">
             <Link className="nav-link" to='/map'>
                 <img src={map} alt="map"/>
-                {location.pathname === "/map" && <div className="nav-menu-circle"></div>}
+                {((location.pathname === "/map") || (location.pathname === `/`)) &&<div className="nav-menu-circle"></div>}
             </Link>
             <Link className="nav-link">
                 <img src={addAttractions} id="not-implemented"/>
