@@ -4,7 +4,7 @@ import "../css/titleView.css";
 import LogInView from './authViews/LogInView';
 import TitleView from './titleView';
 // import SettingsView from './settingsView';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import addAttractions from "../images/addAttraction.png";
 import map from "../images/homeMap.png";
@@ -15,7 +15,7 @@ import settings from "../images/settings.png";
 
 
 const Navbar = (props) => {
-
+    let location = useLocation();
     let navbar = (
         <LogInView/>
     );
@@ -24,20 +24,23 @@ const Navbar = (props) => {
            <div className="nav-menu">
             <Link className="nav-link" to='/map'>
                 <img src={map} alt="map"/>
+                {location.pathname === "/map" && <div className="nav-menu-circle"></div>}
             </Link>
             <Link className="nav-link">
                 <img src={addAttractions} id="not-implemented"/>
-
+                {location.pathname === "/addAttractions" && <div className="nav-menu-circle"></div>}
             </Link>
             <Link className="nav-link" to='/yourAttractions'>
                 <img src={yourAttr} alt="your attractions"/>
+                {location.pathname === "/yourAttractions" && <div className="nav-menu-circle"></div>}
             </Link>
             <Link className="nav-link">
               <img src={notifications} id="not-implemented"/>
-
+              {location.pathname === "/notifications" && <div className="nav-menu-circle"></div>}
             </Link>
             <Link className="nav-link" to='/settings'>
               <img src={settings} alt="settings"/>
+              {location.pathname === "/settings" && <div className="nav-menu-circle"></div>}
             </Link>
           </div>
         )
