@@ -1,5 +1,5 @@
 import React from 'react';
-import "../css/navBar.css";
+import "../css/navigationView.css";
 import "../css/titleView.css";
 import "../css/detailsView.css";
 import LogInView from './authViews/LogInView';
@@ -12,17 +12,11 @@ import map from "../images/homeMap.png";
 import notifications from "../images/notifications.png";
 import yourAttr from "../images/yourAttr.png";
 import settings from "../images/settings.png";
+import AddAttractionView from './addAttractionView';
 
 
 
 const Navbar = (props) => {
-  function triggerPopup() {
-    let popup = document.getElementById("myPopupDisabled");
-    if(props.isUserLoggedIn){
-        popup = document.getElementById("myPopupLoggedOut");
-    }
-    popup.classList.toggle("show");
-  }
 
     let location = useLocation();
     let navbar = (
@@ -35,17 +29,17 @@ const Navbar = (props) => {
                 <img src={map} alt="map"/>
                 {((location.pathname === "/map") || (location.pathname === `/`)) &&<div className="nav-menu-circle"></div>}
             </Link>
-            <Link className="nav-link" to='/addAttractions'id="disabled-nav">
-                <img src={addAttractions}/>
-                {location.pathname === "/addAttractions" && <div className="nav-menu-circle"></div>}
+            <Link className="nav-link" to='/addAttractions'>
+                <img src={addAttractions} alt="add attraction"/>
+                {location.pathname === "/addAttractions" && <div id="disabled-nav"></div>}
             </Link>
             <Link className="nav-link" to='/yourAttractions'>
                 <img src={yourAttr} alt="your attractions"/>
                 {location.pathname === "/yourAttractions" && <div className="nav-menu-circle"></div>}
             </Link>
-            <Link className="nav-link" to='notifications' id="disabled-nav">
+            <Link className="nav-link" to='notifications' >
               <img src={notifications}/>
-              {location.pathname === "/notifications" && <div className="nav-menu-circle"></div>}
+              {location.pathname === "/notifications" && <div id="disabled-nav"></div>}
             </Link>
             <Link className="nav-link" to='/settings'>
               <img src={settings} alt="settings"/>
