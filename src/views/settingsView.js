@@ -25,7 +25,7 @@ function SettingsView(){
 
         <button disabled id="not-implemented"> Edit Profile </button>
         <button disabled id="not-implemented"> Friends </button>
-        <button disabled id="not-implemented"> About WL </button>
+        <button disabled id="not-implemented"> About Wonderlust </button>
 
 
         <button className = "logOutBtn" onClick={() => {logOut(); routeChange()}}>
