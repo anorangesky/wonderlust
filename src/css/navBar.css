@@ -27,6 +27,10 @@
   background-color: #F7B088;
 }
 
+#disabled-nav .nav-button{
+    background-color:lightgray;
+}
+
 .nav-link{
     color: #F7B088;
     display: flex;
@@ -74,20 +78,6 @@
     transition: all 0.2s ease-in-out;
     background: #fff;
     color: #F7B088;
-}
-button:disabled:hover {
-    cursor: not-allowed;
-    background: lightgray;
-    color: gray;
-  }
-  button:disabled{
-    cursor: not-allowed;
-    background: lightgray;
-    color: gray;
-  }
-
-#not-implemented{
-    cursor: not-allowed;
 }
 
  /* This applies from 600px onwards

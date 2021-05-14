@@ -1,6 +1,7 @@
 import React from 'react';
 import "../css/navBar.css";
 import "../css/titleView.css";
+import "../css/detailsView.css";
 import LogInView from './authViews/LogInView';
 import TitleView from './titleView';
 // import SettingsView from './settingsView';
@@ -15,6 +16,14 @@ import settings from "../images/settings.png";
 
 
 const Navbar = (props) => {
+  function triggerPopup() {
+    let popup = document.getElementById("myPopupDisabled");
+    if(props.isUserLoggedIn){
+        popup = document.getElementById("myPopupLoggedOut");
+    }
+    popup.classList.toggle("show");
+  }
+
     let location = useLocation();
     let navbar = (
         <LogInView/>
@@ -26,16 +35,16 @@ const Navbar = (props) => {
                 <img src={map} alt="map"/>
                 {((location.pathname === "/map") || (location.pathname === `/`)) &&<div className="nav-menu-circle"></div>}
             </Link>
-            <Link className="nav-link">
-                <img src={addAttractions} id="not-implemented"/>
+            <Link className="nav-link" to='/addAttractions'id="disabled-nav">
+                <img src={addAttractions}/>
                 {location.pathname === "/addAttractions" && <div className="nav-menu-circle"></div>}
             </Link>
             <Link className="nav-link" to='/yourAttractions'>
                 <img src={yourAttr} alt="your attractions"/>
                 {location.pathname === "/yourAttractions" && <div className="nav-menu-circle"></div>}
             </Link>
-            <Link className="nav-link">
-              <img src={notifications} id="not-implemented"/>
+            <Link className="nav-link" to='notifications' id="disabled-nav">
+              <img src={notifications}/>
               {location.pathname === "/notifications" && <div className="nav-menu-circle"></div>}
             </Link>
             <Link className="nav-link" to='/settings'>
@@ -48,6 +57,7 @@ const Navbar = (props) => {
 
   return (
     <>
+  
       <div className="nav-container">
         <Link className="header-title" to='/'><TitleView/></Link>
         {navbar}

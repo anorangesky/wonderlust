@@ -52,9 +52,10 @@ function App(props) {
         <Switch>
             <Route path='/' exact component={MapPresenter}/>
             <Route path='/map' component={MapPresenter}/>
+            <Route path='/addAttractions' />
             <Route path='/yourAttractions' component={YourAttractionsPresenter}/> 
-            <Route path='/settings' component={SettingsView}/>            
-
+            <Route path='/notifications'/>
+            <Route path='/settings' component={SettingsView}/> 
         </Switch>
     )}else{
       navigation = (<MapPresenter/>)
