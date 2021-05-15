@@ -19,13 +19,28 @@
 }
 
 .nav-menu-circle {
-  width: 71px;
-  height: 71px;
+  width: 60px;
+  height: 60px;
   border-radius: 50px;
   position: fixed;
   z-index: 1;
   background-color: #F7B088;
 }
+
+ .nav-menu img:hover{
+    border-radius: 50px;
+    position:sticky;
+    z-index: 2;
+    background-color: #F7B088;
+}
+
+#disabled-nav{
+    width: 50px;
+    height: 50px ;
+    border-radius: 50px;
+    position: fixed;
+    z-index: 1;
+    background-color:lightgray;}
 
 .nav-link{
     color: #F7B088;
@@ -74,20 +89,6 @@
     transition: all 0.2s ease-in-out;
     background: #fff;
     color: #F7B088;
-}
-button:disabled:hover {
-    cursor: not-allowed;
-    background: lightgray;
-    color: gray;
-  }
-  button:disabled{
-    cursor: not-allowed;
-    background: lightgray;
-    color: gray;
-  }
-
-#not-implemented{
-    cursor: not-allowed;
 }
 
  /* This applies from 600px onwards

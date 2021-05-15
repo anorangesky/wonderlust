@@ -8,6 +8,14 @@ import logo2 from '../images/wonderlust2.png';
 
 // rewrite this to only return the body
 function DetailsView(props){
+    function triggerPopup() {
+        let popup = document.getElementById("myPopupDisabled");
+        if(!props.isUserLoggedIn){
+            popup = document.getElementById("myPopupLoggedOut");
+        }
+        popup.classList.toggle("show");
+      }
+
     return(
       <div>
          <div className="details-container" id="detailsCard">
@@ -29,7 +37,7 @@ function DetailsView(props){
                                   src={props.article.thumbnail ? props.article.thumbnail.source : logo}
                                   alt={props.article.pageimage ? props.article.pageimage : "Wonderlust logo"}/>
                               <div className="star-rating">
-                                  <fieldset>
+                                  <fieldset onClick={e => triggerPopup()}>
                                       <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Outstanding">5 stars</label>
                                       <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Very Good">4 stars</label>
                                       <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Good">3 stars</label>
@@ -41,20 +49,33 @@ function DetailsView(props){
                                       <li>MOCKDATA: Wow, i love this place. I reccomend a visit!</li>
                                       <li>MOCKDATA: Probably the two most common comments were "timid" and "boring".</li>
                                   </ul>
-                                  <input id="details-comment" type="text" placeholder="Leave a comment" onChange={e => props.onChange()}/>
+                                  <input disabled id="details-comment" type="text" placeholder="Leave a comment" onChange={e => triggerPopup()}/>
                           </div>
                       </div>
-
+                    
                       <div className="details-footer-item">
-                          <button disabled onClick={e => props.onPress()}>How to get there</button>
-                          <span>
-                              {props.isAttractionSaved?
-                                <button onClick={() => removeSavedAttraction(props.article.pageid)}>Remove</button>:
-                                <button disabled={!props.isUserLoggedIn} onClick={() => props.onSave(props.article)}>Save</button>
-                                }
-                              <button disabled={true} onClick={e => props.onPress()}>Share</button>
-                          </span>
+                        <span className="popup">
+                            <button id="disabled"onClick={() => triggerPopup()}>Directions
+                                <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
+                                <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
+                            </button>   
+                            <button id="disabled" onClick={() => triggerPopup()}>Share
+                                <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
+                                <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
+                            </button>
+                     
+                            {props.isAttractionSaved?
+                                <button onClick={() => {removeSavedAttraction(props.article.pageid)} }>Remove
+                                    <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
+                                </button>:
+                                <button id={props.isUserLoggedIn?"":"disabled"} onClick={() => props.isUserLoggedIn? props.onSave(props.article): triggerPopup()}>Save
+                                    <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
+                                </button>
+                            }
+                            </span>   
+                            
                       </div>
+    
                   </div>
       </div>
     );
