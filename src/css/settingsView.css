@@ -30,8 +30,9 @@
     cursor: not-allowed;
 }
 
-.settings-container img{
+#profileImage{
     border-radius: 50%;
+    width: 40%;
 }
 
 .settings-container h1,h3{
@@ -83,3 +84,12 @@
     from {opacity: 0;}
     to {opacity:0.95 ;}
   }
+
+   /* This applies from 600px onwards 
+        (Desktop specifics) */
+@media (min-width: 600px) {
+  #profileImage{
+    border-radius: 50%;
+    width: 20%;
+  }
+}

@@ -7,61 +7,58 @@
 /* Nav bar as a footer on mobile */
 .nav-menu{
     display: flex;
-    align-items: center;
     position: fixed;
     bottom: 0;
-    width: 100%;
-    background-color: white;
-    z-index: 10000;
+    width: 97%;
     height: 10%;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    background-color: white;
+    z-index: 1000;
+    justify-content: space-between;  
 }
 
 .nav-menu-circle {
   width: 60px;
   height: 60px;
   border-radius: 50px;
-  position: fixed;
-  z-index: 1;
   background-color: #F7B088;
+  position: absolute;
 }
 
- .nav-menu img:hover{
-    border-radius: 50px;
+ .nav-menu #enabled:hover{
+    border-radius: 50%;
     position:sticky;
     z-index: 2;
     background-color: #F7B088;
 }
 
-#disabled-nav{
-    width: 50px;
-    height: 50px ;
+#disabled-nav {
+    width: 60px;
+    height: 60px;
     border-radius: 50px;
     position: fixed;
-    z-index: 1;
-    background-color:lightgray;}
+    z-index: 2;
+    background-color: lightgray;
+  }
+
+.nav-menu #disabled2:hover{
+    border-radius: 50%;
+    position:sticky;
+    z-index: 3;
+    background-color: lightgray;
+}
 
 .nav-link{
     color: #F7B088;
     display: flex;
     align-items: center;
     text-decoration: none;
-    padding: 0 1rem;
     cursor: pointer;
-    justify-content:space-around
+    justify-content:space-around;
 }
 
 .nav-link img{
-    width: 100%;
-    z-index: 2;
-}
-.nav-link-title{
-    text-decoration: none;
-
-}
-.nav-link .active {
-    color: #000000;
+    width: 90%;
+    z-index: 10;
 }
 
 .nav-button{
@@ -82,8 +79,7 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  /* Second Nav */
-  margin-left: 24px;
+
 }
 .nav-button-link:hover{
     transition: all 0.2s ease-in-out;
@@ -103,6 +99,9 @@
         right: 0px;
         justify-content: flex-end;
         z-index: auto;
+    }
+    .nav-link{
+        width: 7% ;
     }
 
 }

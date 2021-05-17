@@ -20,14 +20,14 @@ function YourAttractionsView(props){
   };
 
   function triggerPopup() {
-    const popup = document.getElementById("myPopupDisabled");
-    popup.classList.toggle("show");
+    const popup2 = document.getElementById("myPopupDisabled");
+    popup2.classList.toggle("show");
   }
 
   return(
       <div>
         <h1> Your saved attractions </h1>
-        <div className="container">
+        <div className="yourSaved-container">
         <ul className="list-container">
           {props.savedAttractions.map(attraction =>
             <li className="list-item" key={attraction.pageid} >
@@ -39,36 +39,23 @@ function YourAttractionsView(props){
                     <p id="list-title"> {attraction.title} </p>
                   </div>
                   <div id="list-buttons">
-                    <span className="popup">
-                      <button onClick={e => triggerPopup()} id="disabled"> Share </button>
-                      <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
-                    </span>
+                      <button id="disabled3"> Share </button>
                     <img id="list-trash"src={remove} onClick={e => removeSavedAttraction(attraction.pageid)}/>
 
                   </div>
             </li>
             )}
         </ul>
-        <div disabled className="yourMapView">
-          <h4>UNDER DEVELOPMENT</h4>
-          <p>Your saved attractions on a map will soon be displayed here! </p>
-        </div>
-      </div>
-        <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-            >
-          <div>
-            {props.attractionData &&
-              <YourAttractionsDetailsView handleClose={() => handleClose()}
-                                        article={props.attractionData}
-              />
-            }
+        <div className="yourMapView">
+          <div className="disabled-container">
+              <h3> Hold out!</h3>
+              <h5> You have discovered a feature that is not yet implemented...
+              <br/> soon you will be able to see your saved attractions on a map here. </h5>
+              <img src={logo}/>
           </div>
-        </Modal>
-    </div>
+        </div>
+        </div>
+        </div>
   )
 }
 
