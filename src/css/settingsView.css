@@ -11,21 +11,21 @@
     background: #F7B088;
     color: black;
     margin:15px;
-    border: 2px solid gray; 
+    border: 2px solid gray;
     width: 150px;
 }
 #not-implemented{
     background:#fff;
     color: gray;
     margin:2px;
-    border: 2px solid gray; 
+    border: 2px solid gray;
     width: 150px;
 }
 #not-implemented:hover{
     background:lightgray;
     color: gray;
     margin:2px;
-    border: 2px solid gray; 
+    border: 2px solid gray;
     width: 150px;
     cursor: not-allowed;
 }
@@ -48,38 +48,38 @@
     flex-direction: column;
     cursor: pointer;
   }
-  
+
   /* The actual popup */
   .popup .popuptext {
     visibility: hidden;
     width: auto;
     height: auto;
-  
+
     background-color:gray;
     opacity:0.95;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5%;
-    position: fixed;
+    padding: 1em;
+    /* position: fixed; */
     z-index: 1;
-    top:50%;
-    margin-left: -5%;
+    /* top:50%; */
+    /* margin-left: -5%; */
   }
-  
+
   /* Toggle this class - hide and show the popup */
   .popup .show {
     visibility: visible;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
   }
-  
+
   /* Add animation (fade in the popup) */
   @-webkit-keyframes fadeIn {
-    from {opacity: 0;} 
+    from {opacity: 0;}
     to {opacity: 0.95;}
   }
-  
+
   @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:0.95 ;}

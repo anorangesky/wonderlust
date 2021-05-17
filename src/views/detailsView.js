@@ -64,7 +64,7 @@ function DetailsView(props){
                                 <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
                                 <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
                             </button>
-                     
+
                             {props.isAttractionSaved?
                                 <button onClick={() => {removeSavedAttraction(props.article.pageid)} }>Remove
                                     <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
@@ -75,7 +75,7 @@ function DetailsView(props){
                             }
                             </div>
                       </div>
-    
+
                   </div>
                   </div>   
                             
