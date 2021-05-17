@@ -218,7 +218,7 @@ fieldset{
 
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
-  from {opacity: 0;} 
+  from {opacity: 0;}
   to {opacity: 0.95;}
 }
 
@@ -256,7 +256,7 @@ fieldset{
             align-items: center;
             font-size: normal;
             padding-top: 7%;
-           
+
 
           }
             #details-image{

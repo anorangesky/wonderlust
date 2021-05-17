@@ -52,18 +52,18 @@ function DetailsView(props){
                                   <input disabled id="details-comment" type="text" placeholder="Leave a comment" onChange={e => triggerPopup()}/>
                           </div>
                       </div>
-                    
+
                       <div className="details-footer-item">
                         <span className="popup">
                             <button id="disabled"onClick={() => triggerPopup()}>Directions
                                 <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
                                 <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
-                            </button>   
+                            </button>
                             <button id="disabled" onClick={() => triggerPopup()}>Share
                                 <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
                                 <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
                             </button>
-                     
+
                             {props.isAttractionSaved?
                                 <button onClick={() => {removeSavedAttraction(props.article.pageid)} }>Remove
                                     <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
@@ -72,10 +72,10 @@ function DetailsView(props){
                                     <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
                                 </button>
                             }
-                            </span>   
-                            
+                            </span>
+
                       </div>
-    
+
                   </div>
       </div>
     );
