@@ -8,7 +8,7 @@
 .nav-menu{
     display: flex;
     align-items: center;
-    position: fixed;
+    position:absolute;
     bottom: 0;
     width: 100%;
     background-color: white;

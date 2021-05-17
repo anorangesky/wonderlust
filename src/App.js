@@ -47,7 +47,7 @@ function App(props) {
       check if user is online so they can't hack themself in
   */
   let navigation;
-  if (props.isUserLoggedIn){
+  if (!props.isUserLoggedIn){
     navigation = (
         <Switch>
             <Route path='/' exact component={MapPresenter}/>

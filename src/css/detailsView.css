@@ -3,9 +3,10 @@
 .details-container {
     display: flex;
     position: fixed;
-    left: 10%;
+    left: 5%;
     top: 10%;
-    width: 300px;
+    width: 330px;
+    max-height: 500px;
 
     background-color: white;
     flex-direction: column;
@@ -26,7 +27,13 @@
     flex-direction: row;
     background-color: #F7B088;
     border-radius: 15px 15px 0 0;
+  }
 
+  .details-header-item, h1{
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-right: 2px;
   }
     .detais-header-item, img{
         width:15%;
