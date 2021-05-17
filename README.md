@@ -26,10 +26,13 @@ Else:
 - wonderlust/src
   -   css/ contains style sheets for the different views
       - detailsView.css
+      - disabled.css - make the disabled features behave 
       - loginView.css
       - mapView.css
+      - navigation.css
       - searchView.css
       - titleView.css
+      - yourAttractionsView.css
   - images/ contains images used as the logo and/or placeholders
   -  redux/ contains redux specific content
      -  Reducer.js - Reducers and action creators
