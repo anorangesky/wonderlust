@@ -6,25 +6,19 @@ button:disabled:hover {
     background: lightgray;
     color: gray;
   }
-  .container{
-    display: flex;
-    font-family: 'Roboto', sans-serif;
-    font-weight: lighter;
-
-
-}
+ 
 .list-container{
     display: flex;
     flex-direction: column-reverse;
     margin: 0;
     position: relative;
-    margin-left: -5%;
     list-style-type: none;
     overflow: hidden;
 }
 
 .list-item{
     display: flex;
+    width: 95%;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -35,14 +29,23 @@ button:disabled:hover {
 }
 
 #list-image{
+    min-width: 50px;
+    max-width: 50px;
     width:50px;
     height: 50px;
+    object-fit: cover;
+    background-position: center;
+
+    
 }
 #list-title{
     text-align: center;
     text-overflow: ellipsis;
     overflow: hidden;
     margin-right: 2px;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    font-weight: lighter;
 }
 #openDetails{
     width: 100%;

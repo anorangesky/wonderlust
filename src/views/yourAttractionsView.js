@@ -27,7 +27,6 @@ function YourAttractionsView(props){
   return(
       <div>
         <h1> Your saved attractions </h1>
-        <div className="container">
         <ul className="list-container">
           {props.savedAttractions.map(attraction =>
             <li className="list-item" key={attraction.pageid} >
@@ -53,7 +52,6 @@ function YourAttractionsView(props){
           <h4>UNDER DEVELOPMENT</h4>
           <p>Your saved attractions on a map will soon be displayed here! </p>
         </div>
-      </div>
         <Modal
             open={open}
             onClose={handleClose}

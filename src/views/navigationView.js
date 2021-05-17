@@ -22,7 +22,7 @@ const Navbar = (props) => {
     let navbar = (
         <LogInView/>
     );
-    if (!props.isUserLoggedIn) {
+    if (props.isUserLoggedIn) {
         navbar = (
            <div className="nav-menu">
             <Link className="nav-link" to='/map'>
