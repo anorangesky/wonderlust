@@ -1,13 +1,20 @@
 import store from '../redux/store';
 import { setCurrentPositionZoom } from '../redux/slices/currentPositionSlice'
+import { Link, useHistory, useLocation } from "react-router-dom";
 import debounce from '../utilities/debounce';
 import '../css/searchView.css';
 import icon from '../images/location.png';
 
 function SearchView(props) {
+  const history = useHistory();
+  const location =  useLocation();
+
   const debouncedOnChange = debounce(text => {
       props.onTextInput(text);
       store.dispatch(setCurrentPositionZoom(13));
+      if(location.pathname !== '/map') {
+        history.push('/map');
+      }
     }, 750);
 
   return(
@@ -19,10 +26,12 @@ function SearchView(props) {
               onChange={e => debouncedOnChange(e.target.value)}
         />
       </div>
-        <button className="currentlocation-btn" onClick={() => props.getUserPosition()}>
-          <p>Go to your location</p>
-          <img src={icon} alt="go to your location"/>
-        </button>
+        <Link className='currentlocation-link' to='/map'>
+          <button className="currentlocation-btn" onClick={() => props.getUserPosition()}>
+            <p>Go to your location</p>
+            <img src={icon} alt="go to your location"/>
+          </button>
+        </Link>
     </div>
   );
 }
