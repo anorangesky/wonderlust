@@ -7,12 +7,12 @@
 /* Nav bar as a footer on mobile */
 .nav-menu{
     display: flex;
-    align-items: center;
+    align-items:stretch;
     position:absolute;
     bottom: 0;
     width: 100%;
     background-color: white;
-    z-index: 10000;
+    z-index: 1000;
     height: 10%;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -27,20 +27,30 @@
   background-color: #F7B088;
 }
 
- .nav-menu img:hover{
-    border-radius: 50px;
+ .nav-menu #enabled:hover{
+     width: 100%;
+    border-radius: 50%;
     position:sticky;
     z-index: 2;
     background-color: #F7B088;
 }
 
-#disabled-nav{
-    width: 50px;
-    height: 50px ;
+#disabled-nav {
+    width: 60px;
+    height: 60px;
     border-radius: 50px;
     position: fixed;
     z-index: 1;
-    background-color:lightgray;}
+    background-color: lightgray;
+  }
+
+.nav-menu #disabled2:hover{
+    border-radius: 50%;
+    position:sticky;
+    z-index: 2;
+    background-color: lightgray;
+}
+
 
 .nav-link{
     color: #F7B088;
@@ -55,13 +65,6 @@
 .nav-link img{
     width: 100%;
     z-index: 2;
-}
-.nav-link-title{
-    text-decoration: none;
-
-}
-.nav-link .active {
-    color: #000000;
 }
 
 .nav-button{

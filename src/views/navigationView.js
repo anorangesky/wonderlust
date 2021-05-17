@@ -7,7 +7,7 @@ import TitleView from './titleView';
 // import SettingsView from './settingsView';
 import { Link, useLocation } from "react-router-dom";
 
-import addAttractions from "../images/addAttraction.png";
+import addAttractions from "../images/addAttr.png";
 import map from "../images/homeMap.png";
 import notifications from "../images/notifications.png";
 import yourAttr from "../images/yourAttr.png";
@@ -26,23 +26,23 @@ const Navbar = (props) => {
         navbar = (
            <div className="nav-menu">
             <Link className="nav-link" to='/map'>
-                <img src={map} alt="map"/>
+                <img id="enabled" src={map} alt="map"/>
                 {((location.pathname === "/map") || (location.pathname === `/`)) &&<div className="nav-menu-circle"></div>}
             </Link>
             <Link className="nav-link" to='/addAttractions'>
-                <img src={addAttractions} alt="add attraction"/>
+                <img id="disabled2" src={addAttractions} alt="add attraction"/>
                 {location.pathname === "/addAttractions" && <div id="disabled-nav"></div>}
             </Link>
             <Link className="nav-link" to='/yourAttractions'>
-                <img src={yourAttr} alt="your attractions"/>
+                <img id="enabled" src={yourAttr} alt="your attractions"/>
                 {location.pathname === "/yourAttractions" && <div className="nav-menu-circle"></div>}
             </Link>
             <Link className="nav-link" to='notifications' >
-              <img src={notifications}/>
+              <img id="disabled2" src={notifications}/>
               {location.pathname === "/notifications" && <div id="disabled-nav"></div>}
             </Link>
             <Link className="nav-link" to='/settings'>
-              <img src={settings} alt="settings"/>
+              <img id="enabled" src={settings} alt="settings"/>
               {location.pathname === "/settings" && <div className="nav-menu-circle"></div>}
             </Link>
           </div>
