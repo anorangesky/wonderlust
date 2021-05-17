@@ -6,7 +6,7 @@
 Deployed at: https://wonderlust-cdeb9.web.app
 
 ## Project description
-Find interesting unexpected attractions in your local area. We fetch articles from Wikipedia that are related to a location (long, lat) and display them on a map using Google Map API. The users will be able to explore attractions on the map either by drag-drop or searching for a location in the search bar. As a logged-in user, you will also be able to save attractions on the map to a personal list (stored in Firebase). In the future you will also be able to add new attractiosn and share them with other users.
+Find interesting unexpected attractions in your local area. We fetch articles from Wikipedia that are related to a location (long, lat) and display them on a map using Google Map API. The users will be able to explore attractions on the map either by drag-drop or searching for a location in the search bar. As a logged-in user, you will also be able to save attractions on the map to a personal list (stored in Firebase). In the future you will also be able to add new attractions and share them with other users.
 
 ## How to setup
 IFF you have access to the correct `.env` file:
