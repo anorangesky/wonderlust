@@ -7,6 +7,7 @@
     top: 10%;
     width: 330px;
     max-height: 500px;
+    padding-bottom: 30px;
 
     background-color: white;
     flex-direction: column;
@@ -173,7 +174,7 @@ fieldset{
   margin-bottom: 10px;
 }
 
-#disabled, #disabled:hover {
+#disabled1, #disabled1:hover {
   cursor: not-allowed;
   background: lightgray;
   color: gray;
@@ -192,18 +193,17 @@ fieldset{
 }
 
 /* Popup container - can be anything you want */
-.popup {
-  position: relative;
+.popup1 {
+  position: fixed;
   display: flex;
   cursor: pointer;
+  flex-direction: row;
+
 }
 
 /* The actual popup */
-.popup .popuptext {
+.popup1 .popuptext {
   visibility: hidden;
-  width: auto;
-  height: auto;
-
   background-color:gray;
   opacity:0.95;
   color: #fff;
@@ -217,7 +217,7 @@ fieldset{
 }
 
 /* Toggle this class - hide and show the popup */
-.popup .show {
+.popup1 .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
@@ -263,7 +263,6 @@ fieldset{
             align-items: center;
             font-size: normal;
             padding-top: 7%;
-           
 
           }
             #details-image{

@@ -9,16 +9,17 @@ import logo2 from '../images/wonderlust2.png';
 // rewrite this to only return the body
 function DetailsView(props){
     function triggerPopup() {
-        let popup = document.getElementById("myPopupDisabled");
+        let popup1 = document.getElementById("myPopupDisabled");
         if(!props.isUserLoggedIn){
-            popup = document.getElementById("myPopupLoggedOut");
+            popup1 = document.getElementById("myPopupLoggedOut");
         }
-        popup.classList.toggle("show");
+        popup1.classList.toggle("show");
       }
 
     return(
       <div>
          <div className="details-container" id="detailsCard">
+
                       <div className="details-header-item">
                           <img src={logo2} alt="Location tag"/>
                           <div className="header-title">
@@ -53,13 +54,13 @@ function DetailsView(props){
                           </div>
                       </div>
                     
-                      <div className="details-footer-item">
-                        <span className="popup">
-                            <button id="disabled"onClick={() => triggerPopup()}>Directions
+                      <div className="details-footer-item" >
+                          <div className="popup1">
+                            <button id="disabled1"onClick={() => triggerPopup()}>Directions
                                 <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
                                 <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
                             </button>   
-                            <button id="disabled" onClick={() => triggerPopup()}>Share
+                            <button id="disabled1" onClick={() => triggerPopup()}>Share
                                 <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
                                 <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
                             </button>
@@ -68,16 +69,16 @@ function DetailsView(props){
                                 <button onClick={() => {removeSavedAttraction(props.article.pageid)} }>Remove
                                     <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
                                 </button>:
-                                <button id={props.isUserLoggedIn?"":"disabled"} onClick={() => props.isUserLoggedIn? props.onSave(props.article): triggerPopup()}>Save
+                                <button id={props.isUserLoggedIn?"":"disabled1"} onClick={() => props.isUserLoggedIn? props.onSave(props.article): triggerPopup()}>Save
                                     <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
                                 </button>
                             }
-                            </span>   
-                            
+                            </div>
                       </div>
     
                   </div>
-      </div>
+                  </div>   
+                            
     );
 }
 

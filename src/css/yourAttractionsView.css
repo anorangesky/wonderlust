@@ -70,13 +70,33 @@ button:disabled:hover {
 #list-trash:hover{
     cursor: pointer;
 }
-.yourMapView{
-    display:none;
+
+.yourSaved-container{
+    display: flex;
+    flex-direction: column;
 }
+
+.yourMapView{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    text-align: center;
+    cursor: not-allowed;
+    background-color: lightgray;
+    opacity: 0.5;
+    margin: 20px;
+    padding: 5px;
+}
+
+
 
 /* This applies from 600px onwards
     (Desktop specifics) */
 @media (min-width: 600px) {
+    .yourSaved-container{
+        display: flex;
+        flex-direction: row;
+    }
     .list-container{
         display: flex;
         flex-direction: column-reverse;
@@ -89,15 +109,14 @@ button:disabled:hover {
     .yourMapView{
         display: flex;
         flex-direction: column;
-        align-self: left;
-        align-self: baseline;
-        flex: 1;
-        max-width: 50%;
-        border: 1px  lightslategrey;
-        color: lightslategrey;
+        border: 1px solid;
         text-align: center;
+        cursor: not-allowed;
+        background-color: lightgray;
+        opacity: 0.5;
         margin: 10px;
-        cursor: not-allowed;    
+        padding: 5px;
+        width: 50%;
     }
 
 

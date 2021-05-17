@@ -20,8 +20,8 @@
   width: 60px;
   height: 60px;
   border-radius: 50px;
-  position: fixed;
   background-color: #F7B088;
+  position: absolute;
 }
 
  .nav-menu #enabled:hover{
@@ -47,14 +47,13 @@
     background-color: lightgray;
 }
 
-
 .nav-link{
     color: #F7B088;
     display: flex;
     align-items: center;
     text-decoration: none;
     cursor: pointer;
-    justify-content:space-around
+    justify-content:space-around;
 }
 
 .nav-link img{
@@ -80,8 +79,7 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  /* Second Nav */
-  margin-left: 24px;
+
 }
 .nav-button-link:hover{
     transition: all 0.2s ease-in-out;
@@ -101,6 +99,9 @@
         right: 0px;
         justify-content: flex-end;
         z-index: auto;
+    }
+    .nav-link{
+        width: 7% ;
     }
 
 }
