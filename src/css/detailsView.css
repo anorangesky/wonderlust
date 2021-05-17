@@ -74,11 +74,14 @@
     flex-direction: column;
   }
   #details-about{
-    overflow: auto;
-    height: 80%;
     margin: 10px;
-    text-align: center;
+    max-height: 80%;
 
+    text-align: center;
+    font-size: normal;
+    /* Required for text-overflow to do anything */
+    white-space:initial;
+   overflow-y: scroll;
     }
 
   #details-image{
@@ -254,16 +257,14 @@ fieldset{
 
           }
           #details-about{
-            width: auto;
-            overflow-wrap: break-word;
-            overflow-x: hidden;
+            width: 300px;
+            max-height: 350px;
             text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             font-size: normal;
-            padding-top: 7%;
-
+            text-overflow: ellipsis;
+            /* Required for text-overflow to do anything */
+            white-space:normal;
+            overflow-y:hidden;
           }
             #details-image{
               width:200px;
