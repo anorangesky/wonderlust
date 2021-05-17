@@ -5,6 +5,7 @@ import {removeSavedAttraction} from "../services/firebase";
 import logo from '../images/wonderlust.png';
 import remove from "../images/remove.png";
 import "../css/yourAttractionsView.css";
+import '../css/detailsView.css';
 
 
 function YourAttractionsView(props){
@@ -17,6 +18,11 @@ function YourAttractionsView(props){
   const handleClose = () => {
       setOpen(false);
   };
+
+  function triggerPopup() {
+    const popup = document.getElementById("myPopupDisabled");
+    popup.classList.toggle("show");
+  }
 
   return(
       <div>
@@ -33,7 +39,10 @@ function YourAttractionsView(props){
                     <p id="list-title"> {attraction.title} </p>
                   </div>
                   <div id="list-buttons">
-                    <button disabled id="list-share"> Share </button>
+                    <span className="popup">
+                      <button onClick={e => triggerPopup()} id="disabled"> Share </button>
+                      <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
+                    </span>
                     <img id="list-trash"src={remove} onClick={e => removeSavedAttraction(attraction.pageid)}/>
 
                   </div>
