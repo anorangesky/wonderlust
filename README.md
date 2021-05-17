@@ -6,35 +6,16 @@
 Deployed at: https://wonderlust-cdeb9.web.app
 
 ## Project description
-Find interesting unexpected attractions in your local area. We fetch articles from Wikipedia that are related to a location (long, lat) and display them on a map using Google Map API. The users will be able to explore attractions on the map either by drag-drop or searching for a location in the search bar. As a logged-in user, you will also be able to share, save, and add new attractions to the map (stored in Firebase).  
+Find interesting unexpected attractions in your local area. We fetch articles from Wikipedia that are related to a location (long, lat) and display them on a map using Google Map API. The users will be able to explore attractions on the map either by drag-drop or searching for a location in the search bar. As a logged-in user, you will also be able to save attractions on the map to a personal list (stored in Firebase). In the future you will also be able to add new attractions and share them with other users.
 
-## Midterm update (what we have done so far)
-- Project prototype in Figma
-- Early user evaluation on the prototype and the project concept both on Mobile and Desktop
-- Connect Google Map API
-- Search bar 
-- Support for fetching articles from Wikipedia (MediaWiki API)
-- Details view connected to each location marker on the map  
-- User auth using Google and Email (including user signup) through Firebase
-- Wonderlust logotype including color theme and font style
-- Log in/sign up with Google and email
- 
-## Backlog (what we still plan to do)
-- Logged in user functionalities
-  - Save attractions
-  - share attractions
-  - add friends (or explorer buddies)
-  - notification view
-  - settings (change user name, password, added attraction, etc.)
-  - your saved attractions (show them in a list and a map)
-- Update Google markers when the user moves around the map
-- Add clustering of markers 
-- Add search functionality to the map
-- Design: Update Google’s map-markers to our WL markers
-- Add login with FB 
-- User evaluation
-- Jest tests 
-- Bugfix
+## How to setup
+IFF you have access to the correct `.env` file:
+1. Clone the repository
+2. Do a `npm install` and `npm start`
+3. voilà! 
+
+Else:
+1. Go to https://wonderlust-cdeb9.web.app
 
 ## Project file structure (short description/purpose of each file)
 - wonderlust/public
@@ -45,18 +26,27 @@ Find interesting unexpected attractions in your local area. We fetch articles fr
 - wonderlust/src
   -   css/ contains style sheets for the different views
       - detailsView.css
+      - disabled.css - make the disabled features behave 
       - loginView.css
       - mapView.css
+      - navigation.css
       - searchView.css
       - titleView.css
+      - yourAttractionsView.css
   - images/ contains images used as the logo and/or placeholders
   -  redux/ contains redux specific content
+     - slices/
+        - currentPositionSlice.js
+        - userState.js
      -  Reducer.js - Reducers and action creators
      -  stateToProps.js - Functions for connecting redux to props
      -  Store.js - Redux store
    - services/ contains Firebase and Wikimedia specific code
      - Firebase.js - Code for app configuration and init, user authentication including providers
-     - wikiSource.js - Code for API calls and fetching article data 
+     - wikiSource.js - Code for API calls and fetching article data
+     - geocoding.js - Code for API calls to OpenCage for geocoding
+   - utilities/
+     - debounce.js - Does exactly what it says on the tin
    - views/ contains the different views of Wonderlust
      - authViews/ contains components relevant for authorization
        - AuthView.js - Shows the login and signup forms
@@ -74,8 +64,8 @@ Find interesting unexpected attractions in your local area. We fetch articles fr
      - settingsView.js - User account settings
      - shareView.js - View for sharing locations with friends
      - titleView.js - Component showing the website logo and title
-     - yourListView.js - Displays a list of saved or created attractions
-     - yourMapView.js - Display saved or createdattractions on a map
+     - yourAttractionsView.js - The saved user attractions. Currently only displayed in a list, but in the future also on a map
+     - yourAttractionDetails.js - Shows the details view of the saved attractions
   - App.js - Main component where the views are put together
   - Index.js - Renders the App
   - setupTests.js - For our jest-tests 
