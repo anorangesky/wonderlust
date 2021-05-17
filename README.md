@@ -55,8 +55,8 @@ Else:
      - settingsView.js - User account settings
      - shareView.js - View for sharing locations with friends
      - titleView.js - Component showing the website logo and title
-     - yourListView.js - Displays a list of saved or created attractions
-     - yourMapView.js - Display saved or createdattractions on a map
+     - yourAttractionsView.js - The saved user attractions. Currently only displayed in a list, but in the future also on a map
+     - yourAttractionDetails.js - Shows the details view of the saved attractions
   - App.js - Main component where the views are put together
   - Index.js - Renders the App
   - setupTests.js - For our jest-tests 
