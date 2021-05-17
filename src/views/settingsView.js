@@ -27,7 +27,7 @@ function SettingsView(){
   return(
     <div className="settings-container">
         <h1> Settings </h1>
-        <img src={user.photoURL? user.photoURL: logo} alt="profile"/>
+        <img id="profileImage" src={user.photoURL? user.photoURL: logo} alt="profile"/>
         <h3>Hello {user.displayName? user.displayName: user.email}</h3>
         <span className="popup">
             <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
