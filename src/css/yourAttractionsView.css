@@ -1,10 +1,13 @@
-button:disabled:hover {
+#disabled3:hover {
     background: lightgray;
     color: gray;
+    cursor: not-allowed;
+
   }
-  button:disabled{
+ #disabled3{
     background: lightgray;
     color: gray;
+    cursor: not-allowed;
   }
  
 .list-container{
@@ -30,7 +33,6 @@ button:disabled:hover {
 
 #list-image{
     min-width: 50px;
-    max-width: 50px;
     width:50px;
     height: 50px;
     object-fit: cover;
@@ -87,8 +89,6 @@ button:disabled:hover {
     margin: 20px;
     padding: 5px;
 }
-
-
 
 /* This applies from 600px onwards
     (Desktop specifics) */

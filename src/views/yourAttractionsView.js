@@ -20,8 +20,8 @@ function YourAttractionsView(props){
   };
 
   function triggerPopup() {
-    const popup = document.getElementById("myPopupDisabled");
-    popup.classList.toggle("show");
+    const popup2 = document.getElementById("myPopupDisabled");
+    popup2.classList.toggle("show");
   }
 
   return(
@@ -39,17 +39,14 @@ function YourAttractionsView(props){
                     <p id="list-title"> {attraction.title} </p>
                   </div>
                   <div id="list-buttons">
-                    <span className="popup">
-                      <button onClick={e => triggerPopup()} id="disabled"> Share </button>
-                      <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
-                    </span>
+                      <button id="disabled3"> Share </button>
                     <img id="list-trash"src={remove} onClick={e => removeSavedAttraction(attraction.pageid)}/>
 
                   </div>
             </li>
             )}
         </ul>
-        <div disabled className="yourMapView">
+        <div className="yourMapView">
           <div className="disabled-container">
               <h3> Hold out!</h3>
               <h5> You have discovered a feature that is not yet implemented...
