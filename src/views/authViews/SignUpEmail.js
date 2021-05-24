@@ -21,8 +21,11 @@ function RegisterWithEmail(){
     })
     const handleSubmit = async(e)=>{
         e.preventDefault();
-        await registerWithEmail(form);
-        
+        try{
+            await registerWithEmail(form);
+        }catch(error){
+            alert(error.message)
+        }
     }
 
     let body = (

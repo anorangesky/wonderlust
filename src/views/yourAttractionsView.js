@@ -53,7 +53,7 @@ function YourAttractionsView(props){
               <br/> soon you will be able to see your saved attractions on a map here. </h5>
               <img src={logo}/>
           </div>
-        </div>
+        </div>''
         </div>
         <Modal
             open={open}
