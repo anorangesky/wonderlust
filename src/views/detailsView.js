@@ -8,6 +8,7 @@ import logo2 from '../images/wonderlust2.png';
 
 // rewrite this to only return the body
 function DetailsView(props){
+    /*
     function triggerPopup() {
         let popup1 = document.getElementById("myPopupDisabled");
         if(!props.isUserLoggedIn){
@@ -15,7 +16,7 @@ function DetailsView(props){
         }
         popup1.classList.toggle("show");
       }
-
+*/
     return(
       <div>
          <div className="details-container" id="detailsCard">
@@ -38,7 +39,7 @@ function DetailsView(props){
                                   src={props.article.thumbnail ? props.article.thumbnail.source : logo}
                                   alt={props.article.pageimage ? props.article.pageimage : "Wonderlust logo"}/>
                               <div className="star-rating">
-                                  <fieldset onClick={e => triggerPopup()}>
+                                  <fieldset onClick={e => alert("This feature is not yet available")}>
                                       <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Outstanding">5 stars</label>
                                       <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Very Good">4 stars</label>
                                       <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Good">3 stars</label>
@@ -46,34 +47,22 @@ function DetailsView(props){
                                       <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Very Poor">1 star</label>
                                   </fieldset>
                               </div>
-                                  <ul className="userComments">
+                                  <ul className="userComments" onClick={e => alert("This feature is not yet available")}>
                                       <li>MOCKDATA: Wow, i love this place. I reccomend a visit!</li>
                                       <li>MOCKDATA: Probably the two most common comments were "timid" and "boring".</li>
                                   </ul>
-                                  <input disabled id="details-comment" type="text" placeholder="Leave a comment" onChange={e => triggerPopup()}/>
+                                  <input disabled id="details-comment" type="text" placeholder="Leave a comment" onChange={e => alert("This feature is not yet available")}/>
                           </div>
                       </div>
                     
                       <div className="details-footer-item" >
-                          <div className="popup1">
-                            <button id="disabled1"onClick={() => triggerPopup()}>Directions
-                                <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
-                                <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
-                            </button>   
-                            <button id="disabled1" onClick={() => triggerPopup()}>Share
-                                <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
-                                <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
-                            </button>
+                            <button id="disabled1"onClick={() => props.isUserLoggedIn? alert("This feature is not yet available"): alert("Sign up to use this feature")}>Directions</button>   
+                            <button id="disabled1" onClick={() => props.isUserLoggedIn? alert("This feature is not yet available"): alert("Sign up to use this feature")}>Share</button>
 
                             {props.isAttractionSaved?
-                                <button onClick={() => {removeSavedAttraction(props.article.pageid)} }>Remove
-                                    <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
-                                </button>:
-                                <button id={props.isUserLoggedIn?"":"disabled1"} onClick={() => props.isUserLoggedIn? props.onSave(props.article): triggerPopup()}>Save
-                                    <span className="popuptext" id="myPopupLoggedOut">Log in to use this feature</span>
-                                </button>
+                                <button onClick={() => {removeSavedAttraction(props.article.pageid)} }>Remove</button>:
+                                <button id={props.isUserLoggedIn?"":"disabled1"} onClick={() => props.isUserLoggedIn? props.onSave(props.article): alert("Sign up to use this feature")}>Save</button>
                             }
-                            </div>
                       </div>
 
                   </div>
