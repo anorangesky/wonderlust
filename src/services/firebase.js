@@ -117,6 +117,8 @@ export const logOut = () => {
   }).catch((error) => {
     console.log(error.message)
   })
+
+  localStorage.clear();
 }
 
 // Read user data from database after logged in and set user data in store
@@ -133,6 +135,7 @@ function onLoginSuccess(user) {
   });
   // Turn on listening to the saved attraction list and save references to the listener
   onSavedAttractionChange(user.uid);
+  localStorage.setItem('user', user.uid);
 }
 
 function onSavedAttractionChange(uid) {
