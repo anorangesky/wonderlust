@@ -194,47 +194,6 @@ fieldset{
   padding: 0;
 }
 
-/* Popup container - can be anything you want */
-.popup1 {
-  position: fixed;
-  display: flex;
-  cursor: pointer;
-  flex-direction: row;
-
-}
-
-/* The actual popup */
-.popup1 .popuptext {
-  visibility: hidden;
-  background-color:gray;
-  opacity:0.95;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5%;
-  position: fixed;
-  z-index: 1;
-  top:50%;
-  margin-left: -5%;
-}
-
-/* Toggle this class - hide and show the popup */
-.popup1 .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 0.95;}
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:0.95 ;}
-}
 
 
   /* This applies from 600px onwards

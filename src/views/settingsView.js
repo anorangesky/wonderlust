@@ -18,22 +18,22 @@ function SettingsView(){
         let path = '/map';
         history.push(path);
     }
-
+/*
     function triggerPopup() {
         const popup = document.getElementById("myPopupDisabled");
         popup.classList.toggle("show");
       }
+      */
 
   return(
     <div className="settings-container">
         <h1> Settings </h1>
         <img id="profileImage" src={user.photoURL? user.photoURL: logo} alt="profile"/>
         <h3>Hello {user.displayName? user.displayName: user.email}</h3>
-        <span className="popup">
-            <span className="popuptext" id="myPopupDisabled">This feature is not yet available</span>
-            <button id="not-implemented" onClick={e => triggerPopup()}> Edit Profile </button>
-            <button id="not-implemented" onClick={e => triggerPopup()}> Friends </button>
-            <button id="not-implemented" onClick={e => triggerPopup()}> About </button>
+        <span className="setting-buttons">
+            <button id="not-implemented" onClick={() => alert("This feature is not yet available")}> Edit Profile </button>
+            <button id="not-implemented" onClick={() => alert("This feature is not yet available")()}> Friends </button>
+            <button id="not-implemented" onClick={() => alert("This feature is not yet available")()}> About </button>
         </span>
         <button className = "logOutBtn" onClick={() => {logOut(); routeChange()}}>
              Log Out

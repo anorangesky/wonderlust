@@ -30,15 +30,15 @@ export const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 /** LOG IN function for GOOGLE that uses 'signInWithPopup()' method **/
 export const signInWithGoogle = async() => {
-  await firebase.auth().signInWithPopup(googleProvider)
-  .then((result) => {
+  await firebase.auth()
+    .signInWithPopup(googleProvider)
+    .then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
     // var credential = result.credential;
     // This gives you a Google Access Token. You can use it to access the Google API.
     // var token = credential.accessToken;
     // The signed-in user info.
     var user = result.user;
-    // console.log(user);
     onLoginSuccess(user)
   }).catch((error) => {
     // Handle Errors here.
@@ -49,7 +49,7 @@ export const signInWithGoogle = async() => {
     // The firebase.auth.AuthCredential type that was used.
     // var credential = error.credential;
     // ...
-    console.log(error)
+    //console.log(error)
   })
 }
 
@@ -72,7 +72,6 @@ export const signInWithFB = async() =>{
     // var credential = result.credential;
     // The signed-in user info.
     var user = result.user;
-    console.log(user);
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     // var accessToken = credential.accessToken;
     onLoginSuccess(user)
@@ -84,7 +83,7 @@ export const signInWithFB = async() =>{
     // var email = error.email;
     // The firebase.auth.AuthCredential type that was used.
     // var credential = error.credential;
-    console.log(error)
+    //console.log(error)
   })
 }
 
@@ -110,12 +109,12 @@ export const logOut = () => {
   var savedAttractionRef = firebase.database().ref('users/' + store.getState().userState.user.uid + '/savedAttractions/');
   savedAttractionRef.off('value', undefined)
   firebase.auth().signOut().then(()=> {
-    console.log('logged out')
+    //console.log('logged out')
     store.dispatch(setIsUserLoggedIn(false));
     store.dispatch(setUserId(null));
     store.dispatch(setSavedAttraction({}));
   }).catch((error) => {
-    console.log(error.message)
+   // console.log(error.message)
   })
 }
 
@@ -129,7 +128,7 @@ function onLoginSuccess(user) {
       writeNewUser(user.uid, user.displayName ? user.displayName: user.email);
     }
   }).catch((error) => {
-    console.log(error);
+    //console.log(error);
   });
   // Turn on listening to the saved attraction list and save references to the listener
   onSavedAttractionChange(user.uid);

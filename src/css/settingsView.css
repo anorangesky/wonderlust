@@ -2,8 +2,8 @@
     display: flex;
     background-color: white;
     flex-direction: column;
-	align-items: center;
-	flex-wrap: wrap;
+	  align-items: center;
+	  flex-wrap: wrap;
     justify-content:space-evenly;
 
 }
@@ -41,48 +41,10 @@
     font-weight: lighter;
 }
 
-/* Popup container - can be anything you want */
-.popup {
-    position: relative;
+.setting-buttons {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-  }
-
-  /* The actual popup */
-  .popup .popuptext {
-    visibility: hidden;
-    width: auto;
-    height: auto;
-
-    background-color:gray;
-    opacity:0.95;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 1em;
-    /* position: fixed; */
-    z-index: 1;
-    /* top:50%; */
-    /* margin-left: -5%; */
-  }
-
-  /* Toggle this class - hide and show the popup */
-  .popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-  }
-
-  /* Add animation (fade in the popup) */
-  @-webkit-keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 0.95;}
-  }
-
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:0.95 ;}
   }
 
    /* This applies from 600px onwards 
