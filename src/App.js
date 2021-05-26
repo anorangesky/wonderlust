@@ -7,8 +7,6 @@ import Navbar from './views/navigationView';
 import NotificationView from './views/notificationView';
 import YourAttractionsView from './views/yourAttractionsView';
 import AddAttractionView from './views/addAttractionView'
-// import LogInView from './views/authViews/LogInView';
-// import firebase from "firebase/app";
 import "firebase/auth";
 import { onLoginSuccess } from './services/firebase'
 
@@ -20,14 +18,14 @@ import { mapAttractionListToProps,
           mapDispatchToMapView,
           mapDispatchToNavigationView,
           mapDispatchToSearchView,
-          mapUserStateToProps } from './redux/stateToProps';
+          mapUserStateToProps,
+          mapDispatchToSettingsView } from './redux/stateToProps';
 import { setAttractions } from './redux/reducer';
 import { getUserPosition } from './redux/slices/currentPositionSlice';
 
 // import userState from "./redux/slices/userState"
 
 store.dispatch(getUserPosition());
-// Just for testing, should be initialized with the users current position
 getArticlesFromLocation(store.getState().currentPosition.position.lat,
                         store.getState().currentPosition.position.lng,
                         10000)
@@ -35,19 +33,22 @@ getArticlesFromLocation(store.getState().currentPosition.position.lat,
   store.dispatch(setAttractions(data))
 );
 
+// Check if user is already logged in
 const user = JSON.parse(localStorage.getItem('user'))
 if(user) {
   onLoginSuccess(user)
 }
 
+// Create presenters
 const MapPresenter = connect(mapAttractionListToProps,
                               mapDispatchToMapView)(MapView);
-const SearchViewPresenter = connect(null, mapDispatchToSearchView)(SearchView);
+const SearchPresenter = connect(null, mapDispatchToSearchView)(SearchView);
 
 const NavigationPresenter = connect(mapUserStateToProps,
                                     mapDispatchToNavigationView)(Navbar);
 const YourAttractionsPresenter = connect(mapUserStateToProps,
                                             mapDispatchToMapView)(YourAttractionsView);
+const SettingsPresenter = connect(mapUserStateToProps, mapDispatchToSettingsView)(SettingsView)
 
 function App(props) {
   /*      check if user is online so they can't hack themself in  */
@@ -60,7 +61,7 @@ function App(props) {
             <Route path='/addAttractions' component={AddAttractionView} />
             <Route path='/yourAttractions' component={YourAttractionsPresenter}/>
             <Route path='/notifications'component={NotificationView}/>
-            <Route path='/settings' component={SettingsView}/>
+            <Route path='/settings' component={SettingsPresenter}/>
         </Switch>
     )}else{
       navigation = (<MapPresenter/>)
@@ -70,7 +71,7 @@ function App(props) {
     <React.Fragment>
        <Router>
         <NavigationPresenter/>
-        <SearchViewPresenter/>
+        <SearchPresenter/>
         {navigation}
       </Router>
     </React.Fragment>

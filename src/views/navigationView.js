@@ -4,7 +4,6 @@ import "../css/titleView.css";
 import "../css/detailsView.css";
 import LogInView from './authViews/LogInView';
 import TitleView from './titleView';
-// import SettingsView from './settingsView';
 import { Link, useLocation } from "react-router-dom";
 
 import addAttractions from "../images/addAttr.png";
@@ -18,7 +17,7 @@ const Navbar = (props) => {
 
     let location = useLocation();
     let navbar = (
-        <LogInView  signInWithEmail = {props.signInWithEmail} 
+        <LogInView  signInWithEmail = {props.signInWithEmail}
                     signInWithGoogle = {props.signInWithGoogle}
                     registerWithEmail = {props.registerWithEmail} />
     );
@@ -51,7 +50,7 @@ const Navbar = (props) => {
 
   return (
     <>
-  
+
       <div className="nav-container">
         <Link className="header-title" to='/'><TitleView/></Link>
         {navbar}
