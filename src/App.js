@@ -10,6 +10,7 @@ import AddAttractionView from './views/addAttractionView'
 // import LogInView from './views/authViews/LogInView';
 // import firebase from "firebase/app";
 import "firebase/auth";
+import { onLoginSuccess } from './services/firebase'
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -33,6 +34,11 @@ getArticlesFromLocation(store.getState().currentPosition.position.lat,
   store.dispatch(setAttractions(data))
 );
 
+const user = JSON.parse(localStorage.getItem('user'))
+if(user) {
+  onLoginSuccess(user)
+}
+
 const MapPresenter = connect(mapAttractionListToProps,
                               mapDispatchToMapView)(MapView);
 const SearchViewPresenter = connect(null, mapDispatchToSearchView)(SearchView);
@@ -53,9 +59,9 @@ function App(props) {
             <Route path='/' exact component={MapPresenter}/>
             <Route path='/map' component={MapPresenter}/>
             <Route path='/addAttractions' component={AddAttractionView} />
-            <Route path='/yourAttractions' component={YourAttractionsPresenter}/> 
+            <Route path='/yourAttractions' component={YourAttractionsPresenter}/>
             <Route path='/notifications'component={NotificationView}/>
-            <Route path='/settings' component={SettingsView}/> 
+            <Route path='/settings' component={SettingsView}/>
         </Switch>
     )}else{
       navigation = (<MapPresenter/>)
