@@ -90,17 +90,25 @@ export const signInWithFB = async() =>{
 
 /** SIGN UP  function with email **/
 export const registerWithEmail = async({email, password})=>{
-  const resp = await firebase.auth()
-    .createUserWithEmailAndPassword(email, password);
-    onLoginSuccess(resp.user)
-  return resp.user;
+  await firebase.auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then((result) => {
+      var user = result.user;
+      onLoginSuccess(user)
+    }).catch((error) => {
+      alert(error.message)
+    })
 }
 /** LOGIN function with email **/
 export const signInWithEmail = async({email, password})=>{
-  const resp = await firebase.auth()
-    .signInWithEmailAndPassword(email, password);
-    onLoginSuccess(resp.user)
-  return resp.user;
+  await firebase.auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((result) => {
+      var user = result.user;
+      onLoginSuccess(user)
+    }).catch((error) => {
+      alert(error.message)
+    })
 }
 
 /** signout function **/
