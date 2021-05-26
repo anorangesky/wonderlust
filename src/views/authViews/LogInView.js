@@ -1,16 +1,12 @@
     import React from 'react';
     import "firebase/auth";
     import Modal from '@material-ui/core/Modal';
-
-    import LoginEmail from "./LoginEmail";
-    import LoginGoogle from './LoginGoogle.js';
-    import LoginFB from "./LoginFB.js"; // disabled until fixed
     import SignUpView from './SignUpEmail.js';
+    import LoginEmail from './LoginEmail';
+    import LoginGoogle from './LoginGoogle';
     import "../../css/loginView.css";
 
-  function LogInView() {
-  
-    
+  function LogInView(props) {
       //Modal code:
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
@@ -32,11 +28,11 @@
        <div className="login-container">
             <button label="Close" type="button" onClick={handleClose}>X</button>
             <h1> Log in </h1>
-            <LoginEmail close={handleClose}/>
+            <LoginEmail signInWithEmail = {(form) => props.signInWithEmail(form)} close={handleClose}/>
             <div className="login-items">
-                <LoginGoogle close={handleClose}/>
+                <LoginGoogle signInWithGoogle = {() => props.signInWithGoogle()} close={handleClose}/>
             </div>
-            <SignUpView/>
+            <SignUpView registerWithEmail ={(form) => props.registerWithEmail(form)}/>
         </div>
     </Modal>
   </div>

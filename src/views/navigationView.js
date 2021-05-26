@@ -20,7 +20,9 @@ const Navbar = (props) => {
 
     let location = useLocation();
     let navbar = (
-        <LogInView/>
+        <LogInView  signInWithEmail = {props.signInWithEmail} 
+                    signInWithGoogle = {props.signInWithGoogle}
+                    registerWithEmail = {props.registerWithEmail} />
     );
     if (props.isUserLoggedIn) {
         navbar = (

@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import Modal from '@material-ui/core/Modal';
-import {registerWithEmail} from "../../services/firebase";
 import "firebase/auth";
 import "../../css/loginView.css";
 
-function RegisterWithEmail(){
+function RegisterWithEmail(props){
     //Modal code
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
@@ -22,7 +21,7 @@ function RegisterWithEmail(){
     const handleSubmit = async(e)=>{
         e.preventDefault();
         try{
-            await registerWithEmail(form);
+            await props.registerWithEmail(form);
         }catch(error){
             alert(error.message)
         }

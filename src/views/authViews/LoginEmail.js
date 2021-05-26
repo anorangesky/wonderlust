@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import {signInWithEmail} from "../../services/firebase";
 import "../../css/loginView.css";
 
 function LoginEmail(props) {
@@ -10,11 +9,12 @@ function LoginEmail(props) {
   const handleSubmit = async(e)=>{
     e.preventDefault();
     try{
-      await signInWithEmail(form);
-      props.close()
-    }catch (error){
-      alert(error.message)
+      await props.signInWithEmail(form);
+      props.close();
+    }catch(error){
+      alert(error)
     }
+    
   }
     return (
         <>
