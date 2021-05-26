@@ -1,3 +1,4 @@
+import { registerWithEmail, signInWithEmail, signInWithGoogle } from '../services/firebase';
 import { currentAttractionAction } from './reducer'
 import { getUserPosition, getSearchPosition, getArticles } from './slices/currentPositionSlice';
 
@@ -32,5 +33,13 @@ export function mapUserStateToProps(state){
     savedAttractions: state.userState.savedAttractions,
     attractionData: state.currentAttraction.data,
 
+  }
+}
+
+export function mapDispatchToNavigationView(){
+  return{
+    signInWithGoogle: () => signInWithGoogle(),
+    signInWithEmail: (form) => signInWithEmail(form),
+    registerWithEmail: (form) => registerWithEmail(form)
   }
 }

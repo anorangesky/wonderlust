@@ -18,6 +18,7 @@ import store from './redux/store'
 import { getArticlesFromLocation } from './services/wikiSource'
 import { mapAttractionListToProps,
           mapDispatchToMapView,
+          mapDispatchToNavigationView,
           mapDispatchToSearchView,
           mapUserStateToProps } from './redux/stateToProps';
 import { setAttractions } from './redux/reducer';
@@ -44,14 +45,12 @@ const MapPresenter = connect(mapAttractionListToProps,
 const SearchViewPresenter = connect(null, mapDispatchToSearchView)(SearchView);
 
 const NavigationPresenter = connect(mapUserStateToProps,
-                                    null)(Navbar);
+                                    mapDispatchToNavigationView)(Navbar);
 const YourAttractionsPresenter = connect(mapUserStateToProps,
                                             mapDispatchToMapView)(YourAttractionsView);
 
 function App(props) {
-  /*
-      check if user is online so they can't hack themself in
-  */
+  /*      check if user is online so they can't hack themself in  */
   let navigation;
   if (props.isUserLoggedIn){
     navigation = (

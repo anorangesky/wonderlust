@@ -25,7 +25,6 @@ const firebaseConfig ={
 firebase.initializeApp(firebaseConfig);
 export default firebaseConfig;
 export const auth = firebase.auth();
-// var database = firebase.database();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 /** LOG IN function for GOOGLE that uses 'signInWithPopup()' method **/
@@ -33,23 +32,10 @@ export const signInWithGoogle = async() => {
   await firebase.auth()
     .signInWithPopup(googleProvider)
     .then((result) => {
-    /** @type {firebase.auth.OAuthCredential} */
-    // var credential = result.credential;
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    // var token = credential.accessToken;
-    // The signed-in user info.
     var user = result.user;
     onLoginSuccess(user)
   }).catch((error) => {
-    // Handle Errors here.
-    // var errorCode = error.code;
-    // var errorMessage = error.message;
-    // The email of the user's account used.
-    // var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    // var credential = error.credential;
-    // ...
-    //console.log(error)
+   throw error
   })
 }
 
@@ -96,7 +82,7 @@ export const registerWithEmail = async({email, password})=>{
       var user = result.user;
       onLoginSuccess(user)
     }).catch((error) => {
-      alert(error.message)
+      throw error
     })
 }
 /** LOGIN function with email **/
@@ -107,7 +93,7 @@ export const signInWithEmail = async({email, password})=>{
       var user = result.user;
       onLoginSuccess(user)
     }).catch((error) => {
-      alert(error.message)
+      throw error
     })
 }
 
@@ -122,7 +108,7 @@ export const logOut = () => {
     store.dispatch(setUserId(null));
     store.dispatch(setSavedAttraction({}));
   }).catch((error) => {
-   // console.log(error.message)
+    throw error
   })
 
   localStorage.clear();
@@ -138,7 +124,7 @@ export function onLoginSuccess(user) {
       writeNewUser(user.uid, user.displayName ? user.displayName: user.email);
     }
   }).catch((error) => {
-    //console.log(error);
+    throw error
   });
   // Turn on listening to the saved attraction list and save references to the listener
   onSavedAttractionChange(user.uid);
