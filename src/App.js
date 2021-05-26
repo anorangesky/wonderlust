@@ -23,8 +23,6 @@ import { mapAttractionListToProps,
 import { setAttractions } from './redux/reducer';
 import { getUserPosition } from './redux/slices/currentPositionSlice';
 
-import {signInWithEmail, signInWithGoogle, registerWithEmail} from './services/firebase';
-
 // import userState from "./redux/slices/userState"
 
 store.dispatch(getUserPosition());

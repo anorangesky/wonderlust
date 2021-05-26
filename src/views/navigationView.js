@@ -12,8 +12,6 @@ import map from "../images/homeMap.png";
 import notifications from "../images/notifications.png";
 import yourAttr from "../images/yourAttr.png";
 import settings from "../images/settings.png";
-import AddAttractionView from './addAttractionView';
-
 
 
 const Navbar = (props) => {
@@ -40,7 +38,7 @@ const Navbar = (props) => {
                 {location.pathname === "/yourAttractions" && <div className="nav-menu-circle"></div>}
             </Link>
             <Link className="nav-link" to='notifications' >
-              <img id="disabled2" src={notifications}/>
+              <img id="disabled2" src={notifications} alt="notifications"/>
               {location.pathname === "/notifications" && <div id="disabled-nav"></div>}
             </Link>
             <Link className="nav-link" to='/settings'>
