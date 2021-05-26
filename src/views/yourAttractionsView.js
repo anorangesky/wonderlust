@@ -19,11 +19,6 @@ function YourAttractionsView(props){
       setOpen(false);
   };
 
-  function triggerPopup() {
-    const popup2 = document.getElementById("myPopupDisabled");
-    popup2.classList.toggle("show");
-  }
-
   return(
       <div>
         <h1> Your saved attractions </h1>
@@ -40,7 +35,7 @@ function YourAttractionsView(props){
                   </div>
                   <div id="list-buttons">
                       <button id="disabled3"> Share </button>
-                    <img id="list-trash"src={remove} onClick={e => removeSavedAttraction(attraction.pageid)}/>
+                    <img id="list-trash"src={remove} alt="trash" onClick={e => removeSavedAttraction(attraction.pageid)}/>
 
                   </div>
             </li>
@@ -51,7 +46,7 @@ function YourAttractionsView(props){
               <h3> Hold out!</h3>
               <h5> You have discovered a feature that is not yet implemented...
               <br/> soon you will be able to see your saved attractions on a map here. </h5>
-              <img src={logo}/>
+              <img src={logo} alt=""/>
           </div>
         </div>''
         </div>
