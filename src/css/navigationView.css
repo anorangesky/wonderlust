@@ -22,6 +22,7 @@
   border-radius: 50px;
   background-color: #F7B088;
   position: absolute;
+  border-style: none;
 }
 
  .nav-menu #enabled:hover{
@@ -29,6 +30,7 @@
     position:sticky;
     z-index: 2;
     background-color: #F7B088;
+    border-style: none
 }
 
 #disabled-nav {
@@ -45,6 +47,7 @@
     position:sticky;
     z-index: 3;
     background-color: lightgray;
+    border-style: none
 }
 
 .nav-link{
@@ -54,6 +57,7 @@
     text-decoration: none;
     cursor: pointer;
     justify-content:space-around;
+    border-style: none
 }
 
 .nav-link img{
@@ -67,6 +71,7 @@
     margin-right: 24px;
     justify-content: flex-end;
     width: 100vw;
+    border-style: none
 }
 
 .nav-button-link{
@@ -79,12 +84,14 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  border-style: none
 
 }
 .nav-button-link:hover{
     transition: all 0.2s ease-in-out;
     background: #fff;
     color: #F7B088;
+    border-style: none
 }
 
  /* This applies from 600px onwards
@@ -97,11 +104,12 @@
         position: relative;
         width: 100%;
         right: 0px;
+        top: 30px;
         justify-content: flex-end;
         z-index: auto;
     }
     .nav-link{
-        width: 7% ;
+        width: 70px ;
     }
 
 }

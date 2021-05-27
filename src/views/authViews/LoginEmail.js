@@ -8,13 +8,10 @@ function LoginEmail(props) {
   })
   const handleSubmit = async(e)=>{
     e.preventDefault();
-    try{
       await props.signInWithEmail(form);
-      props.close();
-    }catch(error){
-      alert(error)
-    }
-    
+      if(props.isUserLoggedIn){
+        props.close();
+      }   
   }
     return (
         <>

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Modal from '@material-ui/core/Modal';
-import "firebase/auth";
 import "../../css/loginView.css";
 
 function RegisterWithEmail(props){
@@ -20,11 +19,7 @@ function RegisterWithEmail(props){
     })
     const handleSubmit = async(e)=>{
         e.preventDefault();
-        try{
-            await props.registerWithEmail(form);
-        }catch(error){
-            alert(error.message)
-        }
+        await props.registerWithEmail(form);
     }
 
     let body = (
@@ -33,16 +28,16 @@ function RegisterWithEmail(props){
 
             <h1> Sign up</h1>
             <form onSubmit={handleSubmit} >
-                <input type="text" placeholder="email" id="mail" 
-                        onChange={(e) => 
+                <input type="text" placeholder="email" id="mail"
+                        onChange={(e) =>
                         setForm({...form, email: e.target.value})} />
                 <br/>
-                <input type="password" placeholder="Password" 
-                        onChange={(e) => 
+                <input type="password" placeholder="Password"
+                        onChange={(e) =>
                         setForm({...form, password: e.target.value})}/>
                 <br/>
                 <button type="submit">Sign up</button>
-                
+
             </form>
         </div>
     );

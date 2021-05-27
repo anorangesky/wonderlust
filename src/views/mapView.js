@@ -1,8 +1,5 @@
 import React from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
-import store from '../redux/store';
-import { setCurrentPosition, setCurrentPositionZoom } from '../redux/slices/currentPositionSlice'
-import { writeSavedAttraction } from '../services/firebase'
 import Modal from '@material-ui/core/Modal';
 import '../css/mapView.css';
 import DetailsView from './detailsView'
@@ -46,19 +43,15 @@ function MapView(props){
     // Alt. see "Manually loading the Google API" on https://www.npmjs.com/package/google-maps-react
   }
 
-  function centerChanged(mapProps, map) {
-    // map.setZoom(13);
-  }
-
   function dragEnd(mapProps, map) {
     let center = map.getCenter();
-    store.dispatch(setCurrentPosition({lat: center.lat(), lng: center.lng()}));
-    store.dispatch(setCurrentPositionZoom(map.getZoom()));
+    props.savePosition({lat: center.lat(), lng: center.lng()})
+    props.saveMapZoom(map.getZoom());
     props.getArticles({lat: center.lat(), lng: center.lng()})
   }
 
   function zoomChanged(mapProps, map) {
-    store.dispatch(setCurrentPositionZoom(map.getZoom()));
+    props.saveMapZoom(map.getZoom());
   }
 // props.showDetails(attraction.pageid);
 
@@ -73,7 +66,6 @@ function MapView(props){
                   streetViewControl={false}
                   mapTypeControl={false}
                   onReady={(mapProps, map) => mapLoaded(mapProps, map)}
-                  onRecenter={(mapProps, map) => centerChanged(mapProps, map)}
                   onDragend={(mapProps, map) => dragEnd(mapProps, map)}
                   onZoomChanged={(mapProps, map) => zoomChanged(mapProps, map)}
              >
@@ -100,10 +92,11 @@ function MapView(props){
                   {
                     props.attractionData &&
                     <DetailsView handleClose={() => handleClose()}
-                                onSave={writeSavedAttraction}
+                                onSave={props.writeSavedAttraction}
                                 article={props.attractionData}
                                 isUserLoggedIn={props.isUserLoggedIn}
-                                isAttractionSaved={!!props.savedAttractions.find(e => e.pageid.to == props.attractionData.pageid)}
+                                isAttractionSaved={!!props.savedAttractions.find(e => parseInt(e.pageid) === props.attractionData.pageid)}
+                                removeSavedAttraction={props.removeSavedAttraction}
                     />
                   }
                 </div>

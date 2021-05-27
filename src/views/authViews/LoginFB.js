@@ -1,6 +1,8 @@
 import { signInWithFB } from "../../services/firebase";
 import "../../css/loginView.css";
 
+/* This component is currently not being used */
+
 function LoginFB() {
   return (
       <div className="login-buttons">

@@ -62,14 +62,7 @@ export const signInWithFB = async() =>{
     // var accessToken = credential.accessToken;
     onLoginSuccess(user)
   }).catch((error) => {
-    // Handle Errors here.
-    // var errorCode = error.code;
-    // var errorMessage = error.message;
-    // The email of the user's account used.
-    // var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    // var credential = error.credential;
-    //console.log(error)
+   throw error
   })
 }
 
@@ -82,7 +75,7 @@ export const registerWithEmail = async({email, password})=>{
       var user = result.user;
       onLoginSuccess(user)
     }).catch((error) => {
-      throw error
+      alert(error)
     })
 }
 /** LOGIN function with email **/
@@ -93,7 +86,7 @@ export const signInWithEmail = async({email, password})=>{
       var user = result.user;
       onLoginSuccess(user)
     }).catch((error) => {
-      throw error
+      alert(error)
     })
 }
 
@@ -103,7 +96,6 @@ export const logOut = () => {
   var savedAttractionRef = firebase.database().ref('users/' + store.getState().userState.user.uid + '/savedAttractions/');
   savedAttractionRef.off('value', undefined)
   firebase.auth().signOut().then(()=> {
-    //console.log('logged out')
     store.dispatch(setIsUserLoggedIn(false));
     store.dispatch(setUserId(null));
     store.dispatch(setSavedAttraction({}));
@@ -125,6 +117,7 @@ export function onLoginSuccess(user) {
     }
   }).catch((error) => {
     throw error
+
   });
   // Turn on listening to the saved attraction list and save references to the listener
   onSavedAttractionChange(user.uid);

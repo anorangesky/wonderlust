@@ -50,16 +50,16 @@ export function getUserPosition() {
     function error(error) {
       switch (error.code) {
         case error.PERMISSION_DENIED:
-          console.log("User denied the request for Geolocation.");
+          alert("User denied the request for Geolocation.");
           break;
         case error.POSITION_UNAVAILABLE:
-          console.log("Location information is unavailable.")
+          alert("Location information is unavailable.")
           break;
         case error.TIMEOUT:
-          console.log("The request to get user location timed out.")
+          alert("The request to get user location timed out.")
           break;
         case error.UNKNOWN_ERROR:
-          console.log("An unknown error occurred.")
+          alert("An unknown error occurred.")
           break;
         default:
           return
@@ -69,9 +69,8 @@ export function getUserPosition() {
     if(navigator.geolocation) {
       // Use the geolocation API to try to get the users position
       navigator.geolocation.getCurrentPosition(success, error);
-      // console.log("lat: " + currentPosition.lat + " lng: " + currentPosition.lng);
     } else {
-      console.log("Unable to access your location");
+      alert.log("Unable to access your location");
     }
   }
 }
@@ -85,7 +84,6 @@ export function getSearchPosition(query) {
     // Request coordinates for the given place from the OpenCage API
     getPlaceCoordinates(query)
       .then(data => {
-          console.log(data[0]);
           let position = {
             lat: data[0].geometry.lat,
             lng: data[0].geometry.lng,

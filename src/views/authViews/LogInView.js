@@ -28,7 +28,7 @@
        <div className="login-container">
             <button label="Close" type="button" onClick={handleClose}>X</button>
             <h1> Log in </h1>
-            <LoginEmail signInWithEmail = {(form) => props.signInWithEmail(form)} close={handleClose}/>
+            <LoginEmail signInWithEmail = {(form) => props.signInWithEmail(form)} close={handleClose} isUserLoggedIn = {props.isUserLoggedIn}/>
             <div className="login-items">
                 <LoginGoogle signInWithGoogle = {() => props.signInWithGoogle()} close={handleClose}/>
             </div>
