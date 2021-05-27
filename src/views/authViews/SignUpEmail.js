@@ -19,11 +19,7 @@ function RegisterWithEmail(props){
     })
     const handleSubmit = async(e)=>{
         e.preventDefault();
-        try{
-            await props.registerWithEmail(form);
-        }catch(error){
-            alert(error.message)
-        }
+        await props.registerWithEmail(form);
     }
 
     let body = (

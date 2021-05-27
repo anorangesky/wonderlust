@@ -19,7 +19,8 @@ const Navbar = (props) => {
     let navbar = (
         <LogInView  signInWithEmail = {props.signInWithEmail}
                     signInWithGoogle = {props.signInWithGoogle}
-                    registerWithEmail = {props.registerWithEmail} />
+                    registerWithEmail = {props.registerWithEmail} 
+                    isUserLoggedIn = {props.isUserLoggedIn}/>
     );
     if (props.isUserLoggedIn) {
         navbar = (
