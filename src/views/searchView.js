@@ -20,14 +20,14 @@ function SearchView(props) {
       <div className="searchbar">
         <input type="search"
               id="locationSearch"
-              placeholder="Find a location"
+              placeholder="Search..."
               onChange={e => debouncedOnChange(e.target.value)}
         />
       </div>
       <Link className='currentlocation-link' to='/map'>
         <button className="currentlocation-btn" onClick={() => props.getUserPosition()}>
-          <p>Go to your location</p>
-          <img src={icon} alt="go to your location"/>
+          <p>Your location</p>
+          <img src={icon} alt="Your location"/>
         </button>
       </Link>
     </div>
