@@ -107,9 +107,11 @@
         top: 30px;
         justify-content: flex-end;
         z-index: auto;
+
     }
     .nav-link{
-        width: 70px ;
+        min-width: 70px;
+        max-width: 10%;
     }
 
 }
